@@ -1,0 +1,45 @@
+fstab.txt
+
+http://www.howtogeek.com/howto/38125/htg-explains-what-is-the-linux-fstab-and-how-does-it-work/
+
+The fstab file is located at:
+/etc/fstab
+
+used for change some options for your file systems
+
+Fstab is your operating system’s file system table
+
+Back then, your only alternative was the tell the computer that anytime a specific device was plugged in, it should be automatically mounted in a specific place.  This is where fstab came in, and it was awesome.  Suppose you swapped hard disks on your IDE or SCSI controller.  The computer could load the file systems in a different order, potentially messing things up.  Fstab is configured to look for specific file systems and mount them automatically in a desired way each and every time, preventing a myriad of disasters from occurring.
+
+/*
+SCSI
+
+Short for Small Computer System Interface, SCSI is pronounced as "Scuzzy" and is one of the most commonly used interface for disk drives that was first completed in 1982. Unlike competing standards, SCSI is capable of supporting eight devices, or sixteen devices with Wide SCSI. However, with the SCSI host adapter located on ID number 07 and boots from the ID 00. This leaves the availability of six device connections. In the picture below, is an example of a SCSI adapter expansion card with an internal and external connection. Once installed in the computer this adapter would allow multiple SCSI devices to be installed in the computer. More advanced motherboard may also have available SCSI connections on the motherboard.
+
+
+IDE
+Short for Integrated Drive Electronics or IBM Disc Electronics, IDE is more commonly known as ATA or Parallel ATA (PATA). It is a standard interface for IBM compatible hard drives and CD or DVD drives. IDE is different than SCSI and Enhanced Small Device Interface (ESDI) because its controllers are on each drive, meaning the drive can connect directly to the motherboard or controller. IDE and its updated successor, Enhanced IDE (EIDE), are common drive interfaces found in IBM compatible computers.
+*/
+
+
+ Each file system, during formatting, gets assigned a Universally Unique Identifier, which it takes to the grave.  Since it cannot be changed, this is the ideal way to select file systems for mounting, especially for important ones.  Let’s say your /home partition is on a second hard drive and you end up moving it to an external hard drive; fstab will still find that partition and mount it correctly, avoiding a failed boot.
+
+ after uuid it is : mount ponit. 
+ The next section of fstab, like all subsequent ones, is separated by either a space or a tab, or a combination of them.  Here, you’ll find the mount point.
+
+ after mount point it is  the type of file system on the partition
+
+ you can use  ntfs-3g driver to access to ntfs partitions.
+
+
+auto/noauto:  Specify whether the partition should be automatically mounted on boot.  You can block specific partitions from mounting at boot-up by using “noauto”.
+exec/noexec:  Specifies whether the partition can execute binaries.  If you have a scratch partition that you compile on, then this would be useful, or maybe if you have /home on a separate file system.  If you’re concerned about security, change this to “noexec”.
+ro/rw:  “ro” is read-only, and “rw” is read-write.  If you want to be able to write to a file-system as the user and not as root, you’ll need to have “rw” specified.
+sync/async:  This one is interesting.  “sync” forces writing to occur immediately on execution of the command, which is ideal for floppies (how much of a geek are you?) and USB drives, but isn’t entirely necessary for internal hard disks.  What “async” does is allow the command to execute over an elapsed time period, perhaps when user activity dies down and the like.  Ever get a message asking to your “wait while changes are being written to the drive?”  This is usually why.
+nouser/user:  This allows the user to have mounting and unmounting privileges.  An important note is that “user” automatically implies “noexec” so if you need to execute binaries and still mount as a user, be sure to explicitly use “exec” as an option.
+
+The next option is a binary value (“0” for false and “1” for true) for “dumping.”  This is a pretty much out-dated method of backup for cases when the system went down.  You should leave this as “0”.
+
+The last option is a numeric value for “passing.”  This tells the system the order in which to fsck (pronounce that however you like), or perform a file system check.  If a disk has an option of “0” it will be skipped, like my NTFS-formatted storage drives.  The root file system should always be “1” and other file systems can go afterward.  This works best for journaling file systems like ext3/4 and ReiserFS.  Older file systems like FAT16/32 and ext2 can take a while, so it’s better to turn their fscking off and do it periodically yourself.
+
+

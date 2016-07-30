@@ -1,0 +1,942 @@
+DB:
+
+用户连不上网站，看是不是网站hosting的server挂了；
+
+如果hosting的server没事儿，看看是不是连的DB挂了；
+
+如果都没事儿，是不是Load Balancer挂了。
+
+如果都没事儿，查查DB是不是哪个query一直完成不了，block了所有人。
+
+
+一旦Alarm响了，用户报告网速慢了、response time太长了，你能迅速反应，然后找到root cause（程序问题还是server问题？server不堪负荷还是怎样）就行。
+
+
+最最重要的一点，把口语练好，想说的练好。除了技术和知识内容，一定要表现出：
+
+（1） 爱交流，善于交流，他们不求你解决问题，好多时候就是把国内的用户的信息和情况反馈一下就行；
+（2） 有逻辑，有步骤，迅速能汇报清楚发生了什么；
+（3） 主动性强，不怕累，不怕烦。
+
+
+你有时间赶紧恶补server啊、维护啊这些内容。就了解最基本的架构就行（比如看维基百科的图就行）。细节一概不管。
+
+
+http://www.aosabook.org/en/distsys.html
+1.2. The Basics
+
+
+分布式：
+
+1个活放在10个机器做 然后汇总
+1个cache太大  分到10个机器 记住存在哪里  在汇总
+
+
+DB
+http://www.w3schools.com/sql/sql_join.asp
+INNER JOIN = join 就是找两个table共同的条目: Returns all rows when there is at least one match in BOTH tables
+LEFT JOIN 左边table全要 右边找共同的 没有的就是null: Return all rows from the left table, and the matched rows from the right table
+RIGHT JOIN: Return all rows from the right table, and the matched rows from the left table
+FULL JOIN: Return all rows when there is a match in ONE of the tables
+
+怎么知道一个DB down?
+
+show status;
+
+sudo service mysql status
+
+or
+
+ps aux | grep mysql
+
+What you're facing is probably authentication failure or database misspell.
+
+Did you try logging in with same creds via Terminal?
+
+mysql -u <username> -p <database-name>
+
+What shows that a database server is running?
+Database servers run as services or daemons, most times in the background without the necessity to see that they are running in order to interact with them. When things go sideways however, being able to verify that the service is in fact up and running can be an excellent place to start troubleshooting. Checking under the services area of your particular operating system, whether that be by GUI or by CLI, can show you that the service is started or not, thus allowing you either to start or restart it as need be.
+
+怎么衡量一个DB的当前performance?
+
+https://blog.appdynamics.com/database/top-6-database-performance-metrics-to-monitor-in-enterprise-applications/
+好
+Business Transactions:response times  standard deviation
+Query Performance
+User and Query Conflicts
+Capacity
+Configuration
+NoSQL Databases
+
+https://dev.mysql.com/doc/refman/5.5/en/optimize-benchmarking.html
+8.13.1 Measuring the Speed of Expressions and Functions
+8.13.2 The MySQL Benchmark Suite
+8.13.3 Using Your Own Benchmarks
+8.13.4 Measuring Performance with performance_schema : https://dev.mysql.com/doc/refman/5.5/en/performance-schema-status-monitoring.html
+
+
+
+
+
+You can use Maatkit's query profiler to measure impact of data amount on MySQL performances.
+
+And generatedata.com to generate the data you need to test your app.
+
+You can also test your application responsiveness using HTTP testing tools like :
+
+Apache's bundled 'ab' tool (Apache Bench)
+JMeter
+Selenium
+
+
+https://www.pythian.com/blog/do-you-know-if-your-database-slow/
+
+database performance is either the response time of the operations the end-user do and/or  the amount of work the database instance does in a certain time period – throughput.
+
+
+
+LInux：
+
+1. 为什么 LVM 是必需的？
+
+LVM 的意思是逻辑卷管理器，它可以帮助我们根据文件系统的大小重新在线调整 Linux 中的 LVM 分区的大小。我们可以分别使用 lvextend 和 lvreduce 命令来增加或减小 LVM 分区的大小。
+
+2. 如何内存和 CPU 的统计数据？
+
+我们可以分别使用 ‘free’ 和 ‘vmstat’ 命令来查看物理内存和虚拟内存的统计数据。使用 ‘sar’ 命令，我们可以看到 CPU 使用率以及其他资料。
+
+3. Sar 提供了什么？Sar日志的存储位置在哪里？
+
+Sar 收集，报告，保存系统的活动信息。Sar 命令的默认版本（CPU 使用率报告）可能是用户执行系统活动调查时第一个用到的，因为它监控着大部分系统资源。当 CPU 利用率接近100%时，采样的工作负载时 CPU 密集型的。
+
+Sar 命令的默认日志文件位于 /var/log/sa/sadd 文件，其中 dd 代表着当前日期。
+
+4. 如何增加 LVM 分区的大小？
+
+下面是逻辑步骤：
+
+-使用 lvextend 命令（lvextend -L +100M/dev/<Name of the LVM Partition>, 在这里，我们给指定分区增加了100MB 的大小）
+
+–resize2fs /dev/<Name of the LVM Partition>
+
+-使用’df -h’命令检查分区的大小
+
+5. 如何缩小 LVM 分区的大小？
+
+下面是缩小 LVM 分区大小的逻辑步骤：
+
+-使用 umount 命令卸载文件系统
+
+-使用 resize2fs 命令，例如：resiz2fs /dev/mapper/myvg-mylv 10G
+
+-然后使用 lvreduce 命令，例如：lvreduce -L 10G /dev/mapper/myvg-mylv
+
+以上的命令会缩小文件系统10GB的大小。
+
+6. 如何从原始磁盘创建分区？
+
+使用 fdisk，我们可以从原始磁盘创建分区。下面是具体步骤：
+
+–fdisk  /dev/hd* (IDE) 或者 /dev/sd* (SCSI)
+
+-输入n来创建一个新分区
+
+-创建分区之后，输入w命令来保存磁盘分区信息。
+
+7. 内核模块的位置在哪里？
+
+在‘/lib/modules/kernel-version/’目录下存储着 Linux  操作系统中所有内核模块以及编译的驱动程序。我们也可以使用 ‘lsmod’ 命令查看所有安装的内核模块。
+
+8. 什么是umask?
+
+umask 意思是“用户文件创建掩码”，这决定了一个掩码控制哪些文件的权限在文件和目录被创建的时候。
+
+9. 如何永久为用户设置 umask?
+
+为了永久的给用户设置 umask 值，这个值必需存储在由用户默认的 shell 所确定的合适的配置文件中。
+
+10. 如何改变Linux中默认的运行级别？
+
+为了改变运行级别，我们必须编辑“/etc/inittab”文件，并且改变默认的运行等级（id:5:initdefault:），使用‘init’命令，我们改变当前的运行级别。例如：‘init 3’，这个命令将会把系统的运行级别改为第三级。
+
+11. 如何使用 nfs 共享目录？
+
+使用 nfs 分享目录，我们首先要编辑‘/etc/exportfs’文件，加上一个入口，例如：‘/<directory-name>  <ip or Network>(Options)’，然后重新启动 nfs 服务。
+
+12. 如何检查并挂载 nfs 共享？
+
+使用 ‘showmount’ 命令，我们可以看到有哪些目录通过 nfs 被共享了，例如：‘showmount -e <ip address of nfs server>’。使用 mount 命令，我们能够在 Linux 上挂载 nfs 共享。
+
+13. SMTP, DNS, FTP, DHCP, SSH 和 squid 使用的默认端口号是哪些？
+
+服务              端口号
+
+SMTP                25
+
+ DNS                  53
+
+ FTP                    20（数据传输），21（建立连接）
+
+DHCP                67/UDP（dhcp 服务端），68/UDP（dhcp 客户端）
+
+SSH                    22
+
+ Squid                  3128
+
+14. 什么是网络绑定？
+
+网络绑定是将多个 LAN 卡聚合在一起形成一个单一的绑定接口，来提供容错性和高性能。网络绑定也被叫做NIC Teaming。
+
+15. Linux中不同的网络绑定模式有哪些？
+
+下面是网络绑定中被使用的模式：
+
+balance-rr or 0 –  循环模式来提高容错性和负载平衡。
+
+active-backup or 1 – 设置主动备份模式来提高容错性。
+
+balance-xor or 2 – 设置XOR（异或）模式来提高容错性和负载平衡。
+
+broadcast or 3 – 设置广播模式来提高容错能力，所有信息都会复制从所有的接口发出去。
+
+802.3ad or 4 – 设置IEEE 802.3ad动态链接聚合模式。创建一个共享相同速度和双工设置的聚焦组。
+
+balance-tlb or 5 – 设置传输负载平衡（TLB）模式提高容错性和负载平衡
+
+balance-alb or 6 – 设置有源负载平衡（ALB）模式提高容错性和负载平衡
+
+16.  如何检查和验证bond界面的状态？
+
+使用‘cat /proc/net/bonding/bond0’命令，我们能够检查哪种模式被激活，什么 LAN 卡被使用。在这个例子中，我们只有一个 bond 接口，但是我们可以有多个 bond 接口，例如 bond1，bond2 等等。
+
+17. 如何检查默认路由以及路由表？
+
+使用 ‘netstat -nr’ 和 ‘route -n’ 命令我们可以查看默认路由以及路由表。
+
+18. 如何检查哪些端口正在监听我的 Linux 服务器？
+
+使用 ‘netstat -l’ 和 ‘lsof -i’ 命令
+
+19. 列出在一个特定的运行级别上，Linux 服务器所启动的服务。
+
+使用‘chkconfig –list | grep 5:on’命令，我们可以列出在运行级别5上启动的服务。查看其他运行级别是，只要将5换成对应的级别。
+
+20. 如何在一个特定的运行级别上启动服务？
+
+我们可以使用类似 ‘chkconfig <Service-Name> on –level 3’ 的命令。
+
+21. 如何升级 Linux 的内核？
+
+我们不应该升级 Linux 内核，而是始终使用 rpm 命令来安装新的内核，因为升级内核会让你的 Linux 机器处于一个无法启动的状态。
+
+22. 如何扫描在 Linux 中新分配的 luns，而不需要重新启动？
+
+有两种方法可以查看新分配的 luns：
+
+方法1： 如果安装了 sg3 rpm，那么运行命令‘rescan-scsi-bus.sh’
+
+方法2：运行命令 echo ” – – – ” > /sys/class/scsi_host/hostX/scan
+
+23. 如何找到 HBA 卡在 Linux 服务器上的 WWN 号码？
+
+使用命令 ‘systool -c fc_host -v | grep port_name’
+
+24. 如何添加和修改内核参数？
+
+要设置  Linux 中的内核参数，首先编辑 ‘/etc/sysctl.conf’ 文件，修改之后保存文件，运行命令 ‘sysctl -p’，这个命令可以永久保持修改而无需重新启动机器。
+
+25. 什么是Puppet 服务器？
+
+Puppet 是一个开源和企业软件，用来配置管理 UNIX 中的 toll 如操作系统。Puppet是一个自动化软件，使用代码推送配置到他的客户端（puppet 代理）。Puppet 代码可以完了各种任务，从安装新软件到检查文件权限，或者更新用户账户以及很多其他任务。
+
+26. Puppet 中的 manifests 是什么？
+
+Puppet 中的 mainfests 是指定客户端配置的文件。
+
+27. 在 Puppet 服务器中哪一个命令用于给请求的证书签名？
+
+在2.x中使用 ‘puppetca  –sign hostname-of-agent’
+
+在3.x中使用 ‘puppet ca  sign hostname-of-agent’
+
+28. Puppet Master 在哪里存储证书？
+
+/var/lib/puppet/ssl/ca/signed
+
+29. 如何在目录中找到所有的常规文件？
+
+使用命令 ‘find /<directory -type f’。
+
+30. 在 Linux 中什么是平均负载？
+
+平均负载被定义为在1分钟，5分钟和15分钟内等待在运行队列中的进程数目和当前正在执行的进程数目之和的平均值。使用 ‘top’ 和 ‘uptime’ 命令我们可以查询一个 Linux 服务器的平均负载。
+
+
+
+
+
+
+
+Glassdoor:
+
+1. he interviewer was helpful and asked questions on networking or troubleshooting. A few questions included DNS, DHCP, Hadoop and cloud computing basics.
+
+Explain how DNS works :
+The computer checks it's DNS records and does not have it correct one. It then requests the record from the router. The router doesn't know so it goes to the ISP for the DNS record. The ISP doesn't know so it asks the ROOT SERVER for the correct NAME SERVER. Your ISP asks the NAME SERVER for the DNS record. When your ISP has the record it passes it to your router which in turn passes it to you computer. Now you computer has the IP address of the site it wants to visit.
+
+2. If a server failed to do a nightly backup, what could be a reason for that?  
+
+3.The focus was on the projects that I had on resume and lot of basics of networking questions.
+Basics of network troubleshooting and a few questions on clustering.  
+
+4.basic networks,Linux commands and operating systems
+
+5.expliain 3 way handshake
+
+6.Basic Networking questions:
+What is the difference between Bandwidth, Delay and Latency?
+What is MTU, Window Size, Segment (MSS)?
+Describe 3-way handshake.
+A scenario question about prefix-match and route summarization
+A scenario question about Stateful/Stateless firewall.
+A scenario question about packet flow in NAT
+How DNS work
+How DHCP work
+What is BGP and describe the states - Idle, Connect, Active, Opensent, Openconfirm, Established.
+Tell me a time you went out of your way to do something amazing for a client.
+
+
+The longest prefix-match always win.
+
+Route summarization works well for block of addresses that are contiguous and it reduces routing table and cpu overhead. Google for details on how to summarize addresses.
+
+
+Stage2 - AWS Windows Challenge online:
+
+what is Active Directory and why would anyone use it?
+importance of time in a Windows domain
+what is sysprep, sysvol, BSoD, DHCP, DNS, DFSR, WINS, Global Catalog,
+Describe built-in tools to troubleshoot network issues.
+Some best security practices and a scenario on a company under DoS attack and you choose best answers or suggest any additional answer.
+Finally, A bonus project to build a system that is robust and fault-tolerance for a start-up ecommerce website. .  
+
+You can google AWS videos to see different solutions on Cloud Computing platforms - EC2, EBS, Auto-scaling, Amazon Cloud foundry and so on...
+
+
+7.
+
+Hypervisor, VmWare, windows troubleshooting (blue screen of death), DNS, DHCP, what happens when we type www.amazon.com, linux commands (basics since I told Im good in windows), what will you do when you type a website and website isn't coming (how do you troubleshoot?), Active directories in Windows Server, how would you handle a customer who complains that all his data has been lost and no when theres no back uptime?, difference between cloud and traditional services, what would you improve in AWS? how would you design your web application on AWS? 
+
+到这里了！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+8. 
+What happens when you type amazon.com in the browser?
+Linux server troubleshooting steps .
+What is DNS ?
+Explain IPsec briefly.
+What are problems you found with AWS
+How to deal with an angry customer.
+How to handle problems like CPU is 100% occupied or the computer is slow what are the possible problems? 
+
+9. NAT, DNS, EIGRP. He even asked Linux based questions like what commands will you use to find the disk space, how would you use puppet to execute a command, how would you troubleshoot if ssh is not working
+
+What is the difference between range and xrange in python.
+http://stackoverflow.com/questions/94935/what-is-the-difference-between-range-and-xrange-functions-in-python-2-x
+
+HTTP codes
+
+
+10 . 
+troubleshooting questions on windows operating systems and one or two behavioral questions
+
+how to troubleshoot a slow computer, past project i am proud about, how to deal with a data loss complain from a client
+
+11.
+Everything about networking 
+
+12. 
+
+1. What happens when you type amazon.com in the browser? ( was asked two times by different interviewers)
+2. Phone interview was pleasant and the questions were troubleshooting issues
+3. Database administration interview was tough for me. though the questions were simple i was not prepared for a DBA questionnaire.
+
+4. Behavioral questions are pretty straight forward and the interviewers would like to know the experience of you in situations like challenging project/task. be prepared to what you have to answer.
+5. Dont leave out to revise on the simple points such as common ports, DBA questions etc.
+6. What and how the load value is calculated which is displayed when you give the command "uptime"?  
+
+
+13.
+
+Mostly on my past experience and routing protocol related questions
+
+14.
+Linux server troubleshooting steps
+What is DNS?
+Steps for resolving www.amazon.com
+What is DHCP?
+Explain IPsec briefly 
+
+15.
+Debugging skills on a webpage nor being found.
+Linux based rounds where they ask you lot on commands
+Basic networking stuff with http, dns in particular. 
+
+16.
+how you reach to amazon.com, tell me layer vise. What is DNS? Explain all the steps for DNS. What protocol is used and how it is used to gate out from private network.(ARP)? website is slow how will you troubleshoot ? What is TCP? What is UDP? TCP three way handshake process. Basic l2,l3, some more networking, web servers, windows trouble shooting test, dns server questions.
+
+17.
+explain DNS system
+regarding CCNA concepts, linux systems, and how to troubleshoot hands-on problems
+
+18.
+Mostly troubleshooting skills were tested. Scenarios about a network were given and I was asked to solve it. No correct answers as he only wanted to see how I approach the problem. Some networking questions out of CCNA and CCNP.
+
+
+DNS, DHCP process, TCP/UDP, entire stack and functions of each layer, Active directory, web servers, linux configurations, object oriented programming concepts.
+Some behavioral skills were also tested by giving some situations.
+
+19.
+Explain DNS
+What is DHCP  
+
+20.
+It included questions on DNS, Unix troubleshooting, CCNA concepts 
+
+ routing protocols and their differences, DNS, RAID levels, Active directory and basic Linux commands.
+
+The most difficult question I felt was " What if you have two customers with same problem at the same time, whom you will give the priority and why" 
+
+The best answer to this is...I will follow the SLAs (Service Level Agreements) and find out which client will have to be paid more compensation in case the issue isnt solved in time.
+That client will be given clear priority.
+
+
+21.
+What are problems you found with AWS?  
+
+22.
+Can you explain the DNS system?  
+
+The DNS or Domain Name System is a is a hierarchical distributed naming system for computers, services, or any resource connected to the Internet or a private network. It associates various information with domain names assigned to each of the participating entities. Most prominently, it translates easily memorized domain names to the numerical IP addresses needed for the purpose of locating computer services and devices worldwide. The Domain Name System is an essential component of the functionality of the Internet
+
+23.
+
+ basic linux system administration questions. Difference between Raid2 or RAID5, mdadm. Raid and logical volume.
+
+
+How to deal with an angry customer 
+
+
+I write it here but never in person. As we all know and that goes for the interviewer too, our first response would be to say to an angry person is to hit the road! Beat it! But for the big A you need to say you would be calm and understanding and remain that way throughout until their anger has been vented. Only if my safety seemed eminent would I call for security etc
+
+24.
+
+Windows, Linux and network troubleshooting, internet basics-blues screen, slow network, http error codes
+
+straightforward-on topics like internet, networking, IP subnets, Windows and Linux troubleshooting, Active Directory, DNS, DHCP, cloud architecture, RAID, scripting (find matching rows in two docs) etc.. Most of them are open ended questions like "Tell me everything you know about DNS?"
+
+Lost of behavioral questions on Disagreeing with team , Difficult situations, Situation when you went beyond and above your job description, Amazon leadership principles etc..
+
+Have trained any of you fellow students or coworkers any time?  
+
+What is most difficult course you have taken so far? How did you managed with it? 
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+25.
+
+What is nslookup?
+What is fstab? 
+
+26.
+
+Networking, second was Operating Systems (Windows or Linux, I picked Windows) and the final was a "general" interview focusing on competency, previous experience, Amazon leadership principles and a troubleshooting scenario.
+
+Questions ranged from knowledge/understanding to support questions whereby you are given a scenario and are tasked with troubleshooting. They didn't expect you to know everything, they try to find out how much you know, gauge your understanding and communication skills.
+
+
+When you type a URL into your web browser, what happens when you press enter?  
+
+A client in Germany is trying to access a server in London, but his connection is running slow. You are in Dublin. How do you diagnose his issue?  
+
+What happens when you press the power button on your PC?  
+
+
+"I have forgotten my password, how will you help me?"  
+
+How do you find out what your IP Address is?  
+
+
+
+27.
+
+Three 30 mins interviews, the first ask about networking, the second is about windows troubleshooting, the third is about leadership which you should answer the questions with your own experience.
+the networking part question:
+what is the difference about UDP and TCP, what kind of application base on UDP
+what is FTP? what kind of application it used for?
+what the different between HTTP and HTTPS? and why HTTPs more secure?
+something related with IP address
+I find the questions always go to the details, and ask why it is and try to test your understanding and your passion in technology.
+I did not do well in the trouble shooting, because i did not prepare it at all
+
+for the leadership part, the questions are like: give me an example about how did you deal with multiple tasks, how did you handle deadline, how did you deal with angry clients....
+Show Less
+
+Interview Questions
+what is FTP? what kind of application it used for?
+what is the difference about UDP and TCP, what kind of application base on UDP  
+
+28.
+1 DHCN 2 DNS. 3 linux server configuration 4. RAID levels and detail descritpion The first interview was on the phone for about 30 minutes. The interviewer was very ponctual, sympatic and spoke all the time about technical terms and asked me a lot… 
+Show More
+
+Interview Questions
+1. common ports 2. active directory 3. IPsec 4. DHCP 5. DNS  
+
+29.
+ At the beginning they asked me whether I prefer windows or linux. After choose linux all questions were about troubleshooting, linux commands and network knowledge.
+
+HTTP codes 404, 403, 200  
+
+How DNS work  
+
+How DHCP work  
+
+Network troubleshooting commands
+
+30.
+1. Difference between DNS and IP? 2. Private IP vs Public IP? 3. Cloud v Vitualization 4. How to handle problems like CPU is 100% occupied or the computer is slow what are the possible problems? 
+
+31.
+asked me about which os platform I familiar with. then he asked lot of questions about using complier line. all entry level. the network knowledge 
+
+what is difference between TCP and UDP. give a application example for each.  
+
+
+32.
+
+What happens when you type an address into a browser and press enter  
+
+The Browser (Firefox, Chrome, Safari, Internet Explorer) checks the cache to see if it already exists, if not it asks the OS for the servers IP address, Then the OS does a DNS lookup after which it replies the IP address to the browser, The browser then opens a TCP connection and sends the HTTP request, the browser receives the HTTP response and may close the TCP connection depending if it decides to use it for another request. If its cacheable, response is stored and the browser decodes the response and renders HTTP response
+
+
+33.
+How do you troubleshoot network issues?  
+
+
+34.
+If a customer didn't do their back-ups as they were advised and now they've lost all their data, what do you do? 
+
+35.
+Customer can't ssh into their machine, what do you do?  
+
+Tell me about a time you've experienced failure and how you learned from that  
+
+36.
+Systems and network troubleshooting questions. 
+Linux, Windows, Networking, DevOps, SDKs, etc.
+
+37.
+mine were mostly about Linux, and how to troubleshoot different problems 
+
+38.
+Technical support questions regarding networking/switching, and a strong emphasis on Linux server management/CMD Line (Bash) questions, shell scripting as well
+
+39.
+IPSEC tunnel/transport mode , main/aggressive mode , BGP MED/LP ,BGP OPEN msg, Website design from network prospective, OSPF neighbor states , port security, linux file system, STP basics 
+
+40.
+ FSMO roles in Active Directory, what are the aspects of setting up a VPN connection between two sites, what all happens when www.amazon.com is typed into a browser, and some basic firewall questions.
+
+On-site, I met with a couple engineers, and several managers. These were a mix of technical questions (describe how you'd set up a network with three locations, what is a GPO and how is it applied in AD, etc) and soft questions (Tell me about a time when doing things the normal way didn't work, Tell me about a time you came up against a problem you'd never seen before, etc).
+
+Interview Questions
+If you were interviewing you, what are the three questions you would be asking?  
+
+41.
+because of non disclosure agreement, I won't be able to say the question but just make sure you focus on neworking (as they will go deep om this), DNS, TCP/IP, FiREWALL, LOAD BALANCER etc. And most importantly please, please and please read and understand amazon leadership principle. If you really wanna work at amazon, you will need not only to understand the principles but been able to relate to it and come up with a scenario when you applied the principle.
+
+42.
+
+networking
+data base
+windows
+linux
+
+
+43.
+
+Linux commands, debugging techniques, behavioral questions  
+
+44.
+
+ troubleshooting, DNS, TCP, UDP
+
+Troubleshooting windows and Internet, cloud computing, AWS troubleshooting and so on.
+
+VPN, virtualization
+Difference between ospf and BGP
+
+45.
+
+Tell me about a time when a client was not happy, what happened, and how did you handle that?
+
+46.
+
+What is the most challenging technical hurdle you have overcome in your career? Tell me about your biggest professional mistake? Outside the workplace, how do you sharpen your skill set?
+
+What is AD and why use it
+Why is time important in windows domain
+What is sysprep
+Global catalog
+Built in tools to troubleshoot network issues
+Best security practices for windows servers
+User not authorized to rdp error
+Why shouldn’t you reboot during windows updates
+What does site binding refer to
+How can you list network routes in windows
+What shared folder exists on domain controllers and is used to store login scripts
+When to implement login script
+What does ipconfig result 169.254.2.10
+Impact on server system resources
+What do you do when your website has been hacked  
+
+
+47.
+
+What happens when I type Google into browser,
+How does http get request know which domain to go to if a web server is hosting multiple sites,
+Can 192.168.1.33/24 talk to 10.0.2.34/24 on the same switch,
+What is fstab,
+What to do if I couldn't open open a file because it only had rw permissions,
+What would be the easiest way to automate a process,
+What to do if a website was timing out,
+How to know if a service is running on your computer
+Customer service related questions
+On rhel how to install packages  
+
+48.
+technical round- Encryption. hashing, compromised system, Linux commands, event viewer logs.
+
+49.
+
+TCP/IP window size and packet header. Must know Linux scripting, Active directory, LDAP, 'grep' command.  
+
+networking: DNS, BGP, IP, HTTP and other. Questions were not tricky, and if you have general good knowledge of the protocols, 
+Questions around networking protocols  
+
+50.
+networking questions (CCNA level). 
+Explain all the steps for DNS  
+
+51.
+What are OSPF neighbor states
+52.
+WAN links
+
+53.
+I can't give specific questions, but I can say to make sure you study Amazon's leadership principles and have stories ready for each
+
+54.
+
+- What is HTTP error 400 (Bad request)
+- Explain TCP congestion control and how it works (average round trip timer retries)
+- Explain everything in detail that happens when you type www.amazon.com into your browser (you will have to explain everything that happens in all the OSI layers, DHCP, DNS, routing protocols, HTTP ports and commands, TCP, load balancing, reverse proxies, CSS, databases, etc)
+- An FTP download starts slow and then speeds up towards the end. Why is that?
+- If you were to set up amazon.com from scratch, what would you do? (essentially describe everything involved in filling a datacentre with networking, hardware, software, storage, and getting it seen on the internet)
+- What does a router do if the MTU is too small for the packet (packet fragmentation, but you can talk about MSS and PMTUD)
+- What kind of DNS record that tells the name server to find it's own domain by looking at it's own records to avoid a recursive loop? (A DNS glue record)
+- Describe the Phases of IPSEC (IKE phase 1 - establish security association policies and Diffie helman key exchange, IKE phase 2 - establish the security association and regularly retest it)
+- How can a filesystem say it has free space but you are unable to write anything into it (out of inodes)
+- What happens when a router receives a packet? (describe routing, forwarding, and encapsulation processes)
+- What are the differences between OSPF and BGP? (OSPF is link-state used internally in sites, BGP is path vector - and connects sites via AS numbers to the public internet) 
+
+55.1) When you type amazon.com in your browser what happens?
+2) What are the types of routing protocols that we have?
+3) What happens when you connect your PC to the network?
+4) What is DNS loadbalancing and how does it work?  
+
+56.
+What is file descriptor?
+Command to check used memory by all running tasks
+Command to check all processes running.
+Command to check stopped/off processes
+
+What is data locality?
+What happens in Shuffling at MapReduce phase?
+Say my replication factor is 3, and cluster of 10 nodes, one node fails, what happens to the file I have copied.
+Say my replication factor is 3, I changed it to 2, what happens to the files then.
+Suppose developer sends me a code to run, mapping phase completes at 100 percent, and reducing phase is stuck at 20% for 2 hours and then it completes, what can be the reason for it. How will you troubleshoot it?
+What is the difference between MapReduce 1 and 2?
+What is speculative execution?
+What is Garbage Collector? Is it good to use it?
+Explain what happens in linux between the process of switching power-on till the login screen. (boot process)  
+
+57.
+
+Questions were about DNS on Windows OS and in general, Windows' registry, differences between domains and workgroups, linux os that i know, what kernel is, etc folder, boot folder, linux network troubleshooting, processes troubleshooting, differences between udp and tcp protocols, tcp handshake
+
+58.
+Design a scalable and highly available website. They would ask you to add more complexity layers as your design goes on.  
+
+59.
+What is the difference between windows domain and workgroup ?  
+
+What is active directory ?  
+
+FSMO roles ? What are they used for ? If you know some of their names you can list some of them ?  
+
+Where exactly are these roles located in the server ? He probably meant in what directory and file.  
+
+What is the tool used for editing these roles ? For example if you want to make some changes to this roles ?
+I tried to explain where the tool if found. But he insisted and wanted a name for the tool, I did not remember it really so I passed this one also.
+
+
+60. 
+What is the difference between UDP and TCP/IP?  
+Both work on transport layer.
+TCP is connection-oriented protocol, the package will be sent and a answer is expected, on UDP there is no answer, the protocol doesn't know if the package arrived.
+TCP send packages on the sent order, UDP doesn't have any order.
+TCP examples: www, mail, ftp and ssh.
+UDP examples: DNS, VoiP
+
+61.
+
+Basic Windows questions like DNS, Active Directory, Group Policy, workgroups, Kerberos, NTLM and so on. Then we switched to network, IP address structure, NAT, TCP headers 3-way handshake and the like,expect very basic things in very deep detail.  
+
+62.
+Windows interview was nasty for me, was a bit strange and caught me unprepared. Some very hard questions (FSMO scenarios, client troubleshooting) and some of the general IT questions, apparently easy (what's the difference between WinSrv2003 and WinSrv2008, describe the process of windows boot). Even if you have a huge experience, you might get in trouble.
+   Network interview was a lot more easier than I expected. Some decent, basic questions, scaling with the rate of correct answers given (I said stop when I reached OSPF configuration :)).
+
+Describe the process of booting Windows.
+What is the difference between WinSrv2003 and WinSrv2008 ?
+How would you configure you DHCP to have one subnet load balanced ?
+What happens if RID Master is down ?
+How can you troubleshoot a slow working/defective client ?
+How can you access the GC from another DC ?
+What process is responsible for windows log on ?
+
+Network:
+What happens when you type www.amazon.com in your browser?
+TCP 3 way handshake.What is the first TCP package sent?  
+
+
+
+63.
+
+What is DHCP, BGP, ARP, VPN, IPSEC and DNS. Describe what happen in browser when you hit www.amazon.com, describe what happen when you run trace. differences between UDP and TCP,
+
+, many TCP/IP questions about ports, three way handshake, flags, fields in the protocol; HTTP. General questions about networking - mostly LAN related; NAT; ACL; brief explanation of routing protocol. Windows - FSMO roles, DHCP, DNS zones and records, sysvol, GC, etc.. T
+
+
+64.
+First Interview: What happens in the browser when you type Amazon.com?, How do you scale a PHP application?, Tell me about a time when you did more than was needed by a client?, How do you host two websites using the same IP?, How do you check the states of slow running queries in databases and ho do you optimize them ?, How would you migrate an application from Google Cloud Datastore to Amazon S3?(I would say this was specific to me because I had earlier stated that I had experience with the Google Cloud Platform), What is the difference between absolute and relative URLs and what are the advantages/disadvantages of each?, What is the deafault MySQL port?  
+
+
+Second Interview (was OS focused): Can you explain the Linux boot process?, How do you install a package in Ubuntu? What does apt-get update do? What does apt-get upgrade do? What ports are used for SSH, SSL and what is the default MySQL port?(repetition from first interview), How do you make a user the owner of a file in Linux? How do you change permissions? What is the meaning of the various codes used in assigning permissions in chmod and what does each position signify?, How do you connect a new disk partition and mount it in Linux?, What is iptables? What is an inode?  
+
+
+
+65.
+
+Asked me about Networking, Windows Servers, SQL query and Linux. Basic commands and scenario based question.  
+
+Networking, Windows Server, Linux commands, Scripting and Internet protocols
+
+
+66.
+Question on VLAN and how to build secure windows server clearly more infrastructure related questions than application which i find it bit out of the way than my role.  
+
+67.
+
+Tcp/ip, Osi, AD, DNS, basic troubleshoot on Network and Windows. Lots of detail on each item like FSMO and TCP vs UDP and what happen when you type UrL on your browser.  
+
+
+68.
+What is Cloud computing? what is RAID and types? what is DHCP? What is TCP and UDP? 
+
+69.
+TCP/UDP, basic l2 l3, some web server, ssl authentication, windows trouble shooting test, dns server, dhcp server
+
+70.
+	
+
+Describe what happens when you enter amazon.com in the   browser, everything 
+
+Started from ARP, and DNS. In the process, there were other questions asked when describing TCP/IP part.
+
+71.
+What is sysprep and how is it used?  
+
+72.
+
+how to subnet, active directory protocols, Linux commands, Cisco commands, how to move a file from a Windows computer to a Linux computer etc. Lots of textbook questions
+Show Less
+
+Interview Questions
+1. What is RAID? What is striping?
+2. Explain Layer 2 and Layer 3
+3. What is MFT in relation to NTFS? What is the difference between NTFS and FAT?
+4. Explain static and dynamic routing  
+
+73.
+base etc. He was easy to talk to, very polite and didn't rush.
+Asked if I had any experience in AWS, and moved on to windows server (DNS, Event Viewer, FSMO, Group Policy), cloud computing basics, database (back up types), TCP/IP (TCP vs UDP, 3 way handshake, storage, virtualization, Routing protocol
+
+74.
+
+1. What is a gateway?
+2. What does http code 200 mean?
+3. What does http code 404 mean?
+4. What is DNS? Name a few record types and their usage.
+5. What is the windows registry?
+6. What is sysprep and what do you used it for?
+7. What is a page file?
+8. What is sysvol?
+9. What is a global catalog?
+10. What does the lmhosts file contain?
+
+11. What is a schema master?
+12. What is a infrastructure master?
+13. What command do you use to add a static route in Windows?
+14. A client has a problem with his computer and he tells you that his IP is 169.254.100.50. Diagnose the issue
+15. What types of logs can be found in Windows?
+16. What is inode?
+17. What is a hard link? What is a soft link?
+18. If i were to type in this command "ifconfig /a" i would see "eth0:0". Tell me something about "eth0:0".
+19. What is processor id 1?
+20. What is NAT and what do you use it for?
+
+21. What are the main differences between tcp and udp protocols?
+22. Name a few command line tools.
+23. What is a tcp sequence?
+24. What is a VPN and how does it work (network wise)?
+25. What are the TCP Flags?
+
+q1. would there training opportunities for Amazon technologies?
+a1. in the beggining there will be a general training, and after that depending on your choices there are specialization trainings.
+
+q2. what about other technologies available (OSCP, CSSIP, ITIL, etc.)?
+a2. Ususally if a project need someone certified in other technologies, you have a chance. Amazon does not provide oportunities unless it needs to.
+
+q3. will I have on-call duty? what does it looks like now? what's the time off in-lieu policy (TOIL) is for all-night and full weekend shifts?
+a3. depends on the team, but for the cloud support engineers there is not over time, just normal work hours 9am-6pm
+
+
+75.
+
+What is default gateway and what is used?
+Difference between TCP and UDP?
+Describe TCP Handshake?
+What is MPU?
+What is Packet Handling?
+What is NAT?
+What is ACL? 
+
+76.
+
+Linux, Networking, and protocols - http, DNS, SSL.
+Basic knowledge about services and ports they are using (MySQL, DNS, FTP, SSH).
+
+First part of the second interview was about soft skills and in depth questions about Linux, HTTP, SSL.
+Second part was about soft skills and Networking, various detail questions about TCP and UDP, network segmenting, routing, DHCP.
+Show Less
+
+Interview Questions
+Describe in detail how HTTP works?
+
+
+77.
+ For example, how does DHCP work? answer to this is not a client requesting an IP and a server responding with one. Answer should be detailed on what ports are used, when it is a broadcast request, etc.
+
+78.
+* difference between ext2, ext3
+* how to find out if web server listens on the port? - browser?, cURL?, telnet?
+* port DNS - 53
+* port POP3 - 110
+* port HTTP - 80
+* what is UDP timeout value
+* 255.255.255.240 is /28
+* what is DNS - domain name system
+* what is reverse DNS good for?
+* in Linux, you have plenty of space, but still cannot write on the drive, what could be the issue? - ran out of inodes
+* what is mysql dump
+* what is orphaned record in mysql - it no longer has a corresponding "parent" record
+* what is NULL in MySQL glossary
+* HTTP error 404 - not found
+* HTTP error 400 - bad request
+* How many VPN tunnels can you have without NAT
+* DNS AAAA - ipv6
+* classes of private IP addresses
+* what does it mean if you have IP address of 169.XXXX - DHCP not working
+* Interior/exterior gateway routing protocols
+* ISS multiple web servers
+* what is GPO - group policy object
+* primary key in MySQL - database glossary question
+* what is /var folder usually for?
+* what is /opt folder usually for?
+* what is /bin folder usually for?
+* 2 questions about Active Directory Service Interfaces Editor (ADSI Edit)
+* essay "what is cloud computing?"
+* essay "what exactly happens when you type www.amazon.com into the browser?"
+
+Phone interview (with clearly Windows guy):
+-----------------------------------------------------
+    Explain what is the role you're applying about and how you understand it?
+    Explain what the cloud is?
+    Have you used any AWS services in the past? Did you hit any challenges along the way setting up those services?
+    Something that you are pationate to learn more of AWS?
+    Explain in simple terms what is virtualization
+    How does the hypervisor work?
+    Types of hypervisors?
+    How does the "Live motion" in VMware work? Is there hardware component that must be shared across both clusters to make that work.
+    What TCP/IP is?
+    What a subnet mask is used for? How it works? What it's made up of?
+    In class C space, how many host can you have in that space? Is there a special IP address that cannot be used?
+    Any differences between TCP and UDP?
+    Tell me about different DNS record types.
+    Is it possible to overwrite the DNS record at the PC?
+    What's an lmhosts file used for?
+    What are different RAID levels you can use? And which one would you use for specific situation? What abour RAID5?
+    Windows PC has an IP address 169.254.X.X. What does it typically mean and whit the cause? How would you troubleshoot it? What would you look for on the DHCP server? Is there any log you can look at?
+    Windows Blue Screen of Death, what are the troubleshooting steps there?
+    How to log in to a PC that might be bluescreening?
+    When you press F8, there is an option "Last known good configuration" can you explain exactly what that is?
+    There is a customer who used to be able to connect to a Windows server on the internet over remote desktop, they now report they are unable to do so.
+    Can you explain what DCOM is and why it may not sometimes work?
+    How would you start a windows service for remote machine over the network.
+
+Soft-skills questions:
+-------------------------
+    Customer reporting they've lost some business critical data. What would you be doing. You discover there was no backup and it is impossible to recover it. What would you be doing then?
+    Are you able to tell me about specific time where you coached or mentored somebody in the past? Was it a formal training or informal training when you trained someone?
+    Can you give me an example how you specifically learned rapidly in the past and how do you learn new technologies?
+Show Less
+
+Interview Questions
+Definition of TCP/IP
+
+79.
+
+NDA
+
+80.
+
+Linux tools, filesystem, kernel and system administration/troubleshooting, while during the second I have been asked network related questions about TCP/IP stack, HTTP, routing and troubleshooting.
+
+IT network infrastructure. DNS, OSPF, IPSEC
+
+81.
+If the enable password of a Cisco device is lost, how to recover.
+About Linux, soft vs hard links, importance of filesystem journalling. Given a text file with mix phone numbers with and without country codes, format it to include a default country code if it is missing.
+Describe in depth an experience handling a difficult cutomer
+
+82.
+Linux file system is not full,is mounted rw and has no errors, permissions are good, but can't write, what is the issue?  
+
+I did not remember the answer, as the typical cases are mostly described.
+After little conversation with interviewer, got to inodes exhaustion
+
+
+
+
+
