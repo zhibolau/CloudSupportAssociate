@@ -1,0 +1,4 @@
+Longest prefix match.txt
+Longest prefix match (also called Maximum prefix length match) refers to an algorithm used by routers in Internet Protocol (IP) networking to select an entry from a forwarding table .[1]
+
+Because each entry in a forwarding table may specify a sub-network, one destination address may match more than one forwarding table entry. The most specific of the matching table entries — the one with the longest subnet mask — is called the longest prefix match. It is called this because it is also the entry where the largest number of leading address bits of the destination address match those in the table entry.

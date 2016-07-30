@@ -1,0 +1,12 @@
+MTU, Window Size, Segment (MSS),BDP.txt
+
+
+MTU or the  Maximum Transmission Unit is a characteristic of the link layer and represents the maximum size of a frame, however IP MTU is usually referred to the  the actual payload of a frame for ethernet 1500 bytes. Ethernet frame size refers to the actual  frame  as it is seen on the wire for example 1518 bytes ( 14 bytes the frame header + 1500 bytes the payload and 4 bytes the CRC).
+
+When using 802.1q trunking an additional 4 byte header will be added so the frame size will become 1522 bytes ( 1500 + 4 + 18 ) but no additional mtu commands are required.
+
+MSS or the Maximum Segment Size represents the maximum TCP data size for a single datagram . For ethernet this is usually 1460 bytes if no options are present . It is equal to the MTU on the interface (1500 bytes) – ip header (20 bytes) – tcp header (20 bytes)
+
+TCP Window Size represents how much data can be sent from one host to another without being acknowledged. This is typically several times the MSS. However on most operating systems there is a limit to the maximum TCP windows size but this limit can be extended as per RFC 3123 (TCP Extensions for High Performace) to allow for the so called “long, fat pipes”
+
+Bandwidth-Delay Product (BDP) plays an important role in high speed and high latency networks as it determines how efficiently the bandwidth is used between two end points.

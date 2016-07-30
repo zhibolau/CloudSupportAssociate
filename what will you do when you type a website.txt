@@ -1,0 +1,85 @@
+what will you do when you type a website and website isn't coming.txt
+
+
+https://support.mozilla.org/en-US/kb/websites-dont-load-troubleshoot-and-fix-errors
+
+
+First, let's figure out where the problem is
+The problem only happens with certain websites
+Try clearing Firefox's cookies and cache
+The website loads but doesn't work properly
+The problem only happens on a secure (https) website
+The problem only happens in Firefox
+The problem happens in all web browsers
+Other, less common problems
+
+
+First, let's figure out where the problem is
+
+With a little detective work, we can narrow down the cause of the problem.
+
+Open a new tab and check to see if you can load another website like google.com or mozilla.org.
+If you can open another site, skip down to The problem only happens with certain websites
+If you can't open another site, continue on to the next step.
+Launch another browser, like Internet Explorer, and try to open the site you were having problems with.
+If the site works in another browser, see The problem only happens in Firefox
+If the site doesn't work in another browser, check out The problem happens in all web browsers
+The problem only happens with certain websites
+
+If you see any of these error messages, it might just be a problem with Firefox's cache:
+
+The connection was interrupted
+The connection was reset
+The connection has timed out
+Try clearing Firefox's cookies and cache
+
+If clearing Firefox's cookies and cache didn't work, it's probably a sign that there is a problem with the website itself. In that case you'll just have to wait for it to get fixed. With big sites like Twitter or Facebook this may only be a few minutes.
+
+If you don't see any of the error messages above, check to see if any of the specific problems below match what you see:
+
+The website loads but doesn't work properly
+If the website doesn't look right or doesn't work the way it's supposed to, you should check out the following articles:
+
+Websites look wrong or appear differently than they should
+Fix problems that cause images to not show
+Fix common audio and video issues
+Websites show a spinning wheel and never finish loading
+Fix login issues on websites that require a username and password. You may receive an error similar to We were unable to process your login request or An unspecified error has occurred when you attempt to sign in to websites with your username and password, or the login may simply fail.
+The problem only happens on a secure (https) website
+Look at the web address in the location bar. Does it start with https:// (notice the "s")? If so, check if you see one of the following error messages:
+
+For a "Secure Connection Failed" error message, see the Troubleshoot the "Secure Connection Failed" error message article.
+For a "Your connection is not secure" error message, see the What does "Your connection is not secure" mean? article.
+If the error page shows a "SEC_ERROR_UNKNOWN_ISSUER" error, see the How to troubleshoot the error code "SEC_ERROR_UNKNOWN_ISSUER" on secure websites article.
+The problem only happens in Firefox
+
+If another web browser works just fine, one of following solutions should fix things:
+
+Firefox can't load websites but other browsers can - if you can view websites in browsers other than Firefox.
+Fix problems connecting to websites after updating Firefox - if you experience connection problems after updating Firefox.
+If you see the following error messages, Firefox is trying to access the internet through a proxy server :
+
+The proxy server is refusing connections
+Unable to find the proxy server
+
+The problem happens in all web browsers
+
+This is probably a problem with your internet connection. See Firefox and other browsers can't load websites for some troubleshooting suggestions.
+
+Other, less common problems
+
+A website reports that Firefox is outdated, incompatible, or not supported - See Websites say that Firefox is outdated or incompatible even though it's the latest version.
+A plugin has crashed - This means that a plugin which is being used to display content on the current page has unexpectedly quit. See Send plugin crash reports to help Mozilla improve Firefox for more information.
+Malicious website errors - If you see a "Suspected Attack Site!" or "Suspected Web Forgery!" warning, Firefox has blocked access to the website you're visiting to protect you from malware or web forgery (phishing). For more information, see Phishing and Malware Protection (Mozilla.org).
+Offline mode - If you see a message about offline mode, you may have set Firefox not to use your network connection. Make sure your computer has a network connection and then:
+Click the menu button  New Fx Menu , click Developer and make sure Work Offline is unchecked.
+The page isn't redirecting properly - This problem can be caused by problems with cookies. See Websites say cookies are blocked - Unblock them for more information.
+If you get a File not found error, try the troubleshooting steps in these articles:
+Troubleshoot extensions, themes and hardware acceleration issues to solve common Firefox problems
+Troubleshoot Firefox issues caused by malware
+Content Encoding Error - If you get the error message, Content Encoding Error or The page you are trying to view cannot be shown because it uses an invalid or unsupported form of compression, use these steps to diagnose and fix them:
+Check the settings of any Internet security applications you use (including firewalls, anti-virus or anti-spyware programs, and privacy protection programs). You should try to remove any permissions those applications have for Firefox, and then add them again. For program-specific instructions for a number of applications, see Configure firewalls so that Firefox can access the Internet.
+Follow the Standard troubleshooting steps.
+This address is restricted - This error occurs when you are attempting to connect to a web server on a port that is reserved for another application. If the website you are trying to visit contains a colon followed by a number in its address (for example, http://website.com:23), try removing that portion (http://website.com) or replacing it with :80 (http://website.com:80). If this doesn't work, you may have been given an incorrect address.
+
+

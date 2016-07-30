@@ -1,0 +1,6 @@
+vpn.txt
+
+
+A virtual private network also known as a VPN is a private network that extends across a public network or internet. It enables users to send and receive data across shared or public networks as if their computing devices were directly connected to the private network.
+
+VPNs can provide functionality, security and/or network management benefits to the user.[1] But they can also lead to new issues, and some VPN services, especially "free" ones, can actually violate their users' privacy by logging their usage and making it available without their consent, or make money by selling the user's bandwidth to other users

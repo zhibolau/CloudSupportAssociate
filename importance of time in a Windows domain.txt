@@ -1,0 +1,17 @@
+importance of time in a Windows domain.txt
+
+Windows AD needs timestamps for resolving AD replication conflicts and for Kerberos authentication. Kerberos uses them to protect against replay attacks—where an authentication packet is intercepted on the network and then resent later to authenticate on the original sender's behalf.
+
+When a Windows server receives a Kerberos authentication request, it compares the timestamp in the request to its local time. If the difference between the local time and the timestamp is too big, the authentication request is rejected and Kerberos authentication fails. The allowed time skew can be configured using the Maximum tolerance for computer clock synchronization GPO setting (located in the Computer Configuration\Windows Settings\Security Settings\Account Policies\Kerberos Policy GPO container). It determines the maximum time skew (in minutes) that Windows will tolerate between client and a server clocks in a Windows Kerberos environment. Setting the time skew too high creates a higher risk for replay attacks. The default setting is five minutes.
+
+The service responsible for time synchronization between Windows clients and AD domain controllers (DCs) is the Windows Time service (W32time.exe). All Windows machines, starting with Windows 2000 and Windows XP, have the W32time service installed by default. The time service will automatically perform time synchronization at machine startup and at regular intervals (by default, every 8 hours). In an AD forest, the machines use a time hierarchy that follows the following rules:
+
+All client machines and member servers use their authenticating DC for time synchronization.
+All DCs in the same domain use the DC with the primary DC (PDC) emulator Operations Master role as their DC for time synchronization.
+In an AD domain hierarchy, the PDC emulator DCs of a child domain synchronizes time with the PDC emulator in its parent domain.
+The PDC emulator DC in the root domain of the AD forest is the authoritative time source for the forest.
+The PDC emulator can also be manually set to synchronize with a time source on the Internet. Many organizations rely on an external time source for time synchronization. In organizations that have a Windows forest that's geographically spread out, it's recommended to configure an external time source for each region instead of using a single time source for the entire forest.
+
+Microsoft provides two tools to configure and diagnose the Windows Time service: net time and w32tm. Both tools allow you to configure the time hierarchy to use the Windows defaults (as explained above) or to use specially designated time servers.
+
+Net time can be used to configure the time service and the synchronization hierarchy. The following net time command will change the time server on the local machine to mytimeserver.hp.com:

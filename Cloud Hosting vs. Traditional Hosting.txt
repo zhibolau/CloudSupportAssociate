@@ -1,0 +1,18 @@
+Cloud Hosting vs. Traditional Hosting.txt
+
+Traditional Hosting
+
+Traditional hosting comes mainly in two forms, dedicated and shared. With dedicated hosting, a company pays for the complete resources of one or more servers from a service provider. The client has a set amount of dedicated bandwidth, CPU, RAM, and drive space, and the client has full control over the servers resources.
+
+With shared hosting, which is more common among small and medium sized businesses, the client pays for a set amount of space (storage) on a single server, and that server’s resources are shared by a number of other websites. It’s a cost-efficient, low-maintenance way to host a website or application, and the hosting company is responsible for managing, maintaining, and updating the units.
+
+Traditional hosting, especially shared hosting, has its drawbacks though. Because the resources of a single server are shared among a number of different websites, spikes in traffic to those websites can mean decreased performance for your own. Security breaches and other performance issues on other sites make take yours down as well. And there’s a single point of failure. If the server itself experiences technical problems, everyone hosted on that server will be affected.
+With shared hosting, you’re also paying for a set amount of storage and processing power. If you have a predictable flow of traffic, this may be a good solution for you. But if your traffic is increasing rapidly, or if you see sudden spikes in traffic due to a new product or feature, you may be constrained the amount of storage you currently have.
+You will need to adapt by purchasing additional server space to add to your storage space and processing power. But if traffic falls again, you will be paying for resources that you aren’t using.
+
+Cloud Hosting
+Cloud hosting offers a level of scalability that traditional hosting can’t. Cloud hosting companies provide virtual space on an on-demand, as-needed basis. Instead of paying for a set amount of space upfront on a single server, the user pays as they go for what they actually use.
+With cloud hosting, the load is balanced across a cluster of multiple servers. The information and applications contained on those servers are mirrored across the whole cluster, meaning that if an individual server goes down, there is no lost information or downtime. Because of this redundancy, cloud hosting is much more elastic and resilient. Problems with one website or application are unlikely to affect your bandwidth or performance.
+Cloud hosting companies provide Infrastructure-as-a-Service (IaaS). They house, run, and maintain all of the necessary hardware, and the customer pays for the resources the use, similar to how we pay for utilities like electricity.
+IT departments don’t need to invest in in-house server hardware. And customers don’t need to pay for up front for extra storage or processing capacity that they don’t use. Cloud hosting is more quickly scalable than traditional hosting. If an application or website receives more or less traffic, the cloud servers scale up and down automatically. With cloud hosting, there’s no need to manually add or remove server space as there is in shared hosting.
+Cloud hosting is still a relatively new technology, and many who have experience with traditional hosting are hesitant to move to something different. Shared hosting provides consumers with a convenient, low-entry hosting solution, and many users never experience problems. But if you’re looking for a low-cost, flexible, easily scalable hosting solution, it may be time to move to the cloud.

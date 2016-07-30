@@ -1,0 +1,14 @@
+EIGRP IGRP.txt
+
+
+Enhanced Interior Gateway Routing Protocol (EIGRP) is an evolved version of IGRP that addresses the demands of large-scale internetworks and the changes in network technology that have been developed since the implementation of IGRP.
+Routers that already use IGRP can use EIGRP because the metrics for both protocols are directly translatable, i.e., they are as easily comparable as if they were routes that originated in their own autonomous systems.
+A router running EIGRP stores copies of all its neighbors' routing tables so that it can quickly adapt to alternate routes. If no appropriate route exists, EIGRP queries its neighbors to discover an alternate route. These queries propagate until an alternate route is found. Unlike some earlier routing protocols that would send an entire table to neighboring routers when one routing table entry changed, EIGRP notifies the neighbors of only the specific change in the table.
+
+
+IGRP
+Interior Gateway Routing Protocol (IGRP) is a distance vector interior routing protocol (IGP) developed by Cisco. It is used by routers to exchange routing data within an autonomous system. IGRP is a proprietary protocol.
+
+IGRP is a distance-vector routing protocol, which means that each router sends all or a portion of its routing table in a routing message update at regular intervals to each of its neighboring routers. A router chooses the best path between a source and a destination. Since each path can comprise many links, the system needs a way to compare the links in order to find the best path. A system such as RIP uses only one criteria -- hops -- to determine the best path. IGRP uses five criteria to determine the best path: the link's speed, delay, packet size, loading and reliability. Network administrators can set the weighting factors for each of these metrics.
+
+

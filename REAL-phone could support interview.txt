@@ -1,0 +1,18 @@
+
+what happens when u type amazon.com / DNS
+TCP/UDP
+slow network trouble shooting && Linux server troubleshooting steps
+built-in tools trouble shooting tools/ commands
+three way handshake
+TCP connection/security
+HTTP request
+server not working assumed server is installed, check: cpu similar status / 
+http://blog.iweb.com/en/2008/12/step-by-step-guide-on-diagnosing-resolving-web-server-problems/1531.html
+
+
+customer related behavorial questions:
+cutomer experience
+how to avoid customer problems
+
+
+https://www.amazon.jobs/principles

@@ -1,0 +1,5 @@
+serve which customer at same time.txt
+The most difficult question I felt was " What if you have two customers with same problem at the same time, whom you will give the priority and why" 
+
+The best answer to this is...I will follow the SLAs (Service Level Agreements) and find out which client will have to be paid more compensation in case the issue isnt solved in time.
+That client will be given clear priority.

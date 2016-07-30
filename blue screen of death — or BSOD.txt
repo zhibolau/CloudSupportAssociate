@@ -1,0 +1,27 @@
+blue screen of death — or BSOD.txt
+The blue screen of death — or BSOD 
+BSODs appear when Microsoft Windows encounters a critical error it can’t recover from, requiring a reboot and possibly resulting in lost work.
+
+A blue screen of death is the worst type of error a computer can experience, unlike an application crash, which doesn’t bring down the whole system. A BSOD is the result of low-level software crashing — or faulty hardware.
+
+What Causes Blue Screens of Death
+Blue screens are generally caused by problems with your computer’s hardware or issues with its hardware driver software. Standard software shouldn’t be able to cause blue screens — if an application crashes, it will do so without taking the operating system out with it. Blue screens are caused by hardware problems and issues with low-level software running in the Windows kernel.
+
+A blue screen occurs when Windows encounters a “STOP Error.” This critical failure causes Windows to crash and stop working. The only thing Windows can do is stop the computer and restart it. This can lead to data loss, as programs don’t have a chance to save their open data — ideally, programs should continuously save their data so a blue screen of death or other type of error won’t result in data loss.
+
+When a blue screen occurs, Windows automatically creates a “minidump” file that contains information about the crash and saves it to your disk. You can view information about these minidumps to help identify the cause of the blue screen.
+
+
+Useful Tips for Dealing With BSODs
+
+Use System Restore: If your system recently started blue-screening, use System Restore to roll its system software back to a previous state. If this works, you’ll know that it’s likely a software problem.
+
+Scan for Malware: Malware that digs deep into Windows and gets its hooks into the Windows kernel at a low level can cause system instability. Scan your computer for malware to ensure buggy malicious software isn’t causing it to crash.
+
+Install Updated Drivers: An incorrectly installed or buggy driver can lead to crashes. Download the latest drivers for your computer’s hardware from your computer manufacturer’s website and install them — this may fix BSODs caused by driver problems.
+
+Boot Into Safe Mode: If your computer is blue-screening every time you turn it on, try booting into safe mode. In safe mode, Windows loads only the essential drivers. If a driver you’ve installed is causing Windows to blue screen, it shouldn’t do so in safe mode. You can work on fixing the problem from safe mode.
+
+Check for Hardware Problems: Blue screens can be caused by faulty hardware in your computer. Try testing your computer’s memory for errors and checking its temperature to ensure that it isn’t overheating.
+
+Reinstall Windows: Reinstalling Windows is the nuclear option. It will blow away your existing system software, replacing it with a fresh Windows system. If your computer continues to blue screen after this, you likely have a hardware problem.

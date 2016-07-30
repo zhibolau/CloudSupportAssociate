@@ -1,0 +1,8 @@
+Active Directory.txt
+
+
+Active Directory provides a centralised control for network administration and security. Server computers configured with Active Directory are known as domain controllers. Active Directory stores all information and settings for a deployment in a central database, and allows administrators to assign policies and deploy and update software.
+
+If your office used Active Directory, all of the machines would be connected on a domain, which means all of the information is stored in a central location, not locally on the individual computers’ hard drives. The domain is controlled by a global catalog, which keeps track of all of the devices that are registered to the network. The global catalog stores the IP addresses, computer names, and users, so that the global administrator can oversee everything that happens on the domain. In order to access someone else’s computer, a user would just need that computer’s name, because everything is already linked on the back end.
+
+When you’re using Active Directory, everything is already permissioned from the domain controller. This means that the network administrator has already told the domain controller what permissions to assign to each user. This makes all digital communication more efficient, because everything is easily accessible, and information is readily available.

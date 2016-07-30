@@ -1,0 +1,67 @@
+DHCP
+Computer networks can be of any form like a LAN, WAN etc. If you are connected to a local LAN or an internet connection, the IP addresses form the basis of communication over computer networks. An IP address is the identity of a host or a computer device while connected to any network.
+
+In most of the cases when you connect your computer to a LAN or internet, you’ll notice that the IP address and other information like subnet mask etc are assigned to your computer automatically. Have you ever thought about how this happens? Well, in this article we will understand the concept of DHCP that forms the basis of this functionality.
+
+What is DHCP?
+
+DHCP stands for Dynamic Host Configuration Protocol.
+
+As the name suggests, DHCP is used to control the network configuration of a host through a remote server. DHCP functionality comes installed as a default feature in most of the contemporary operating systems. DHCP is an excellent alternative to the time-consuming manual configuration of network settings on a host or a network device.
+
+Understanding DHCP helps in debugging many network related problems. 
+
+How DHCP Works?
+
+Before learning the process through which DHCP achieves it’s goal, we first have to understand the different messages that are used in the process.
+
+1. DHCPDISCOVER
+
+It is a DHCP message that marks the beginning of a DHCP interaction between client and server. This message is sent by a client (host or device connected to a network) that is connected to a local subnet. It’s a broadcast message that uses 255.255.255.255 as destination IP address while the source IP address is 0.0.0.0
+
+2. DHCPOFFER
+
+It is DHCP message that is sent in response to DHCPDISCOVER by a DHCP server to DHCP client. This message contains the network configuration settings for the client that sent the DHCPDISCOVER message.
+
+3. DHCPREQUEST
+
+This DHCP message is sent in response to DHCPOFFER indicating that the client has accepted the network configuration sent in DHCPOFFER message from the server.
+
+4. DHCPACK
+
+This message is sent by the DHCP server in response to DHCPREQUEST recieved from the client. This message marks the end of the process that started with DHCPDISCOVER. The DHCPACK message is nothing but an acknowledgement by the DHCP server that authorizes the DHCP client to start using the network configuration it received from the DHCP server earlier.
+
+5. DHCPNAK
+
+This message is the exact opposite to DHCPACK described above. This message is sent by the DHCP server when it is not able to satisfy the DHCPREQUEST message from the client.
+
+6. DHCPDECLINE
+
+This message is sent from the DHCP client to the server in case the client finds that the IP address assigned by DHCP server is already in use.
+
+7. DHCPINFORM
+
+This message is sent from the DHCP client in case the IP address is statically configured on the client and only other network settings or configurations are desired to be dynamically acquired from DHCP server.
+
+8. DHCPRELEASE
+
+This message is sent by the DHCP client in case it wants to terminate the lease of network address it has be provided by DHCP server.
+
+
+
+Now as we know about the various DHCP messages, it’s time to go through the the complete DHCP process to give a better Idea of how DHCP works. Note that the steps mentioned below assume that DHCP functionality is enabled by default on the client side.
+
+Here are the steps :
+
+Step 1: When the client computer (or device) boots up or is connected to a network, a DHCPDISCOVER message is sent from the client to the server. As there is no network configuration information on the client so the message is sent with 0.0.0.0 as source address and 255.255.255.255 as destination address. If the DHCP server is on local subnet then it directly receives the message or in case it is on different subnet then a relay agent connected on client’s  subnet is used to pass on the request to DHCP server. The transport protocol used for this message is UDP and the port number used is 67. The client enters the initializing stage during this step.
+
+Step 2: When the DHCP server receives the DHCPDISCOVER request message then it replies with a DHCPOFFER message. As already explained, this message contains all the network configuration settings required by the client. For example, the yaddr field of the message will contain the IP address to be assigned to client. Similarly the the subnet mask and gateway information is filled in the options field. Also, the server fills in the client MAC address in the chaddr field. This message is sent as a broadcast (255.255.255.255) message for the client to receive it directly or if DHCP server is in different subnet then this message is sent to the relay agent that takes care of whether the message is to be passed as unicast or broadcast. In this case also, UDP protocol is used at the transport layer with destination port as 68. The client enters selecting stage during this step
+
+Step 3: The client forms a DHCPREQUEST message in reply to DHCPOFFER message and sends it to the server indicating it wants to accept the network configuration sent in the DHCPOFFER message. If there were multiple DHCP servers that received DHCPDISCOVER then client could receive multiple DHCPOFFER messages. But, the client replies to only one of the messages by populating the server identification field with the IP address of a particular DHCP server. All the messages from other DHCP servers are implicitly declined. The DHCPREQUEST message will still contain the source address as 0.0.0.0 as the client is still not allowed to use the IP address passed to it through DHCPOFFER message. The client enters requesting stage during this step.
+
+Step 4: Once the server receives DHCPREQUEST from the client, it sends the DHCPACK message indicating that now the client is allowed to use the IP address assigned to it. The client enters the bound state during this step.
+
+The Concept of Lease
+
+With all the necessary information on how DHCP works, one should also know that the IP  address assigned by DHCP server to DHCP client is on a lease. After the lease expires the DHCP server is free to assign the same IP address to any other host or device requesting for the same. For example, keeping lease time 8-10 hours is helpful in case of PC’s that are shut down at the end of the day.  So, lease has to be renewed from time to time. The DHCP client tries to renew the lease after half of the lease time has expired. This is done by the exchange of DHCPREQUEST and DHCPACK messages. While doing all this, the client enters the renewing stage.
+

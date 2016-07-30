@@ -1,0 +1,28 @@
+Sysprep.txt
+The System Preparation Tool (Sysprep), is meant for System Administrators and OEMs, to automate the deployment of Windows operating system. Once you have performed the initial setup steps on a single computer, you can run the Sysprep tool to prepare the sample computer for cloning and automate the deployment on other computers. It can be found in the \Windows\System32\sysprep folder.
+
+System Preparation Tool – Sysprep
+You can use Sysprep along with other deployment tools to install Windows operating systems onto new hardware. It prepares a computer for disk imaging or delivery to a customer by configuring the computer to create a new computer security identifier (SID) when the computer is restarted. In addition, the Sysprep tool cleans up user-specific and computer-specific settings and data that must not be copied to a destination computer.
+
+
+sysvol, 
+The term SYSVOL refers to a set of files and folders that reside on the local hard disk of each domain controller in a domain and that are replicated by the File Replication service (FRS). Network clients access the contents of the SYSVOL tree by using the NETLOGON and SYSVOL shared folders.
+
+BSoD, 
+Blue Screen of Death (also known as a blue screen or BSoD) is an error screen displayed on a Windows computer system after a fatal system error, also known as a system crash: when the operating system reaches a condition where it can no longer operate safely.
+
+
+DFSR, 
+
+he Distributed File System Replication (DFSR) service is a new multi-master replication engine that is used to keep folders synchronized on multiple servers. Replicating data to multiple servers increases data availability and gives users in remote sites fast, reliable access to files.
+
+
+WINS, 
+
+Windows Internet Name Service (WINS) is Microsoft's implementation of NetBIOS Name Service (NBNS), a name server and service for NetBIOS computer names. Effectively, WINS is to NetBIOS names what DNS is to domain names — a central mapping of host names to network addresses. Like the DNS, it is implemented in two parts, a server service (that manages the embedded Jet Database, server to server replication, service requests, and conflicts) and a TCP/IP client component which manages the client's registration and renewal of names, and takes care of queries.
+
+
+
+Global Catalog
+
+the global catalog is a distributed data repository that contains a searchable, partial representation of every object in every domain in a multidomain Active Directory Domain Services (AD DS) forest. The global catalog is stored on domain controllers that have been designated as global catalog servers and is distributed through multimaster replication. Searches that are directed to the global catalog are faster because they do not involve referrals to different domain controllers.

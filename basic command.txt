@@ -1,0 +1,461 @@
+basic command
+
+xx --help
+
+man xx
+
+ls    
+ls -l: u can see which is diretory or file, directory begins with d, file begins with -
+ls -m: display things horizontally
+ls -R : display file and folder structure
+
+cd
+cd ..
+cd /
+
+pwd: show current path
+
+rmdir: only delete empty folder
+rm -r : r means recursive, it will ask u whether delete the inside one one by one
+rm -rf: f means force, delete all without asking me
+
+touch + filename: make a new file
+
+cp : copy, cp 1 2: copy file 1 to 2, cp -r d1 d2 :copy folder
+mv : move, mv dd1 /bjsxt: move current foler's file dd1 to path--> /bjsxt
+
+
+vi: add content to created file ,text editor, similar to notepad
+    command mode --> edit mode: press letter a:append
+    i: insert mode
+    esc: command mode
+
+vi 3.txt
+刚进来是命令模式
+按i  然后可以打字
+打完 esc 回到命令模式  按冒号 就可以敲命令  w 然后回车 是存盘
+冒号 然后 q是退出 q！是不存盘退出
+
+
+查看文件内容在terminal中：  more 3.txt
+cat 3.txt 也是列出文件内容
+tac 3.txt 逆序列出文件内容
+head 3.txt
+head可以带参数 head -3 列出前三行
+tail 3.txt
+
+dd 在命令模式下删除一行
+dw 删除整个一个单词
+o 在当前光标行下插入一行
+O 大写O 实在命令模式下 在光标上一行插入一行
+命令模式下 h是左 l是右 j下 k上箭头
+
+find / -name *system
+从/目录下开始找名字为 带system的文件  记不住全名字所以用×system
+
+find . -name perl*: 当前目录找文件
+
+
+whereis + 命令 ：  whereis ls， ls执行的是哪个文件及帮助文档
+
+echo $PATH 查看path
+
+ln 3.txt 4 ：创建一个与3.txt的链接叫4  4 与3.txt同步了就 改变3.txt内容 4也跟着变 这个是硬链接
+zhiboliu@zhiboliu:~/Documents/Linux$ more 4
+adsf
+asdf
+adf
+
+
+ln -s 3.txt 5  是软连接 软连接相当于快捷方式
+
+删除3.txt 4 还有 5 就没了
+
+
+zhiboliu@zhiboliu:~/Documents/Linux$ rm -f 3.txt 
+zhiboliu@zhiboliu:~/Documents/Linux$ more 4
+adsf
+asdf
+4444444444
+adf
+zhiboliu@zhiboliu:~/Documents/Linux$ more 5
+more: stat of 5 failed: No such file or directory
+
+
+ 5 -> 3.txt
+
+
+useradd testuser : 增加多用户   /home下会多一个自己的目录
+passwd testuser : add password for testuser
+cd /etc 很重要的文件 是 more passwd  里面是所有的用户，501:502 组：id 主目录 shell用的是bash, 命令由shell来执行，然后shell传给内核 shell有很多种 bash是其中一种
+csh ksh sh bsh
+
+/etc ： more group 组信息 
+groupadd testg： 价一个叫testg的组
+useradd testuser2 -g testuser 加入到testuser组中的testuser2
+usermod -g testg testuser 改变用户的组
+userdel testuser 删除用户
+rm -rf testuser 删除目录
+su testuser2 换用户，新用户登录时候 默认当前目录是/home
+exit就换回原用户
+
+zhiboliu@zhiboliu:~/Documents/Linux$ grep s 4
+adsf
+asdf
+zhiboliu@zhiboliu:~/Documents/Linux$ grep x 4
+zhiboliu@zhiboliu:~/Documents/Linux$ grep x 3.txt
+grep: 3.txt: No such file or directory
+zhiboliu@zhiboliu:~/Documents/Linux$ ls
+4  basic command.txt  linux u should start lesson 7  vi-CheatSheet.pdf
+5  linux file system  vi_cheat_sheet.pdf
+zhiboliu@zhiboliu:~/Documents/Linux$ vi 3.txt
+zhiboliu@zhiboliu:~/Documents/Linux$ more 3.txt 
+adasdfasdf
+adsfasdf
+
+a
+sdfasdfad
+
+xxxx
+zhiboliu@zhiboliu:~/Documents/Linux$ grep x 3.txt
+xxxx
+
+grep x 3.txt 在3中找带x的  在制定文件中查找制定字符串
+
+！！！ 文件权限
+
+ls -l 后：
+-打头的是文件
+l        链接，快捷方式
+d        文件夹
+r：read w：write x：executable -：null
+ l|rwx|rwx|rwx
+   |所有在|同组其他人|剩下人的权限
+
+-rw-rw-r-- 1 zhiboliu zhiboliu     25 7月  20 23:57 4
+改变权限：
+chmod +x 4 每组都加上x权限 chmod -x 4
+
+chmod u+x 4 给当前user加x
+chmod g+x 4 g：group
+chmod o+x 4 o：others
+
+9bit来表示那几个数
+chmod 755 4  111 |101 |101 rwx|r-x|r-x
+chmod 777 4	
+
+修改文件所有者：o=owner
+chown testuser2 4
+
+wc 4： 
+ 4  4 25 4
+
+Where 4 is the number of lines, 4 is the number of words, and 25 is the number of characters， 4 is file name
+
+
+管道:
+ls -Rl /etc | more
+把上一个命令的结果交给下一个 ls -Rl /etc 结果太多 有more就可以每个enter翻页
+control c 退出
+
+ls -l | grep "^d" : 只列出目录
+ls -l * | grep "^-" | wc -l : 数数有多少文件
+
+
+命令替换：
+wall ： warn all    echo "hello,This is a message" | wall 
+
+
+wall 'date' ： 把日期发给所有user
+
+
+重定向：
+ls > cmd.txt : 把命令执行结果放入command。txt
+ls >> cmd.txt : 把结果append到cmd.txt
+
+lssss 2> cmd.txt : 错误重定向 把错误输入到那个文件当中
+
+wall < chongDingXiangShuRu.txt : 重定向输入
+
+系统启动级别： 3代表纯命令行界面
+		5 图形界面
+
+把jdk安装文件传入linux：
+
+win 与linux在同一个局域网传文件用 samba server
+
+不在同一个局域网：
+ftp： 1/ win建个server linux去下载，   linux有可能没有ip 因为是内部ip 所以不可行
+
+      2/ linux建个server win去上传
+
+
+rc.d d是后台的意思
+
+ftp 退出用 bye
+
+service vsftpd start/stop
+
+查linux ip： ifconfig --》  inet addr:192.168.31.249
+
+
+要想看两台机器通不通  ping + 那台机器的ip
+
+ping不通：网线是不断了， 对方有防火墙启动也不行，ping通 但ftp连不上
+
+ftp + ip：ftp服务启没启动， 若win连不上linux 也是linux防火墙的事儿
+
+linux 防火墙是 iptables 
+
+configure vsftp：
+
+http://jingyan.baidu.com/article/7908e85c988b23af481ad2ae.html
+http://www.cnblogs.com/CSGrandeur/p/3754126.html
+
+zhiboliu@zhiboliu:/etc$ service vsftpd start
+zhiboliu@zhiboliu:/etc$ ftp localhost
+Connected to localhost.
+220 (vsFTPd 3.0.3)
+Name (localhost:zhiboliu): ftpuser
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> bye
+221 Goodbye.
+
+
+关闭防火墙：  service iptables stop
+
+
+匿名链接： username： anonymous
+pass： 空
+
+
+vsftp： very secure ftp
+
+listen=yes
+
+现在应该允许别人往ftp上传东西： 不能允许匿名上传
+
+ftpuser username
+ftpuser pass
+
+允许root上传  删掉 ftpusers root
+
+
+
+zhiboliu@zhiboliu:/etc/pam.d$ more vsftpd 
+# Standard behaviour for ftpd(8).
+#auth	required	pam_listfile.so 
+item=user sense=deny file=/etc/ftpusers onerr=succeed
+
+# Note: vsftpd handles anonymous logins on its own. Do not enable pam_ftp.so.
+
+# Standard pam includes
+@include common-account
+@include common-session
+@include common-auth
+auth	required	pam_shells.so 
+
+本来第一行哈有item那行自己给回车了  其实最后一行应该是要找的！！！！？？？？
+改回来了 也能等录 用自己建的账户
+
+
+上传文件命令 put
+
+sense = allow
+
+ftpusers 在/etc下  sudo gedit 就可以改变 然后存盘 否则不行
+user_list ???
+
+
+开机自启动 ： 1/ 在/etc/rc.local 加入 /user/local/bin/vsftpd & 即可 & means 后台程序
+		2/ chkconfig --levl 5 vsftpd on    
+
+chkconfig 不好使在ubuntu：
+
+我用的下边这个： sysv-rc-conf --list | grep vsftpd， sysv-rc-conf 相当于chkconfig
+http://askubuntu.com/questions/221293/why-is-chkconfig-no-longer-available-in-ubuntu  
+http://stackoverflow.com/questions/20680050/how-do-i-install-chkconfig-on-ubuntu
+
+
+vsftpd       0:off	1:off	2:on	3:on	4:on	5:on	6:off
+在哪个级别是 打开或者关闭的
+各个级别是独立的 名字之间无关联
+
+用inittab 设置是否开机自动全命令行 
+ubuntu 用upstart
+
+
+远程管理用ssh： ssh是加过密的 安全 telnet不加密 不安全
+
+得先启动ssh在linux
+https://help.ubuntu.com/community/SSH/OpenSSH/ConnectingTo
+https://help.ubuntu.com/14.04/serverguide/openssh-server.html
+
+service ssh start
+
+win客户端用putty连接pinux
+
+源码安装： make make-install  gcc way
+
+bin文件 ./文件名 安装  chmod 755 + 文件名 就可以安装了 否则denied
+
+tar.gz 文件安装：
+gzip 加文件名字 解压缩 gzip -d xx.tar.gz 会得到 xx.tar
+tar -xvf xx.tar : x：解压缩 v：verbose详细繁琐展现解压缩过程 
+f：file
+会得到 xx目录： mv xx / 挪到根目录
+
+改名字 mv xx + 新名子
+
+tomcat： 在win下执行service.bat or catalina.bat
+linux: startup.sh or catalina.sh
+
+./startup.sh
+error:java home not set up
+JAVA_HOME=/user/java/jdk1.6.0_03
+export JAVA_HOME //其他人都可以使用了
+./startup.sh
+
+怎么把JAVA——HOME变成全局的：
+/etc
+more profile, 在最后加上 JAVA_HOME=/user/java/jdk1.6.0_03
+export JAVA_HOME 
+只要有人登陆就会执行profile
+
+tomcat自动运行 改rc.local java home 得重新设置 因为没人登录呢
+加上： 
+JAVA_HOME=/user/java/jdk1.6.0_03
+export JAVA_HOME 
+/tomcat5/bin/startup.sh
+
+
+
+
+去/zhiboliu ls -a 改 .bashrc 该这个人的设置
+
+
+
+ps -ef | grep tomcat
+process观察下面有哪些进程  能看到进程id
+
+不能访问有可能防火墙问题
+service iptables stop
+chkconfig iptables off 默认不起来
+
+杀进程 kill -9 +进程号 -9强制杀掉
+
+tomcat端口在conf server.xml 看
+
+本地检查tomcat是否能上网 ：telnet 8080
+wget + 网址 ： wget http://localhost:8080/
+
+rpm： 类似于 添加删除程序 redhat package management
+rpm -qa | grep + name
+rpm -e + name: uninstall  name是package name
+rpm -ivh + 文件名字
+
+ubuntu 用 dpkg -l
+
+mount /dev/cdrom /mnt/cdr
+cd /mnt/cdr 进入光驱了
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

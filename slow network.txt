@@ -1,0 +1,21 @@
+slow network.txt
+
+
+
+Seven-layer dip
+
+Layer 1: The physical layer — This is simple. It’s the physical hardware. Is the network cable plugged in at both ends? Is everything powered on?
+
+Layer 2: The data layer — This is the layer transferring the bits and bytes, checking for errors and handling media access. A quick check to see if there are network lights at both ends can rule out the basic issues with this layer. Even a basic user can tell you if there are pretty lights on the phone cable–looking thing on the back of the computer.
+
+Layer 3: The network layer — This layer is in charge of getting the data from point A to point B through all of the stops along the way. 
+Run a ping to the user complaining and vise versa. If it returns results, then you’ve confirmed that the networking layer is in fact working at both ends. 
+The last thing we want to do is start rebooting equipment because one user called screaming “EVERYONE” and “EVERYTHING” is slow. This may be sufficient enough evidence to take to your superiors or colleagues but typically it’s not, so let’s continue.
+
+Layer 4: The transport layer — This layer is responsible for getting the data to an application and in all definitions is still considered the network layer, but begins crossing over into the application layers. You can see by that why we can pretty much rule out the network as being the cause of the slowness at this point. Try these simple tests: ping the local host 127.0.0.1, ping the gateway setup on the machine and, lastly, ping a local server. If they all pass, then you passed the transport layer.
+
+Layer 5: The session layer — This layer takes care of telling an application when to open and close a connection. Again, it's not much on our network side, since we already determined that the data got from point A to point B. If the application isn’t smart enough to say how long to hold the connection open, that’s not our problem.
+
+Layer 6: The presentation layer — This is the layer where you can tell your application developers it’s their fault since this layer deals with how code, to and from an application, is formatted. If certain portions of the page just aren’t loading or are loading with error, that would be the application itself having issues.
+
+Layer 7: The application layer — the application layer, is where things like FTP, email, or your browser operate. Can the user get to other websites? Does the website open fine with a different browser?

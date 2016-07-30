@@ -1,0 +1,12 @@
+Datagram
+
+A datagram is a unit of transfer assoicated with networking. A datagram has the following characteristics:
+Data is transmitted from source to destination without guarantee of delivery
+Data is frequently divided into smaller pieces and transmitted without a defined route or guaranteed order of delivery
+
+
+A datagram is primarily used for wireless communication and is self-contained with source and destination addresses written in the header. It is similar to a packet, which is a small piece of data transmitted through a connectionless protocol; but a datagram cannot handle prior or subsequent data communication.
+
+Intermediary devices (e.g., routers) automatically lead a datagram to its final network destination per the header’s specified address, i.e., a datagram does not follow a predefined transmission route. Thus, the router does not require prior route information. In addition, successful datagram delivery is facilitated through the destination system’s third-party application software.
+
+A datagram supports a maximum of 65,535 bytes at a time; thus, it is a very small amount of data.

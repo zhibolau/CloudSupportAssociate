@@ -1,0 +1,20 @@
+mdadm.txt
+mdadm is a Linux utility used to manage and monitor software RAID devices.
+
+mdadm is a program that can be used to create, manage, and  monitor  MD
+       devices.   As  such  it  provides a similar set of functionality to the
+       raidtools packages.  The key differences between  mdadm  and  raidtools
+       are:
+
+       ·   mdadm is a single program and not a collection of programs.
+
+       ·   mdadm  can  perform  (almost) all of its functions without having a
+           configuration file and does not use one  by  default.   Also  mdadm
+           helps with management of the configuration file.
+
+       ·   mdadm  can  provide  information  about your arrays (through Query,
+           Detail, and Examine) that raidtools cannot.
+
+       mdadm does not use /etc/raidtab, the raidtools configuration  file,  at
+       all.  It has a different configuration file with a different format and
+       an different purpose.

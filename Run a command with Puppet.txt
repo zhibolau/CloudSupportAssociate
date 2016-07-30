@@ -1,0 +1,22 @@
+Run a command with Puppet.txt
+
+Challenge
+
+Despite all the types and modelling available sometimes you just want puppet to run a command for you.
+
+Solution
+
+class basic_exec {
+
+  exec { 'refresh_cache':
+    command => 'refresh_cache 8600',
+    path    => '/usr/local/bin/:/bin/',
+    # path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
+  }
+
+}
+Explanation
+
+No matter how far Nix tools evolve sometimes you just need the ease or power of an existing command or script. The exec type provides a simple way to run those commands via puppet (on the puppet client, not the master) and harness them in your modelling, whether as a dependency of another resource, an easy way to accomplish something puppet doesn't yet provide or as part of a gradual migration.
+
+In the, very minimal, example above we first give the command a nice, human readable name to ease future manifest reading. We then specify the command itself (and any arguments it should receive) using "command". The last piece of this simple example is to specify the $PATH that this command is located in. It's worth mentioning that any commands you run via an exec should be idempotent as they may be invoked multiple times and they must have an exit code of '0' for puppet to consider them successful.

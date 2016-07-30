@@ -1,0 +1,37 @@
+built-in tools to troubleshoot network issues.txt
+
+10. Ping
+The most commonly used network tool is the ping utility. This utility is used to provide a basic connectivity test between the requesting host and a destination host. This is done by using the Internet Control Message Protocol (ICMP) which has the ability to send an echo packet to a destination host and a mechanism to listen for a response from this host. Simply stated, if the requesting host receives a response from the destination host, this host is reachable. This utility is commonly used to provide a basic picture of where a specific networking problem may exist. For example, if an Internet connection is down at an office, the ping utility can be used to figure out whether the problem exists within the office or within the network of the Internet provider.
+
+9. Tracert/traceroute
+Typically, once the ping utility has been used to determine basic connectivity, the tracert/traceroute utility can used to determine more specific information about the path to the destination host including the route the packet takes and the response time of these intermediate hosts. 
+
+8. Ipconfig/ifconfig
+find out the specific IP configuration of the variously affected hosts. Sometimes this information is already known when addressing is configured statically, but when a dynamic addressing method is used, the IP address of each host can potentially change often. The utilities that can be used to find out this IP configuration information include the ipconfig utility on Windows machines and the ifconfig utility on Linux/*nix based machines. 
+
+7. Nslookup
+Some of the most common networking issues revolve around issues with Dynamic Name System (DNS) address resolution issues. DNS is used by everyone using the Internet to resolve commonly known domain names (i.e. google.com) to commonly unknown IP addresses (i.e. 74.125.115.147). When this system does not work, most of the functionality that people are used to goes away, as there is no way to resolve this information. The nslookup utility can be used to lookup the specific IP address(es) associated with a domain name. If this utility is unable to resolve this information, there is a DNS issue. Along with simple lookup, the nslookup utility is able to query specific DNS servers to determine an issue with the default DNS servers configured on a host. 
+
+6. Netstat
+the current state of the active network connections on a host. For example, when verifying the status of a listening port on a host or to check and see what remote hosts are connected to a local host on a specific port. It is also possible to use the netstat utility to determine which services on a host that is associated with specific active ports. 
+
+5. PuTTY/Tera Term
+When connecting to a variety of different types of equipment, a telnet, SSH or serial client is required; when this is required both the puTTY and Tera Term programs are able to provide these functionalities. 
+
+4. Subnet and IP Calculator
+One of the most important tools in the belt of a junior network engineer is an IP network calculator. These can be used to unsure a correct IP address selection and with this a correct IP address configuration. Two of the more commonly used free IP calculators include Wildpackets (Bitcricket) Network Calculator and Solarwinds Advanced Subnet Calculator which can be found at the links below.
+
+
+
+3. Speedtest.net/pingtest.net
+A very easy test that can be used to both determine the Internet bandwidth available to a specific host and to determine the quality of an Internet connection is the use of the tools available at the speedtest.net and pingtest.net websites. 
+
+The speedtest.net site provides the ability to determine the amount of bandwidth that is available to a specific host at a specific point in time; this is often a good tool to use when measuring how long it is going to take to upload or download information from a local to remote host. This measurement can also be used to determine whether the connection is offering the amount of bandwidth that was purchased from the Internet provider; keep in mind however that some amount of bandwidth difference is expected between the quoted bandwidth purchased and the measured bandwidth. 
+
+The pingtest.net website is used to determine the quality of the connection by measuring the ping response times and jitter amounts over a short period of time. This information can be used to determine a likelihood of how well the measured connection will deal with certain types of high demand traffic like Voice over IP (VoIP) or gaming.
+
+2. Pathping/mtr
+In an effort to take advantage of the benefits of both the ping and tracert/traceroute commands, the pathping and mtr utilities were developed. Both of these tools take the functionality and information that can be obtained from these types of tools and provide a more detailed single picture of the path characteristics from a specific host to a specific destination. 
+
+1. Route
+display the current status of the routing table on a host. While the use of the route utility is limited in common situations where the host only has a single IP address with a single gateway, it is vital in other situations where multiple IP address and multiple gateways are available.

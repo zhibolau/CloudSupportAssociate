@@ -1,0 +1,5 @@
+NAT.TXT
+
+Network Address Translation (NAT) is a way to map an entire network (or networks) to a single IP address. NAT is necessary when the number of IP addresses assigned to you by your Internet Service Provider is less than the total number of computers that you wish to provide internet access for.
+
+好像整个公司就一个电话号码 有人打进来找谁 可以转接extension

@@ -1,0 +1,67 @@
+TCP:
+
+Definition - What does Transmission Control Protocol/Internet Protocol (TCP/IP) mean?
+
+Transmission Control Protocol/Internet Protocol (TCP/IP) is the language a computer uses to access the Internet. It consists of a suite of protocols designed to establish a network of networks to provide a host with access to the Internet.
+
+TCP/IP is responsible for full-fledged data connectivity and transmitting the data end-to-end by providing other functions, including addressing, mapping and acknowledgment. TCP/IP contains four layers, which differ slightly from the OSI model.
+
+The technology is so common that you would rarely refer to somebody use the full name. In other words, in common usage the acronym is now the term itself.
+Techopedia explains Transmission Control Protocol/Internet Protocol (TCP/IP)
+
+Nearly all computers today support TCP/IP. TCP/IP is not a single networking protocol - it is a suite of protocols named after the two most important protocols or layers within it - TCP and IP. 
+
+As with any form of communication, two things are needed: a message to transmit and the means to reliably transmit the message. The TCP layer handles the message part. The message is broken down into smaller units, called packets, which are then transmitted over the network. The packets are received by the corresponding TCP layer in the receiver and reassembled into the original message. 
+
+The IP layer is primarily concerned with the transmission portion. This is done by means of a unique IP address assigned to each and every active recipient on the network.
+
+TCP/IP is considered a stateless protocol suite because each client connection is newly made without regard to whether a previous connection had been established.
+
+
+
+How TCP Works
+TCP stands for Transmission Control Protocol. It’s the most commonly used protocol on the Internet.
+
+When you load a web page, your computer sends TCP packets to the web server’s address, asking it to send the web page to you. The web server responds by sending a stream of TCP packets, which your web browser stitches together to form the web page and display it to you. When you click a link, sign in, post a comment, or do anything else, your web browser sends TCP packets to the server and the server sends TCP packets back. TCP isn’t just one way communication — the remote system sends packets back to acknowledge it’s received your packets.
+
+TCP guarantees the recipient will receive the packets in order by numbering them. The recipient sends messages back to the sender saying it received the messages. If the sender doesn’t get a correct response, it will resend the packets to ensure the recipient received them. Packets are also checked for errors. TCP is all about this reliability — packets sent with TCP are tracked so no data is lost or corrupted in transit. This is why file downloads don’t become corrupted even if there are network hiccups. Of course, if the recipient is completely offline, your computer will give up and you’ll see an error message saying it can’t communicate with the remote host.
+
+Process Explorer and other system utilities can show the type of connections a process makes — here we can see the Chrome browser with open TCP connections to a variety of web servers.
+
+UDP:
+
+Definition - What does User Datagram Protocol (UDP) mean?
+
+User Datagram Protocol (UDP) is part of the Internet Protocol suite used by programs running on different computers on a network. UDP is used to send short messages called datagrams but overall, it is an unreliable, connectionless protocol. UDP is officially defined in RFC 768 and was formulated by David P. Reed.
+
+Techopedia explains User Datagram Protocol (UDP)
+
+User datagram protocol is an open systems interconnection (OSI) transport layer protocol for client- server network applications. UDP uses a simple transmission model but does not employ handshaking dialogs for reliability, ordering and data integrity. The protocol assumes that error-checking and correction is not required, thus avoiding processing at the network interface level. 
+
+UDP is widely used in video conferencing and real-time computer games. The protocol permits individual packets to be dropped and UDP packets to be received in a different order than that in which they were sent, allowing for better performance. 
+
+UDP network traffic is organized in the form of datagrams, which comprise one message units. The first eight bytes of a datagram contain header information, while the remaining bytes contain message data. A UDP datagram header contains four fields of two bytes each:
+Source port number
+Destination port number
+Datagram size
+Checksum
+
+
+
+How UDP Works
+UDP stands for User Datagram Protocol — a datagram is the same thing as a packet of information. The UDP protocol works similarly to TCP, but it throws all the error-checking stuff out. All the back-and-forth communication and deliverability guarantees slow things down.
+
+When using UDP, packets are just sent to the recipient. The sender won’t wait to make sure the recipient received the packet — it will just continue sending the next packets. If you’re the recipient and you miss some UDP packets, too bad — you can’t ask for those packets again. There’s no guarantee you’re getting all the packets and there’s no way to ask for a packet again if you miss it, but losing all this overhead means the computers can communicate more quickly.
+
+UDP is used when speed is desirable and error correction isn’t necessary. For example, UDP is frequently used for live broadcasts and online games.
+
+For example, let’s say you’re watching a live video stream. Live streams are often broadcast using UDP instead of TCP. The server just sends a constant stream of UDP packets to computers watching. If you lose your connection for a few seconds, the video will freeze for a moment and then jump to the current bit of the broadcast, skipping the bits you missed. If you experience minor packet-loss, the video or audio may be distorted for a moment as the video continues to play without the missing data.
+
+This works similarly in online games — if you miss some UDP packets, player characters may appear to teleport across the map as you receive the newer UDP packets. There’s no point in requesting the old packets if you missed them, as the game is continuing without you. All that matters is what’s happening right now on the game server — not what happened a few seconds ago. Ditching TCP’s error correction helps speed up the game connection and reduce latency.
+
+
+
+Whether an application uses TCP or UDP is up to its developer. This really depends on what an application needs — most applications want the error-correction and robustness of TCP, but some applications need the speed and reduced overhead of UDP. Use a network analysis tool like WIreshark and you’ll see the different types of packets travelling back and forth.
+
+
+ICMP, or Internet Control Message Protocol, is another common protocol used on the Internet. It’s generally used for query and error messages between routers and other network devices. Applications you’ll use generally don’t use ICMP, although ping and traceroute use ICMP for their diagnostics.

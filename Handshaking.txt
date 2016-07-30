@@ -1,0 +1,14 @@
+Handshaking
+Definition - What does Handshaking mean?
+
+In communication, handshaking is the automated process for negotiation of setting up a communication channel between entities. Handshaking occurs before the transfer of data or any other communication and just after the establishment of the physical channel between the two entities.
+
+Handshaking is helpful while establishing communication between two devices, as it can help in checking the quality and speed of the transmission and also the necessary authority needed for same.
+
+Techopedia explains Handshaking
+
+The noises made by dial-up modems is one example of handshaking, and the noise generated is part of the establishment of the handshake.
+
+The handshake can provide the necessary information or protocols for the sender and receiver. It allows the receiving device to know how to receive the input data from the sender and then output the received data in the necessary format applicable to the receiver. It also provides the provisions of how the communication between the devices should continue. This is especially required when the devices are foreign to each other, like a computer to a modem, server, etc.
+
+The parameters involved in handshaking can be hardware protocols, alphabet coding, interrupt procedures or even parity.

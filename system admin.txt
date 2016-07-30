@@ -1,0 +1,152 @@
+system admin.txt
+Basic Network Concepts:
+
+Data communication and transmission techniques
+Fundamentals of OSI and TCP/IP model
+IP address classes
+IP subnetting
+IPv6 fundamentals
+Basics of switching
+Microsoft Server Functionalities:
+
+Active Directory Domain Controller (Read only DC , Child DC)
+Active Directory Domain Services
+DHCP Server
+DNS
+File and print server
+Database storage server
+Windows Deployment Services (WDS)
+Group Policy management
+Registry management
+Hyper V
+Schedule tasks (Backup, AD DS Backup)
+High Availability Features (Failover Clustering, Network Load Balancing)
+Top Interview Questions for a System Administrator (Microsoft) Position:
+
+All of the questions below are very common and must be prepared for before facing any interview for a System-Server Administrator position.
+
+Q: What is Active Directory?
+
+A: Active Directory provides a centralised control for network administration and security. Server computers configured with Active Directory are known as domain controllers. Active Directory stores all information and settings for a deployment in a central database, and allows administrators to assign policies and deploy and update software.
+
+Q: What is a Domain?
+
+A: A domain is defined as a logical group of network objects (computers, users, devices) that share the same Active Directory database. A tree can have multiple domains.
+
+Q: What is Domain Controller?
+
+A: A domain controller (DC) or network domain controller is a Windows-based computer system that is used for storing user account data in a central database. It is the centrepiece of the Windows Active Directory service that authenticates users, stores user account information and enforces security policy for a Windows domain.
+
+A domain controller allows system administrators to grant or deny users access to system resources, such as printers, documents, folders, network locations, etc., via a single username and password.
+
+Q: What is Group Policy?
+
+A: Group Policy allows you to implement specific configurations for users and computers. Group Policy settings are contained in Group Policy objects (GPOs), which are linked to the following Active Directory service containers: sites, domains, or organizational units (OUs).
+
+Q: What are GPOs (Group Policy Objects)?
+
+A: A Group Policy Object (GPO) is a collection of settings that control the working environment of user accounts and computer accounts. GPOs define registry-based policies, security options, software installation and maintenance options, script options, and folder redirection options.
+
+There are two kinds of Group Policy objects:
+
+Local Group Policy objects are stored on individual computers.
+Nonlocal Group Policy objects, which are stored on a domain controller, are available only in an Active Directory environment.
+
+Q: What is LDAP?
+
+A: LDAP (Light-Weight Directory Access Protocol) determines how an object in an Active Directory should be named. LDAP is the industry standard directory access protocol, making Active Directory widely accessible to management and query applications. Active Directory supports LDAPv2 and LDAPv3.
+
+Q: Where is the AD database stored?
+
+A: The AD database is stored in C:\Windows\NTDS\NTDS.DIT.
+
+Q: What is the SYSVOL folder?
+
+A: The SYSVOL folder stores the server copy of the domain’s public files that must be shared for common access and replication throughout a domain.
+All AD databases are stored in a SYSVOL folder and it’s only created in an NTFS partition. The Active Directory Database is stored in the %SYSTEM ROOT%NDTS folder.
+
+Q: What is Garbage collection?
+
+A: Garbage collection is the online defragmentation of the Active Directory which happens every 12 hours.
+
+Q: When do we use WDS?
+
+A: Windows Deployment Services is a server role used to deploy Windows operating systems remotely. WDS is mainly used for network-based OS installations to set up new computers.
+
+Q: What is DNS and which port number is used by DNS?
+
+A: The Domain Name System (DNS) is used to resolve human-readable hostnames like www.intenseschool.com into machine-readable IP addresses like 69.143.201.22.
+
+DNS servers use UDP port 53 but DNS queries can also use TCP port 53 if the former is not accepted.
+
+Q: What are main Email Servers and which are their ports?
+
+A: Email servers can be of two types:
+
+Incoming Mail Server (POP3, IMAP, HTTP)
+
+The incoming mail server is the server associated with an email address account. There cannot be more than one incoming mail server for an email account. In order to download your emails, you must have the correct settings configured in your email client program.
+
+Outgoing Mail Server (SMTP)
+
+Most outgoing mail servers use SMTP (Simple Mail Transfer Protocol) for sending emails. The outgoing mail server can belong to your ISP or to the server where you setup your email account.
+
+The main email ports are:
+
+POP3 – port 110
+IMAP – port 143
+SMTP – port 25
+HTTP – port 80
+Secure SMTP (SSMTP) – port 465
+Secure IMAP (IMAP4-SSL) – port 585
+IMAP4 over SSL (IMAPS) – port 993
+Secure POP3 (SSL-POP) – port 995
+Q: What do Forests, Trees, and Domains mean?
+
+A: Forests, trees, and domains are the logical divisions in an Active Directory network.
+
+A domain is defined as a logical group of network objects (computers, users, devices) that share the same active directory database.
+
+A tree is a collection of one or more domains and domain trees in a contiguous namespace linked in a transitive trust hierarchy.
+
+At the top of the structure is the forest. A forest is a collection of trees that share a common global catalog, directory schema, logical structure, and directory configuration. The forest represents the security boundary within which users, computers, groups, and other objects are accessible.
+
+Q: Why do we use DHCP?
+
+A: Dynamic Host Configuration Protocol assigns dynamic IP addresses to network devices allowing them to have a different IP address each time they are connected to the network.
+
+Q: What are Lingering Objects?
+
+A: A lingering object is a deleted AD object that still remains on the restored domain controller in its local copy of Active Directory. They can occur when changes are made to directories after system backups are created.
+
+When restoring a backup file, Active Directory generally requires that the backup file be no more than 180 days old. This can happen if, after the backup was made, the object was deleted on another DC more than 180 days ago.
+
+Q: How can we remove Lingering Objects?
+
+A: Windows Server 2003 and 2008 have the ability to manually remove lingering objects using the console utility command REPADMIN.EXE.
+
+Q: Why should you not restore a DC that was backed up 6 months ago?
+
+A: When restoring a backup file, Active Directory generally requires that the backup file be no more than 180 days old. If you attempt to restore a backup that is expired, you may face problems due to lingering objects.
+
+Q: How do you backup AD?
+
+A: Backing up Active Directory is essential to maintain the proper health of the AD database.
+
+Windows Server 2003
+
+You can backup Active Directory by using the NTBACKUP tool that comes built-in with Windows Server 2003 or use any 3rd-party tool that supports this feature.
+
+Windows Server 2008
+
+In Server 2008, there isn’t an option to backup the System State data through the normal backup utility. We need to use the command line to backup Active Directory.
+
+1. Open up your command prompt by clicking Start, typing “cmd” and then hit Enter.
+
+2. In your command prompt, type “wbadmin start systemstatebackup -backuptarget:e:” and press Enter.
+
+3. Input “y” and press Enter to start the backup process.
+
+When the backup process has finished you should get a message that the backup completed successfully. If it did not complete properly you will need to troubleshoot.
+
+The questions above are very tricky and important from the standpoint of clearing any interview for a System Administrator (Microsoft) position.

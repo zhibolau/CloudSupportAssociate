@@ -1,0 +1,95 @@
+Data recovery.txt
+
+
+The first place you should look after deleting a file is the Recycle Bin. It may seem a little obvious, but this back-up facility can be overlooked. If your file is in there, right-click it and select Restore from the menu. Of course, the Recycle Bin doesn’t catch every file deletion, with files that have been deleted in DOS being a particular oversight. There are utilities that will cover this inadequacy, but if you’re in DOS, then merely knowing that a deletion could be permanent should have you in the right frame of mind.
+
+The Restoration
+
+An option you have at your disposal is to use an Undelete utility. To understand how these work, it helps if you have a little background knowledge of what happens when you delete a file. Windows stores file data in clusters, with the size of those clusters being determined by the type of file allocation table (FAT) you’ve set up to use. The FAT stores the links between clusters, which when connected together, make up each file. Some of the most basic file errors occur when this file becomes corrupt, and simple utilities such as ScanDisk can usually piece together the file.
+
+Hanging Around
+
+When it comes to file deletion, the important thing to realise is that the file isn’t actually removed from your hard drive. All that happens is that the files directory location is changed so that it points at the Recycle Bin instead. The data clusters for the file aren’t changed at all. You may think that this information is deleted when you empty the Recycle Bin, or when you bypass the Recycle Bin. But again, the actual data in the clusters is left intact, only this time the entry for the file in the FAT is updated so that those clusters are now free to be used and the first character of the file name is changed to reflect this.
+
+A Quick Recovery
+
+Programs that can recover these files do so by searching through the FAT for entries that have been flagged, and also by scanning the hard drive for clusters that look like they may be files. The most basic of these programs used to be part of the Microsoft OS, namely the Undelete.exe, but since the introduction of the Recycle Bin, Microsoft has stopped supplying the program. There are loads of utilities out there that will perform a similar function under more recent versions of Windows.
+Recover data in DOS
+
+How to rescue your files when you can’t even get into Windows.
+
+You may find that you turn on your machine and it crashes - it just won’t go into Windows. If you’re lucky you’ll be able to pop into Safe mode and back up your files from there, but occasionally you won’t even be able to do that.
+
+There’s no denying that your options for moving files around are a lot more limited in DOS. It’s very rare for external drives to come with DOS drivers, and it’s even rarer for you to have those drivers to hand – and you can’t go on the Internet to download those drivers once your machine refuses to boot. If you do have an external drive, it’s worth checking now to see if there are any DOS drivers for the device on the developer’s Web site. Iomega, for instance, has a large selection of drivers for its drives; if you have an Iomega device, then backing up should be pretty painless in DOS.
+
+If you only have a CD-RW drive, then the chances of being able to use it in DOS crises are pretty thin – even if you find drivers, there’s not much software out there to make use of it. Most heavy duty back-up devices come with their own DOS drivers, so you should be safe there – as long as you know where the drivers are.
+
+If you’ve partitioned your drive, or if you have more than one hard drive in your machine, then the easiest way out of this situation is to use DOS Navigator to copy files from one logical drive to another. As long as you don’t have a physical problem with your hard drive, the move will be safe from any formatting you need to do on your main drive.
+
+The one device that everyone should have access to for backing up data is the humble floppy drive. It may not be impressive on the capacity front these days, but it’s universally supported in every operating system, including DOS.
+Recovering data from a corrupt hard drive
+You may be a little anxious as you turn your machine back on – it crashed, forcing you to perform a cold reboot. Maybe the power went down, maybe you kicked the power cable; whatever the reason, you could now be facing one of the most heart-stopping experiences your computer can offer: it doesn’t recognise the hard drive. One you’ve checked that the hard drives are automatically detected in the BIOS, you’re faced with the thorny problem of getting all of your data off the drive before having to re-partition it and re-install Windows.
+
+Things may look pretty bleak, but you actually have a number of options. Your first is to use the Emergency Boot Disk. Slide this into your floppy drive and reboot; if you’re lucky you should be able to change directory to your hard drive. If you can see it this way, then it appears that your main drive’s Master Boot Record has been damaged – something that can be rectified by typing fdisk /mbr. Your data is safe as it is, although it’s a good idea to back up your data once you reload Windows.
+
+There are a few reasons that you may have lost your MBR, and if your system didn’t crash, then there’s a chance that a virus has infected your machine. Use the boot disk that comes with your virus protection program to give your system a clean bill of health before continuing. If you have a virus, it’s worth bearing in mind that all removable media that has come into contact with your machine has probably been infected, and this includes any backups you may have made. It’s a good idea to perform several scans of your system after you’ve discovered a virus to make sure that you don’t get infected again.
+
+Partition Magic
+
+If you’ve been sensible enough to save your data files on to a separate partition, then don’t forget that you can access that data even if you can’t see the main drive. When you boot from the Startup disk, just check that the data partition is visible; unless you’re using some form of proprietary drive format or compression system, you don’t need to boot from your main hard drive first. It’s a good idea to make a backup of your most important data, using floppies if necessary, while you investigate the cause of the partition failure. It could be a problem that spreads later, so exercise caution.
+
+Solving your problem is a little more complicated if you can’t see any of your partitions, although all is not lost just yet. There are tools that can be used to recover data that has become inaccessible due to a hard-drive failure. For these tools to be useful, your drive needs to be mechanically operational, so the first thing to check is that your hard drive is rotating and that the problem is down to a power-supply problem (try the drive in another machine to make sure). You can tell whether a drive is spinning up properly by carefully holding the non-electronic side of the case as the drive boots up. You should be able to pick up the subtle vibrations as the platter spins.
+
+If you don’t think the drive is spinning up properly, or it’s significantly louder than normal, then the drive heads may have impacted with the platters. Further use could cause more damage, especially if the platter has been broken or warped. You’ll need to use a data-recovery specialist, such as Ontrack, to recover the data. This is a costly way of recovering data, and is only financially viable if the missing data would take weeks – if not months – to recreate.
+
+Tools of the Trade
+
+Once you’re sure the drive isn’t mechanically damaged, or the prohibitive cost of professional recovery leaves you with nothing to lose, you can start looking at low-level utilities. These tools read the hard-drive’s contents beneath the normal file-system level, thus they don’t need a working MBR or FAT for you to be able to examine the hard drive. There are a multitude of tools out there that enable you to look at your hard drive in this way, with Norton Utilities probably being the best known, and Ontrack’s EasyRecovery being one of the most professional.
+How to recover Office files
+
+There are some specific options if you’ve managed to delete an Office file. Here’s the lowdown…
+
+So, you’ve managed to undelete your file, but now it won’t open in Word or Excel. Or perhaps your system’s crashed and ScanDisk finds some problems and fixes them, but now you can’t open the PowerPoint presentation. How do you get back the information in that file?
+
+The problem here is that the file formats used by Office applications are extremely complex, and not too logical either. For instance, a Word document containing a single word still takes up 20k, as all those other bytes are used to store formatting, view types and even a history of modifications to the document. If you open up such a file in Notepad you’ll realise just how hard it is to piece a document together.
+
+That’s not to say that it’s impossible, it’s just that you’ll need a little help if you want to do it in a reasonable amount of time. You may have noticed that Office applications try to recover files if your system has crashed already, but there are limits to what they can recover, which is why there are programs that have been developed specifically for this task. The OfficeRecovery suite is probably the most comprehensive of these, but it doesn’t come cheap. ExcelFix is a good alternative.
+
+If you can’t afford any of these heavyweight utilities, then you could trim the nonsense yourself using a hex editor. The oddly named ‘XVI32’ is particularly good and can handle large file sizes. Just retrieve what you can from the corrupted file using this utility.
+
+1. If you can open the corrupt file, then saving it using a different file format can filter out some of the junk and present you with more of your original data.
+
+2. There are utilities that can recover more information out of these files, far beyond what Office itself can normally do.
+
+3. Failing that, you can always try working your way through the file yourself using the XVI32 hex editor.
+Using DOS Navigator
+
+Windows won’t load, but you have a lot of files to back up? Use this great tool to make the job easier…
+
+1. Go to www.ritlabs.com/dn to download it, then play around with it until you get used to the way it works. There’s a wealth of tools on offer here, too.
+
+2. Next you need to find all of your documents and data files so that you can back them up in case Windows won’t load. You’ll find the majority of your files in MYDOCU~1.
+
+3. Select the files or directory you want to copy across and then hit [F5] to bring up the copy dialog box. Select your destination as another hard drive or logical partition and hit OK.
+Recover with EasyRecovery
+
+Ontrack’s data-recovery utility can restore files when your hard drive is logically dead.
+
+1. You need to create the necessary boot disk now, while Windows is still working. If you haven’t been able to do this before encountering a problem, you’ll have to use another machine to create the disk.
+
+2. Boot your machine with this disk. Once your hard drive has been given a good system check you’ll be presented with the same interface used by the Windows version of the software.
+
+3. Select the partition you want to scan and the process will begin. Once this scan has finished you’ll be presented with a list of recoverable files. Hopefully your important ones are in this list.
+
+
+ EaseUS Data Recovery Wizard
+ use this software to scan files to be recovered.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+If your hard disk crashed, you can recover the files through steps as below:
+1. Try a commercial disk-repair utility, although success with these is somewhat limited if you didn't install the software before you experienced the crash.
+2. If a disk appears to be irreparable and if the data is valuable enough, you can send the entire disk to a specialized drive recovery service that will disassemble it and retrieve as much data as possible. Expect to pay at least a couple hundred dollars, though (payable even when they don't recover anything). Is backing up regularly starting to sound like a good idea?
+Eventually, all hard drives may crash. If you can't back up your entire drive, at least back up the data that you wouldn't want to lose forever.
+Do some preventive measures. First, you have to make imaging of your bad hard disk onto a good one. This is your only way to keep your hard disk's status on condition. If, somehow, you fail your attempts to recover your disk, you still have a backup. So you would have chances to retry the recovering another way.
+
+

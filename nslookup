@@ -1,0 +1,39 @@
+nslookup
+
+nslookup is a network utility program used to obtain information about Internet servers. As its name suggests, the utility finds name server information for domains by querying DNS.
+
+Nslookup is a command line driven utility supplied as part of most Windows operating systems that can reveal information related to domain names and the Internet Protocol (IP) addresses associated with them. 
+
+c:\nslookup    (Press enter)
+Default Server:  sbs01.local.local          (My default DNS Server)
+Address:  192.168.16.2                           (IP address of my default DNS Server)
+> ? (find nslookup parameters instructions)
+
+
+C:\>nslookup www.microsoft.com
+Server:  sbs01.local.local
+Address:  192.168.16.2
+
+Non-authoritative answer:
+Name:    lb1.www.ms.akadns.net
+Addresses:  64.4.31.252
+          207.46.19.254
+          207.46.19.190
+Aliases:  www.microsoft.com
+          toggle.www.ms.akadns.net
+          g.www.ms.akadns.net
+C:\>
+The output above shows that nslookup has sent a request to my internal DNS server (sbs01.local.local located on 192.168.16.2) to action the request. 
+The answer that has been returned for my query was provided by the server called lb1.www.ms.akadns.net and it reports that three servers are known for www.microsoft.com and they are found at 64.4.31.252, 207.46.19.254 and 207.46.19.190. 
+Nslookup can also perform reverse lookups against DNS .ptr records. If we take one of the addresses returned in the previous example, you can see the true names of the servers used.
+C:\>nslookup 207.46.19.190
+Server:  sbs01.local.local
+Address:  192.168.16.2
+
+Name:    wwwbaytest1.microsoft.com
+Address:  207.46.19.190
+This reveals that server at 207.46.19.190 is called wwwbaytest1.microsoft.com is ONE of the servers that will respond to www.microsoft.com.
+
+
+
+“Non-authoritative answer:”，这一行在前面的例子中都没有显示过。它的出现代表这个结果是从服务器的缓存中得到的。所以提醒你这不是一个授权的答案

@@ -1,0 +1,4 @@
+packet.txt
+
+A data packet is a unit of data made into a single package that travels along a given network path. Data packets are used in Internet Protocol (IP) transmissions for data that navigates the Web, and in other kinds of networks.
+

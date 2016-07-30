@@ -1,0 +1,14 @@
+What is RAID and LVM.txt
+
+RAID is usually defined as Redundant Array of Inexpensive disks. It is normally used to spread data among several physical hard drives with enough redundancy that should any drive fail the data will still be intact. Once created a RAID array appears to be one device which can be used pretty much like a regular partition. There are several kinds of RAID but I will only refer to the two most common here.
+The first is RAID-1 which is also known as mirroring. With RAID-1 it's basically done with two essentially identical drives, each with a complete set of data. 
+The second, the one I will mostly refer to in this guide is RAID-5 which is set up using three or more drives with the data spread in a way that any one drive failing will not result in data loss. 
+
+There is one limitation with Linux Software RAID that a /boot partition can only reside on a RAID-1 array.
+
+Linux supports both several hardware RAID devices but also software RAID which allows you to use any IDE or SCSI drives as the physical devices. In all cases I'll refer to software RAID.
+
+LVM stands for Logical Volume Manager and is a way of grouping drives and/or partition in a way where instead of dealing with hard and fast physical partitions the data is managed in a virtual basis where the virtual partitions can be resized. 
+
+
+There is one limitation that a LVM cannot be used for the /boot.

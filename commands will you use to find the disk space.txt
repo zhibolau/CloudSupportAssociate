@@ -1,0 +1,6 @@
+commands will you use to find the disk space.txt
+
+http://www.tecmint.com/how-to-check-disk-space-in-linux/
+
+df
+

@@ -1,0 +1,44 @@
+L2 L3.TXT
+
+L2 - Layer 2
+
+This is also referred to as the OSI (Open Systems Interconnection) Data Link Layer. It provides the means for synchronizing the bit stream flowing to and from the physical layer and for the detection of errors due to transmission problems e.g. noise and interference. An example of a Data Link protocol would be Ethernet operating on a LAN (Local Area Network).
+
+
+L3 - Layer 3
+This is also referred to as the OSI (Open Systems Interconnection) Network Layer. It provides the paths for the transfer of data between systems and across networks. The paths between systems may include switched services, and interconnections of multiple subnetworks on route. An example of a protocol operating at the network layer would be IP (Internet Protocol).
+
+
+The Functions of the OSI Layered Model
+The OSI, or Open System Interconnection, is a networking model comprised of seven ‘layers’. It’s a controlled hierarchy where information is passed from one layer to the next creating a blueprint for how information is passed from physical electrical impulses all the way to applications.
+This standard is a guide that allows engineers to keep communications organized.
+Layer 2 is the data link where data packets are encoded and decoded into bits. The MAC (Media Access Control) sub layer controls how a computer on the network gains access to the data and permission to transmit it and the LLC (Logical Link control) layer controls frame synchronization, flow control and error checking.
+Layer 3 provides switching and routing technologies, creating logical paths, known as virtual circuits, for transmitting data from node to node. Routing and forwarding are functions of this layer, as well as addressing, internetworking, error handling, congestion control and packet sequencing.
+
+
+To summarize:
+Layer 2 Data Link: Responsible for physical addressing, error correction, and preparing the information for the media
+Layer 3 Network: Responsible for logical addressing and routing IP, ICMP, ARP, RIP, IGRP, and routers
+
+
+Pros and Cons of Layer 2 Vs Layer 3
+Some advantages of Layer 2 include lower costs, only requires switching, no routing gear is necessary and offers very low latency. Layer 2 also has some significant disadvantages such as the lack of router hardware, leaving them susceptible to broadcast storm and the additional administrative overhead of IP allocations due to flat subnet across multiple sites.
+Layer 2 networks also forward all traffic, especially ARP and DHCP broadcasts. Anything transmitted by one device is forwarded to all devices. When the network gets too large, the broadcast traffic begins to create congestion and decreases network efficiency.
+
+Layer 3 devices, on the other hand, restrict broadcast traffic such as ARP and DHCP broadcasts to the local network. This reduces overall traffic levels by allowing administrators to divide networks into smaller parts and restrict broadcasts to only that sub-network.
+This means there is a limit to the size of a layer 2 network. However, a properly configured layer 3 network with the correct knowledge and hardware can have infinite growth.
+A Layer 3 switch is a high-performance device for network routing. A router works with IP addresses at layer 3 of the model. Layer 3 networks are built to run on on layer 2 networks.
+In an IP layer 3 network, the IP portion of the datagram has to be read. This requires stripping off the datalink layer frame information. Once the protocol frame information is stripped, the IP datagram has to be reassembled. Once the IP datagram is reassembled, the hop count has to be decremented, the header checksum has to be recalculated, a lookup for routing must be made, and only then can the IP datagram be chopped back up and inserted into frames and transmitted to the next hop. All of this takes extra time.
+
+Not Which is Better, But Which Layer is Needed for the Job
+
+What most businesses need is control. Routing controls happen at Layer 3.
+But the downsides of Layer 3 are speed because of all of the additional overhead, and that can be deadly in multi-site networks where fast communications among tens or hundreds of computers, servers and routing equipment are necessary for such things as Ip-telephony, or even shared internet access.
+
+Enter Newer Technologies Such as Metro Ethernet Work Using Multiprotocol Label Switching (MPLS)
+Multiprotocol Label Switching is a mechanism in high-performance telecommunications networks which directs and carries data from one network node to the next. MPLS makes it easy to create “virtual links” between distant nodes. It can encapsulate packets of various network protocols.
+MPLS operates at a layer that is generally considered to lie between traditional definitions of layer 2 (data link layer) and layer 3 (network layer), and thus is often referred to as a “layer 2.5” protocol.
+
+It was designed to provide a unified data-carrying service for both circuit-based clients and packet-switching clients which provide a datagram service model. It can be used to carry many different kinds of traffic, including IP packets, as well as native ATM, SONET, and Ethernet frames.
+It also allows you to maintain controls on your end points using Layer 3 switching, so with the best of both worlds Metro Ethernet services can provide the speed between locations and allow network quality of service transparency desired by small businesses all with a smaller financial footprint.
+Where you might normally use Layer 3 to manage traffic in ALL locations over internet connections… with the Metro Ethernet you can use Layer 3 only as needed at end points which saves you on equipment costs and IT support costs. And you gain speed.

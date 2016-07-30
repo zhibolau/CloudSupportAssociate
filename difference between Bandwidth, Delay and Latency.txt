@@ -1,0 +1,13 @@
+difference between Bandwidth, Delay and Latency.txt
+
+
+Bandwidth
+Rated throughput capacity of a given network medium or protocol. Bandwith is the difference between the highest and lowest frequencies available for network signals.
+
+Latency
+Delay between the time when a device receives a frame and the time that frame is forwarded out to the destination port
+Data latency is the time between a query and the result displaying on the screen.
+ 
+Delay
+Length of time between the intiation of a transaction by a sender and the first response received by the sender.
+Length of time required to move a packet from source to destination over a given path.

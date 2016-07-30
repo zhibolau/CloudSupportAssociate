@@ -1,0 +1,13 @@
+osi.txt
+Open Systems Interconnect
+
+7Application: end user smtp
+6Presentation:syntax encrypt decrypt
+5Session: sych and send to ports: rpc/sql/nfs
+4Transport: tcp tcp/spx/udp
+3Network: packetss: ip address, ip/ipx/icmp
+2Data Link :frame nic(mac address) ppp/slip
+1Physical: physical structure: cable hub
+
+
+

@@ -1,0 +1,3 @@
+hop.txt
+
+In a packet-switching network, a hop is the trip a data packet takes from one router or intermediate point to another in the network. On the Internet (or a network that uses TCP/IP), the number of hops a packet has taken toward its destination (called the "hop count") is kept in the packet header.

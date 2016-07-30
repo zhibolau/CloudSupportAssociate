@@ -1,0 +1,33 @@
+backup fail.txt
+
+
+1 Your backup strategy is to burn CDs and DVDs.
+A diamond may be forever, but CDs and DVDs have a shelf-life. Even the Optical Storage Technology Association says an unrecorded disk will only last 5 to 10 years. And this assumes you’ve selected the right files and remember to do it, which brings me to reasons #2 and #3.
+
+2Your backup strategy requires picking which files to backup.
+If you’re like most people, you actually have no idea where your files are. Wait, you’re not like most people — you absolutely select which folders you put your files in. But some applications save files in random places. Have any idea where your iTunes playlists are? Hint: They’re not in My Documents. Windows hides folders. Vista forces older applications into a hidden sandbox. You probably know where most of your files are…but some files your care about are almost certainly somewhere else.
+
+
+3Your backup strategy is manual.
+“I should go to the gym. I should eat right. I should backup.” Right. You’re busy and remembering to constantly backup your computer is not high on your list. Did you do your last backup yesterday? Or a month ago? Oops.
+
+4Your backup strategy is to copy files to an external USB drive.
+Prices have plummeted and external drive sales have shot through the roof over the last few years. Think these drives are foolproof? Google drive testing has shown that nearly 1 in 10 drives die per year. And that does not include your cat knocking the drive off your table and then you tossing it in your laptop bag.
+
+5Your backup strategy is to send yourself emails.
+With six GB per Gmail account, if I just create five accounts and send myself all my documents, photos, and music files, I can backup everything to email. But each email is limited to 25 MB, so I can only send a couple files at a time. I have 15,000 files so if it takes me just 20 seconds to send an email with three files attached, it will take me 28 hours to send all the emails. Have files over 25 MB? Can’t send those at all. And when my drive dies and I need to do a complete restore? Want to try clicking through 5,000 email messages and downloading and organizing the files from each?
+
+6Your backup strategy is RAID.
+I save a file and it immediately gets written to two drives in my computer. Good way to deal with single drive failure. But it can’t help you with the dropped laptop, stolen PC, blown water heater, rampant virus, and “oops, I didn’t mean to hit delete” data losses.
+
+7Your backup strategy is FTP to a hosted service.
+Have a website and not using all your space? Want to just FTP your files there for backup? Turns out most hosting services don’t like that…and might just delete your files. Ask the CTO of Ziff Davis about that experiment.
+
+8Your backup strategy is an online storage service.
+There are a plethora of good online storage services that enable you to upload files. But there is a big difference between storage and backup. If you have to manually pick which files to store — that’s not a backup — and likely to not have the pictures of your super-cute-newborn-with-a-face-only-a-mother-can-love when you need them back.
+
+9Your backup strategy is not to have anything important on your PC.
+You might read this and say “Huh, but my life is on my PC.” Yes, but not everyone has a 3G card plugged directly into their cranium. But if you’re one of those who think you have nothing of importance, I ask you, what do you do on your computer? Unless you only browse the web — you have data that is important to you. Use TurboTax? Quicken? Microsoft Money? Copies of your resume? Your contacts or calendar? Chances are if your computer croaked, you would be bummed.
+
+10Your backup strategy is that your work backs up your PC.
+Using your work laptop to store your personal documents. No problem. But counting on them to be backed up? Good luck. Most companies don’t back up laptops and desktops (just servers.) If they do back them up, they typically exclude personal files such as music and photos. And even if they try to backup your files, according to Enterprise Storage Group, 60% of the time, those backups fail.
