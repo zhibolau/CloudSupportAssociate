@@ -43,3 +43,10 @@ The next option is a binary value (“0” for false and “1” for true) for �
 The last option is a numeric value for “passing.”  This tells the system the order in which to fsck (pronounce that however you like), or perform a file system check.  If a disk has an option of “0” it will be skipped, like my NTFS-formatted storage drives.  The root file system should always be “1” and other file systems can go afterward.  This works best for journaling file systems like ext3/4 and ReiserFS.  Older file systems like FAT16/32 and ext2 can take a while, so it’s better to turn their fscking off and do it periodically yourself.
 
 
+
+when u see s in the file system privilege/permission:
+That is the "setuid" bit, which tells the OS to execute that program with the userid of its owner. This is typically used with files owned by root to allow normal users to execute them as root with no external tools (such as sudo).
+
+You can set the suid bit using chmod, eg chmod 4755 which will give a file give the normal permissions 755 does (rwxr-xr-x) and add the suid bit to give rwsr-xr-x
+
+You can clear the setuid bit by issuing a normal chmod command with a 0 prepended to it. For example, to set permissions back to rwxr-xr-x you would use chmod 0755.
