@@ -1,0 +1,18 @@
+rtt.txt
+
+Round-trip time (RTT), also called round-trip delay, is the time required for a signal pulse or packet to travel from a specific source to a specific destination and back again. In this context, the source is the computer initiating the signal and the destination is a remote computer or system that receives the signal and retransmits it.
+
+
+On the Internet, an end user can determine the RTT to and from an IP (Internet Protocol) address by pinging that address. The result depends on various factors including:
+
+ 
+
+The data transfer rate of the source's Internet connection
+The nature of the transmission medium (copper, optical fiber, wireless or satellite)
+The physical distance between the source and the destination
+The number of nodes between the source and the destination
+The amount of traffic on the LAN (local area network) to which the end user is connected
+The number of other requests being handled by intermediate nodes and the remote server
+The speed with which intermediate nodes and the remote server function
+The presence of interference in the circuit.
+In a network, particularly a WAN (wide-area network) or the Internet, RTT is one of several factors affecting latency, which is the time between a request for data and the complete return or display of that data. The RTT can range from a few milliseconds (thousandths of a second) under ideal conditions between closely spaced points to several seconds under adverse conditions between points separated by a large distance

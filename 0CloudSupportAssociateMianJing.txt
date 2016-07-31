@@ -467,7 +467,7 @@ How do you find out what your IP Address is?
 
 
 
-27.
+27. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 Three 30 mins interviews, the first ask about networking, the second is about windows troubleshooting, the third is about leadership which you should answer the questions with your own experience.
 the networking part question:
@@ -481,9 +481,6 @@ I did not do well in the trouble shooting, because i did not prepare it at all
 for the leadership part, the questions are like: give me an example about how did you deal with multiple tasks, how did you handle deadline, how did you deal with angry clients....
 Show Less
 
-Interview Questions
-what is FTP? what kind of application it used for?
-what is the difference about UDP and TCP, what kind of application base on UDP  
 
 28.
 1 DHCN 2 DNS. 3 linux server configuration 4. RAID levels and detail descritpion The first interview was on the phone for about 30 minutes. The interviewer was very ponctual, sympatic and spoke all the time about technical terms and asked me a lot… 

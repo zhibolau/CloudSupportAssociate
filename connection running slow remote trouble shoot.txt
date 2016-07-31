@@ -1,0 +1,128 @@
+connection running slow remote trouble shoot.txt
+
+1/
+tcpdump and wireshark are your friends.
+
+I find that watching packets on the wire of a 'slow' network vs a 'good' network is usually what pinpoints a problem.
+
+You can track latency to local and internet sites using a tool like SmokePing. (SmokePing can be configured to track ICMP latency as well as service latency from TCP services)
+
+Your switches should track broadcast packets vs unicast packets. Graph that ratio.
+Look for a large number of TCP retransmissions and \or TCP resets. also look for a high percentage of broadcast traffic
+
+I also like to monitor traceroutes (checking domain names of ISP hops between myself 'important' sites).
+
+2/
+Try using http-ping and traceroute from both your desktop to the website and then test the connection going the other way. Compare the packet-loss, response time and routes with those gathered from the same tools from a device that doesn't have the latency issue, such as a machine outside of your network
+
+http-ping displays:
+
+The HTTP return code (and its brief textual description)
+The number of bytes returned by the server (excluding headers)
+The time taken to complete the request (i.e. round-trip time)
+
+
+You might need to replace components on speculation, update firmwares, drivers, software versions, change protocol settings and run and evaluate network traces in the process. 
+
+3/
+the OSI model - start from the bottom and work your way up
+ping - check your RTT (i.e. latency)
+HTTP ping - usefull if your firewall blocks normal ICMP's
+ping -r 9 - useful for identifying asymmetric routing situations
+traceroute - how are my packets getting there and how are the routers along the way responding? Be aware that routers often process these packets at a low priority, so real performance may be better.
+
+
+
+There are actually three likely possibilities:
+
+This is a client system issue - have the client run diagnostics on his system.
+
+This is a network congestion issue between the client and server - run several trace routes and see if there is latency on any intervening connection (there is little to be done about this, it just keeps you from chasing your tail looking at other issues needlessly)
+
+This is a server issue - see if other authorized clients are having the same or similar issues.
+
+Outside of these obvious ones, check the proper install of software, updates, etc. on both sides or at least the client side if you can’t get the server.
+
+
+
+Slow is a vague description in networking. Concurrent packet trace analysis on both London and German nodes will identify the issue. You will need remote administrator access on both nodes.
+
+
+First you connect to your client’s computer, either by using TeamViewer or Join.Me. Once you are on there, you can run a speed test to determine if the problem is local or due to the ISP.
+
+Contact the ISP on behalf of your client. Check if there are any known bandwidth bottlenecks or outages. If it seems to be local, troubleshoot the network settings on the client’s computer. One problem that comes up with older PC’s is the need to update NIC card drivers. 
+
+
+1. Internet connection slow
+The overall speed and performance are always as good as the slowest network segment between Viewer and Host. For example, if there is a broadband hi-speed Internet connection on the Viewer side, and a slow 3G or even GPRS connection on the Host side, the speed and performance of the remote session may be slow regardless of the CPU power.
+2.
+Direct connection vs. Internet ID connection
+By definition, a direct point-to-point connection is faster than an Internet ID connection - the latter always goes through a routing server. Whenever possible, connect directly to a remote PC. If the remote PC is behind a router, it is still possible to connect directly using the port forwarding technique.
+
+How do I set up port forwarding for the Host?
+
+Port forwarding (also port mapping) is a technique of translating the address and/or port number of a network packet to a new destination. Port forwarding allows remote computers, located on the Internet, to connect to a specific computer or service within a private local area network (LAN).
+
+Port forwarding rules are set on routers or other network devices that act as an Internet gateway for other computers in a local network. To create a port forwarding rule and access Remote Utilities Host from outside the local network you need to know:
+
+The Host computer local IP address (for example, 192.168.0.5)
+Host listening port (5650 by default)
+You need a port forwarding rule only when two conditions are met:
+
+You want to use a direct point-to-point connection between Viewer and Host.
+The Host PC accesses the Internet from behind a router/firewall and doesn't have and external IP address of its own.
+3.
+High CPU load
+If the Host and/or Viewer are running on a computer with almost 99% of the CPU capacity eaten up by other programs or processes all the time, then connection may be slow. CPU resources must be allocated.
+
+Have you rebooted?
+
+connection to server is running slow?:
+
+1、解决硬件损坏引起的故障
+
+为了让局域网及时发现自己，未知设备往往会通过广播方式，向网络发出宣传自己的通知。不过，当局域网中的终端数量不断增多的时候，网络中的广播包流量也会大幅增加。一旦广播包的数量流量达到一定的数值时，网络的数据传输速度就会受到明显影响，表现出来的现象就是网速突然变慢。当局域网中有网络设备发生硬件损坏时，它会不停地向网络发送广播包信息，直到引发广播风暴现象，引发网络传输通道处于瘫痪状态。所以，当局域网中有设备发生硬件损坏现象时，网络传输速度也会变慢。
+
+正常情况下，局域网中的交换机、集线器或网卡设备，在长时间工作之后，很容易发生硬件损坏故障，一旦它们发生故障而不能及时排除的话，那么整个局域网的传输速度自然就会受到影响。如果我们怀疑网络速度变慢现象是由网络设备发生硬件损坏因素引起的时候，不妨采用设备替代法来依次更换局域网中的交换机或集线器，看看在完成设备替代操作后，网络传输速度能否恢复正常状态。如果在替换交换机、集线器之后，网络故障还无法被排除时，那么问题可能与交换机、集线器无关，此时我们不妨在所涉及的终端电脑中使用ping命令，逐一测试它们的自身IP地址是否设置正常，一旦发现终端电脑自身地址也不能被正常ping通时，那多半是该终端电脑的网卡设备发生了损坏，此时我们只要更换一只新的网卡设备，多半就能将网速变慢的故障现象解决了。
+
+2、解决物理连接引起的故障
+
+局域网的组建从网络布线开始，网络布线可以说是整个网络系统的基础。曾经有人做了一个粗略的估计，大约有一般以上的故障现象与线缆的物理连接有关，网络线缆的制作以及线缆本身的质量因素，都会直接影响局域网网络的稳定运行状态。
+
+我们知道，在使用普通双绞线组网时，为了降低背景噪音和减少串扰，普通双绞线必须按照严格的规定紧密地绞和在一起;例如，T568A标准和T568B标准规定，普通双绞线中的1、2芯号线必须来自一个绕对，专门用于发送数据信息，3、6芯号线也需要来自一个绕对，它是专门用于接受数据信息，用户必须按照这样的标准制作网络线缆，才能在最大限度内降低串扰影响，确保数据信息稳定传输。在实际管理网络的过程中，我们发现网络线缆如果不按T586A、T586B等标准进行制作的话，那么局域网运行就会存在很大的安全隐患;例如使用制作不规范的网络线缆组网时，可能出现两种情况，一种是网络连接速度刚开始的时候是正常的，可是持续工作的时间一长，网络速度就突然变慢了;另外一种情况是网络线缆刚开始工作时，网络传输速度就很慢。前一种故障现象在普通台式电脑上比较明显，不过在笔记本电脑上有时表现为正常，这主要是笔记本电脑自带的网卡设备在质量方面要好于普通台式电脑的网卡设备。
+
+在排查由物理连接引起的网速变速故障时，我们可以使用制作规范的网络线缆来临时替代上网速度缓慢的网络线缆，看看网络速度能不能恢复正常，如果网络传输速度能够恢复正常，那就说明该故障现象与网络连接线缆因素有关。当然，在使用了规范的网络线缆进行连接后，如果终端电脑的上网速度仍然不理想的话，那我们还需要检查一下网卡设备的质量。前面本文曾经提到普通台式电脑的网卡性能比笔记本电脑自带网卡性能要差一些，所以我们在尝试通过交换法排除网速变慢故障现象时，尽量不要使用笔记本电脑来测试网络连接速度是否正常，因为笔记本电脑即使测试发现上网速度正常，也不能排除网络线缆制作存在问题，所以在实际排查网络连线故障的时候，我们应该尽可能地同时使用普通台式电脑和笔记本电脑。
+
+3、解决端口瓶颈引起的故障
+
+当我们感觉到上网传输速度变慢时，不妨在上网高峰期时间，通过专业的网管工具，查看局域网的路由器设备、交换机设备或服务器设备的端口数据流量是否正常，也能通过类似Netstat这样的网管命令对各个重要端口的数据流量进行统计，这样一来我们就能准确地判断出整个局域网的数据传输瓶颈位置在哪里，之后想办法增加重要端口的带宽容量。可以采用的具体措施有很多，比方说通过调整路由器的配置来增加带宽，将局域网网络划分成多个不同的虚拟工作子网，同时在服务器中安装多个网卡设备等等，这些措施都能在一定程度上缓解网络传输瓶颈，提升网络传输速度。
+
+小提示：网络传输瓶颈指的是影响网络传输性能及稳定性的一些相关因素，如网络拓扑结构，网线，网卡，服务器配置，网络连接设备等，现在我们逐一加以简单分析：
+
+1、组网前选择适当的网络拓扑结构是网络性能的重要保障，这里有两个原则应该把握：一是应把性能较高的设备放在数据交换的最高层，即交换机与集线器组成的网络，应把交换机放在第一层并连接服务器，二是尽可能减少网络的级数，如四个交换机级联不要分为四级，应把一个交换机做一级，另三个同时级联在第一级做为第二级;
+
+2、网线的做法及质量也是影响网络性能的重要因素，对于100M设备(包括交换机，集线器和网卡)，要充分发挥设备的性能，应保证网线支持100M，具体是网线应是五类以上线且质量有保障，并严格按照100M网线标准(即568B和568A)做线;
+
+3、网卡质量不过关或芯片老化也容易引起网络传输性能下降或工作不稳定，选择知名品牌可有很好的保障;
+
+4、对某些如无盘网络，游戏网络等对服务器的数据交换频繁且大量的网络环境，服务器的硬件配置(主要是CPU处理速度，内存，硬盘，网卡)往往成为影响网络性能的最大瓶颈，提升网络性能须从此入手;
+
+5、选择适当的网络连接设备(交换机和集线器)同样也是网络性能的重要保障，除选择知名品牌外，网络扩充导致性能下降时应考虑设备升级的必要性。
+
+4、解决网络回路引起的故障
+
+当局域网规模不是很大，终端电脑数量不是很多，组网结构不是很复杂的时候，网络回路现象往往很少会发生;可是在一些组网规模较大的局域网工作环境中，由于组网结构复杂、终端电脑数量较多，为了保证网络能够稳定运行，常常会有一些多余的备用线缆，要是网络管理员操作不小心，无意间将备用线缆同时用上时，那么局域网中就可能形成网络回路。比方说，某单位局域网的网络线缆从中心机房的核心交换机上接到二楼配线间的楼层交换机上，再从二楼楼层交换机上接到办公室，同时从中心机房的核心交换机上又引出一条备用线路直接连到二楼办公室，如果同时将这几条网络线缆接通的话，那么二楼办公室到中心机房之间就会构成网络回路，那么上网数据包就会反复不断地向外发送以及进行数据校验操作，这样一来势必就会影响到局域网网络的传输速度。
+
+为了快速解决由网络回路引起的网速变慢故障现象，我们可以启用局域网核心交换机的网络环回测试功能，利用该功能我们可以快速地查看到究竟哪个交换端口下面存在网络环路现象，找到存在网络环路现象的交换端口后，使用interface命令进入对应交换端口的视图模式状态，同时在该模式状态下执行“shutdown”命令，将故障交换端口暂时关闭掉，以便快速恢复整个局域网的工作状态。之后，赶到故障子网现场，排查网络环路现象，解决问题后，再在对应交换端口的视图模式状态下执行“undo shutdown”命令，这样一来整个网络的工作状态就能恢复正常了。如果局域网中的核心交换机不支持网络环回测试功能时，我们可以采用分区、分段的方法，对网络故障现象进行依次排查。
+
+当然，为了防止日后再次发生网络环路现象，我们日后在组建局域网、进行网络布线时，必须要养成良好的布线习惯：每条网络线缆的显眼位置处打上标签说明，同时对使用备用线缆的位置要做好详细记录，以备日后排查故障时查看使用。
+
+5、解决蠕虫病毒引起的故障
+
+现在有一种类型的蠕虫病毒，它通过普通的电子邮件进行散发传播，一旦上网电脑被这种类型的蠕虫病毒进行攻击时，该电脑就会反复不停地向局域网中的其他电脑发送电子邮件，同时该蠕虫病毒会随机选用本地系统中的一个文件作为附件进行邮件的传播与发送;由于这种病毒邮件发送地址不正确，于是就出现了这样一种局面，那就是若干封电子邮件在排队等候向外发送，发送出去的邮件由于地址不当又被成批地退了回来，如此一来网络传输通道就容易发生堵塞状态，那么网络传输速度自然就会变慢，严重的话能导致整个局域网网络发生瘫痪状态。很显然，这种类型的蠕虫病毒危害性极大，对网络传输速度的影响也是非常严重。
+
+为了解决由蠕虫病毒引起的网速变慢故障现象，我们应该及时对局域网中终端电脑所用的杀毒软件进行升级，升级之后通过杀毒软件对整个局域网所有终端系统进行全面、彻底地病毒清除操作;在清除干净蠕虫病毒之后，为了防止病毒再次袭击终端系统，我们必须及时升级操作系统，同时安装、更新系统补丁程序，并且将平时使用不到或很少使用的系统暂时停用掉，把那些可能带来安全威胁的服务端口给关闭掉，相信这样一来就能有效提高终端系统的运行安全性，那么局域网的运行可靠性同时也能得到有效保障了。
+
+6、解决滥用局域网网络资源引起的故障
+
+排除了局域网硬件故障的原因之后，就需要对局域网软件进行一番监测了。在很多时候，局域网网速慢的原因其实都是局域网内上网人员的不合理上网行为导致的，这在企业局域网中尤其如此。比如，上班时间用迅雷下载、打开视频网站看视频、用网络电视播放软件在线看电影等，都可能极大地消耗局域网网络带宽资源，很容易造成局域网网速很慢的情况发生。

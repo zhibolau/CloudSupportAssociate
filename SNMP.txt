@@ -1,0 +1,8 @@
+SNMP.txt
+
+Simple Network Management Protocol (SNMP) is a popular protocol for network management. It is used for collecting information from, and configuring, network devices, such as servers, printers, hubs, switches, and routers on an Internet Protocol (IP) network.
+
+Automating Network Management
+Large networks with hundreds or thousands of nodes are difficult to manage without a large staff to monitor every computer. SNMP, which is widely used in local area networks (LANs), lets you monitor network nodes from a management host. You can monitor network devices such as servers, workstations, printers, routers, bridges, and hubs, as well as services such as Dynamic Host Configuration Protocol (DHCP) or Windows Internet Name Service (WINS).
+
+Using SNMP, you can monitor network performance, audit network usage, detect network faults or inappropriate access, and in some cases configure remote devices. SNMP is designed to be deployed on the largest possible number of network devices, to have minimal impact on the managed nodes, to have minimal transport requirements, and to continue working when most other network applications fail.

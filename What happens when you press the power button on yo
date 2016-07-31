@@ -1,0 +1,20 @@
+What happens when you press the power button on your PC.txt
+
+When you first power up a PC, the machine goes through several  internal processes before it's ready for you to use. This is called the  boot process, or booting the PC. Boot is short for bootstrap, a  reference to the old adage, "Pull yourself up by the bootstraps," which  means to start something from the very beginning. The boot process is  controlled by the PC's basic input-output system (BIOS).
+The BIOS is software stored on a flash memory chip. In a PC, the BIOS is  embedded on the motherboard. Occasionally, a PC manufacturer will  release an update for the BIOS, and you can carefully follow  instructions to "flash the BIOS" with the updated software.
+Besides  controlling the boot process, the BIOS provides a basic configuration  interface for the PC's hardware components. In that interface, you can  configure such things as the order to read drives during boot and how  fast the processor should be allowed to run. Check your PC's  documentation to find out how to enter its BIOS interface. This  information is often displayed when you first boot the computer, too,  with a message such as, "Press DEL to enter Setup Menu."
+The following is a summary of the boot process in a PC:
+
+1/The power button activates the power supply in the PC, sending power to the motherboard and other components.
+
+2/The  PC performs a power-on self-test (POST). The POST is a small computer  program within the BIOS that checks for hardware failures. A single beep  after the POST signals that everything's okay. Other beep sequences  signal a hardware failure, and PC repair specialists compare these  sequences with a chart to determine which component has failed.
+
+3/The  PC displays information on the attached monitor showing details about  the boot process. These include the BIOS manufacturer and revision,  processor specs, the amount of RAM installed, and the drives detected.  Many PCs have replaced displaying this information with a splash screen  showing the manufacturer's logo. You can turn off the splash screen in  the BIOS settings if you'd rather see the text.
+
+4/The BIOS  attempts to access the first sector of the drive designated as the boot  disk. The first sector is the first kilobytes of the disk in sequence,  if the drive is read sequentially starting with the first available  storage address. The boot disk is typically the same hard disk or  solid-state drive that contains your operating system. You can change  the boot disk by configuring the BIOS or interrupting the boot process  with a key sequence (often indicated on the boot screens).
+
+5/The  BIOS confirms there's a bootstrap loader, or boot loader, in that first  sector of the boot disk, and it loads that boot loader into memory  (RAM). The boot loader is a small program designed to find and launch  the PC's operating system.
+
+6/Once the boot loader is in memory,  the BIOS hands over its work to the boot loader, which in turn begins  loading the operating system into memory.
+
+7/When the boot loader  finishes its task, it turns control of the PC over to the operating  system. Then, the OS is ready for user interaction.

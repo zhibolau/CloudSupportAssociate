@@ -1,0 +1,8 @@
+ICMP.TXT
+
+ICMP (Internet Control Message Protocol) is an error-reporting protocol network devices like routers use to generate error messages to the source IP address when network problems prevent delivery of IP packets. ICMP creates and sends messages to the source IP address indicating that a gateway to the Internet that a router, service or host cannot be reached for packet delivery. Any IP network device has the capability to send, receive or process ICMP messages.
+
+
+it is used by network administrators to troubleshoot Internet connections in diagnostic utilities including ping and traceroute.
+
+ICMP messages also contain the entire IP header from the original message, so the end system knows which packet failed
