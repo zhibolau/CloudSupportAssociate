@@ -1,0 +1,58 @@
+HTTP vs HTTPS.TXT
+
+HTTP
+Http stands for Hyper Text Transfer Protocol. It allows World Wide Web users to transferring information like image, text, video, music, graphic and other files on web pages. Http is basically used to access html pages and also other resources can be accessible using HTTP.  
+
+
+HTTP is a request-response protocol in the client-server computing model. When you enter http:// in front of the address tells the browser to connect over HTTP. For example, when you enter a URL (http://www.abc.com) in your web browser, this sends an HTTP command to the Web server to fetch and transfer the requested web page. Here, your web browser is your client and your website host as a server.
+
+Here is the fact of HTTP:
+The Term HTTP is originated by Ted Nelson.
+HTTP connections uses a port 80 by default.
+HTTP URLs begin with “http://”.
+The first version of HTTP was introduced in 1991 that is HTTP V0.9.
+HTTP V1.0 is specified in RFC 1945 that officially introduced and recognized in 1996.
+HTTP V1.1 is specified in RFC 2616, and was released in January 1997.
+HTTP V2.0 is specified in RFC 7540 and was published in May 2015
+
+
+
+HTTPS
+HTTPS stands for Hypertext Transfer Protocol Secure. HTTPS is a protocol which uses an encrypted HTTP connection by transport-layer security.
+
+
+
+Sometimes, the clients may be exchanging private information with a server, which needs to be secured for preventing some hacking issue. For this reason, HTTPS was developed by Netscape Corporation to allow authorization and secured transactions.
+
+Here is the fact of HTTP:
+HTTPS uses a port 443 by default to transfer the information.
+HTTPS URLs begin with “https://”.
+The HTTPS is first used in HTTPS V1.1 and defined in RFC 2616.
+
+
+Using HTTPS, the computers agree on a "code" between them, and then they scramble the messages using that "code" so that no one in between can read them. This keeps your information safe from hackers.
+
+They use the "code" on a Secure Sockets Layer (SSL), sometimes called Transport Layer Security (TLS) to send the information back and forth.
+
+
+How Does HTTP Work?
+In the beginning, network administrators had to figure out how to share the information they put out on the Internet.
+
+They agreed on a procedure for exchanging information and called it HyperText Transfer Protocol (HTTP).
+
+Once everyone knew how to exchange information, intercepting on the Internet was not difficult. So knowledgeable administrators agreed upon a procedure to protect the information they exchanged. The protection relies on SSL Certificate to encrypt the online data. Encryption means that the sender and recipient agree upon a "code" and translate their documents into random-looking character strings.
+
+The procedure for encrypting information and then exchanging it is called HyperText Transfer Protocol Secure (HTTPS).
+
+With HTTPS if anyone in between the sender and the recipient could open the message, they still could not understand it. Only the sender and the recipient, who know the "code," can decipher the message.
+
+Humans could encode their own documents, but computers do it faster and more efficiently. To do this, the computer at each end uses a document called an "SSL Certificate" containing character strings that are the keys to their secret "codes."
+
+SSL certificates contain the computer owner's "public key."
+
+The owner shares the public key with anyone who needs it. Other users need the public key to encrypt messages to the owner. The owner sends those users the SSL certificate, which contains the public key. The owner does not share the private key with anyone.
+
+The security during the transfer is called the Secure Sockets Layer (SSL) and Transport Layer Security (TLS).
+
+The procedure for exchanging public keys using SSL Certificate to enable HTTPS, SSL and TLS is called Public Key Infrastructure (PKI).
+

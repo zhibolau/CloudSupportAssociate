@@ -1,0 +1,28 @@
+upd based app.txt
+
+Common uses of UDP are for DHCP (Dynamic host configuration protocol), RIP (Routing information protocol), SNMP (Simple network management protocol) and DNS (Domain name service).
+
+UDP: Anything where you don't care too much if you get all data always
+
+Tunneling/VPN (lost packets are ok - the tunneled protocol takes care of it)
+Media streaming (lost frames are ok)
+Games that don't care if you get every update
+Local broadcast mechanisms (same application running on different machines "discovering" each other)
+In situations where you really want to get a simple answer to another server quickly, UDP works best. In general, you want the answer to be in one response packet, and you are prepared to implement your own protocol for reliability or to resend. DNS is the perfect description of this use case. The costs of connection setups are way too high (yet, DNS does support a TCP mode as well).
+
+Another case is when you are delivering data that can be lost because newer data coming in will replace that previous data/state. Weather data, video streaming, a stock quotation service (not used for actual trading), or gaming data comes to mind.
+
+Another case is when you are managing a tremendous amount of state and you want to avoid using TCP because the OS cannot handle that many sessions. This is a rare case today. In fact, there are now user-land TCP stacks that can be used so that the application writer may have finer grained control over the resources needed for that TCP state. Prior to 2003, UDP was really the only game in town.
+
+One other case is for multicast traffic. UDP can be multicasted to multiple hosts whereas TCP cannot do this at all.
+
+
+
+TCP: Almost anything where you have to get all transmitted data
+
+Web
+SSH, FTP, telnet
+SMTP, sending mail
+IMAP/POP, receiving mail
+
+

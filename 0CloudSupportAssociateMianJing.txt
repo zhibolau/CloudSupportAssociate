@@ -474,17 +474,15 @@ the networking part question:
 what is the difference about UDP and TCP, what kind of application base on UDP
 what is FTP? what kind of application it used for?
 what the different between HTTP and HTTPS? and why HTTPs more secure?
+!!!!!!!!!!!!!!!!!!!!!!
 something related with IP address
 I find the questions always go to the details, and ask why it is and try to test your understanding and your passion in technology.
 I did not do well in the trouble shooting, because i did not prepare it at all
 
 for the leadership part, the questions are like: give me an example about how did you deal with multiple tasks, how did you handle deadline, how did you deal with angry clients....
-Show Less
-
 
 28.
-1 DHCN 2 DNS. 3 linux server configuration 4. RAID levels and detail descritpion The first interview was on the phone for about 30 minutes. The interviewer was very ponctual, sympatic and spoke all the time about technical terms and asked me a lot… 
-Show More
+1 DHCN 2 DNS. 3 linux server configuration 4. RAID levels and detail descritpion 
 
 Interview Questions
 1. common ports 2. active directory 3. IPsec 4. DHCP 5. DNS  
