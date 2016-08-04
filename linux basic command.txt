@@ -130,7 +130,7 @@ l        链接，快捷方式
 d        文件夹
 r：read w：write x：executable -：null
  l|rwx|rwx|rwx
-   |所有在|同组其他人|剩下人的权限
+   |所有owner|同组其他人|剩下人的权限
 
 -rw-rw-r-- 1 zhiboliu zhiboliu     25 7月  20 23:57 4
 改变权限：
