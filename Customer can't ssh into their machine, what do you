@@ -1,0 +1,11 @@
+Customer can't ssh into their machine, what do you do.txt
+
+reinstall ssh?
+close iptables?
+reset passwd?
+
+You need to run ssh (the client, and possibly the server) with more verbosity to understand why authentication is failing. For the client, run
+
+ssh -v -v -v username@host 
+On the server end, look in the logs. /var/log/auth.log will give you a pretty good idea about what happens when you try to login, look for messages that contain "sshd". There are a variety of reasons why authentication could be failing, ranging from simple (you aren't using the right username) to more complicated (sshd is configured to use the wrong authentication system).
+

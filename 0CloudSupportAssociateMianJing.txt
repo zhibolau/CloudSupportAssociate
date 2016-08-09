@@ -536,7 +536,7 @@ mine were mostly about Linux, and how to troubleshoot different problems
 38.
 Technical support questions regarding networking/switching, and a strong emphasis on Linux server management/CMD Line (Bash) questions, shell scripting as well
 
-39.
+39. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 IPSEC tunnel/transport mode , main/aggressive mode , BGP MED/LP ,BGP OPEN msg, Website design from network prospective, OSPF neighbor states , port security, linux file system, STP basics 
 
 40.

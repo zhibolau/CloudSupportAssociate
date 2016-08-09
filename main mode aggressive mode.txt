@@ -1,0 +1,41 @@
+
+Just like GRE tunnels, IPSec is found in every single network, whether it’s in the form a Lan2Lan tunnel or a client side remote access VPN. We all know IPSec secures communication between two endpoints using ISAKMP, Diffie-Hellman, and various other encryption and hashing algorithms but how exactly do these protocols work together. We know IPSec will form its tunnel after IKE Phase 1 and Phase 2 so let’s take a look at what goes on during this process:
+
+IKE Phase 1
+
+IKE Phase 1 works in one of two modes, main mode or aggressive mode now of course both of these modes operate differently and we will cover both of these modes.
+
+Main Mode:
+
+IKE Phase 1 operating in main mode works with both parties exchanging a total of 6 packets, that’s right 6 packets is all it takes to complete phase 1.
+
+The first packet is sent from the initiator of the IPSec tunnel to its remote endpoint, this packet contains the ISAKMP policy
+The second packet is sent from the remote endpoint back to the initiator, this packet will be the exact same information matching the ISAKMP policy sent by the initiator.
+The third packet is sent from the initiator to the remote endpoint, this packet contains the Key Exchange payload and the Nonce payload, the purpose of this packet is generate the information for the DH secret key
+This fourth packet as you would expect comes from the remote endpoint back to initiator and contains the remote endpoints Key Exchange and Nonce payload.
+The fifth packet is from the initiator back to the remote endpoint with identity and hash payloads, the identity payload has the device’s IP Address in, and the hash payload is a combination of keys (including a PSK, if PSK authentication is used)
+The sixth packet from the remote endpoint to the initiator contains the corresponding hash payloads to verify the exchange.
+
+
+Aggressive Mode:
+
+IKE Phase 1 operating in aggressive mode only exchanges 3 packets compared to the 6 packets used in main mode. One downside in aggressive is the fact it not as secure as main mode.
+
+The first packet from the initiator contains enough information for the remote endpoint to generate its DH secret, so this one packet is equivalent to the first four packets in main mode.
+The second packet from the remote endpoint back to the initiator contains its DH secret
+The third packet from the initiator includes identity and hash payloads. After the remote endpoint receives this packet it simply calculates its hash payload and verifies it matches, if it matches then phase one is established.
+IKE Phase 2
+
+Now let’s look at IKE Phase 2, IKE Phase 2 occurs after phase 1 and is also known as quick mode and this process is only 3 packets.
+
+Perfect Forward Secrecy PFS, if PFS is configured on both endpoints the will generate a new DH key for phase 2/quick mode.
+Contained in this first packet from the initiator to the remote device are some of the hashes/keys negotiated from phase 1, along with some IPSec parameters IE: Encapsulation (ESP or AH), HMAC, DH-group, and the mode (tunnel or transport)
+The second packet contains the remote endpoint’s response with matching IPSec parameters.
+The last packet is sent to the remote device to verify the other device is still there and is an active peer.
+That last packet concludes the forming an IPSec tunnel and the phase 1/2 process.
+
+Note: These 3 quick mode packets are encrypted
+
+also:
+
+http://rayas-security.blogspot.com/2013/06/ipsec-vpn-main-mode-vs-aggressive-mode.html

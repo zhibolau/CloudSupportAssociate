@@ -5,3 +5,33 @@ IPsec supports two encryption modes: Transport and Tunnel.
 Transport mode encrypts only the data portion (payload) of each packet, but leaves the header untouched. 
 The more secure Tunnel mode encrypts both the header and the payload. On the receiving side, an IPSec-compliant device decrypts each packet.
 For IPsec to work, the sending and receiving devices must share a public key. This is accomplished through a protocol known as Internet Security Association and Key Management Protocol/Oakley (ISAKMP/Oakley), which allows the receiver to obtain a public key and authenticate the sender using digital certificates.
+
+
+http://www.firewall.cx/networking-topics/protocols/870-ipsec-modes.html
+
+IPSec’s protocol objective is to provide security services for IP packets such as encrypting sensitive data, authentication, protection against replay and data confidentiality.
+
+As outlined in our IPSec protocol article, Encapsulating Security Payload (ESP) and Authentication Header (AH) are the two IPSec security protocols used to provide these security services.  Analysing  the ESP and AH protocols is out of this article’s scope, however you can turn to our IPSec article where you’ll find an in-depth analysis and packet diagrams to help make the concept clear.
+
+UNDERSTANDING IPSEC MODES –TUNNEL MODE & TRANSPORT MODE
+
+IPSec can be configured to operate in two different modes, Tunnel and Transport mode. Use of each mode depends on the requirements and implementation of IPSec.
+
+ 
+
+IPSEC TUNNEL MODE
+
+IPSec tunnel mode is the default mode. With tunnel mode, the entire original IP packet is protected by IPSec. This means IPSec wraps the original packet, encrypts it, adds a new IP header and sends it to the other side of the VPN tunnel (IPSec peer).
+
+Tunnel mode is most commonly used between gateways (Cisco routers or ASA firewalls), or at an end-station to a gateway, the gateway acting as a proxy for the hosts behind it.
+
+
+
+
+IPSEC TRANSPORT MODE
+
+IPSec Transport mode is used for end-to-end communications, for example, for communication between a client and a server or between a workstation and a gateway (if the gateway is being treated as a host).  A good example would be an encrypted Telnet or Remote Desktop session from a workstation to a server.
+
+
+
+Transport mode provides the protection of our data, also known as IP Payload, and consists of TCP/UDP header + Data, through an AH or ESP header. The payload is encapsulated by the IPSec headers and trailers. The original IP headers remain intact, except that the IP protocol field is changed to ESP (50) or AH (51), and the original protocol value is saved in the IPsec trailer to be restored when the packet is decrypted.

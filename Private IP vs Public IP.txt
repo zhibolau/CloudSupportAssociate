@@ -1,0 +1,13 @@
+Private IP vs Public IP.txt
+
+Public and private IP (Internet Protocol) addresses ... sometimes called "external" and "internal" IP addresses ... both exist for the same reason: to provide unique identification to every device on a network.
+Here's what they mean:
+Public (external) IP addresses
+A public (or external) IP address is the one that your ISP (Internet Service Provider) provides to identify your home network to the outside world. It is an IP address that is unique throughout the entire Internet.
+Depending on your service, you might have an IP address that never changes (a fixed, or static IP address). But most ISPs provide an IP address that can change from time to time (a dynamic IP address). For the vast majority of users, a dynamic IP address is fine.
+When you're setting up your router, if your ISP issued you a static IP address, you enter it into your router's settings. For a dynamic IP address, you specify DHCP in your router's network settings. DHCP is Dynamic Host Control Protocol. It tells your router to accept whatever public IP address your ISP issues.
+
+Private (internal) IP addresses
+Just as your network's public IP address is issued by your ISP, your router issues private (or internal) IP addresses to each network device inside your network. This provides unique identification for devices that are within your home network, such as your computer, your Slingbox, and so on.
+Similar to the arrangement with public IP addresses, each device on your network has its network configuration settings on DHCP, so it can accept the unique private IP address that your router issues it.
+These private IP addresses never leave your network, just as your public IP address is never used inside your network. The router controls all the network traffic, both within your home network and outside of it, to the Internet. It is the router's job to make sure that data flows to and from all the correct places.

@@ -1,0 +1,27 @@
+Cloud vs Virtualization.txt
+
+virtualization is software that separates physical infrastructures to create various dedicated resources. It is the fundamental technology that powers cloud computing
+
+Virtualization software makes it possible to run multiple operating systems and multiple applications on the same server at the same time 
+
+It enables businesses to reduce IT costs while increasing the efficiency, utilization and flexibility of their existing computer hardware
+
+The technology behind virtualization is known as a virtual machine monitor (VMM) or virtual manager, which separates compute environments from the actual physical infrastructure 
+
+How is virtualization different from cloud computing? 
+
+virtualization is software that manipulates hardware, while cloud computing refers to a service that results from that manipulation
+
+Virtualization is a foundational element of cloud computing and helps deliver on the value of cloud computing,Cloud computing is the delivery of shared computing resources, software or data — as a service and on-demand through the Internet 
+
+The cloud can, and most often does, include virtualization products to deliver the compute service，The difference is that a true cloud provides self-service capability, elasticity, automated management, scalability and pay-as you go service that is not inherent in virtualization
+
+
+
+cloud computing as having the following:
+
+On-Demand Self-Service – can I unilaterally provision computing capabilities?
+Broad Network Access – can I access through multiple clients and devices over network?
+Resource Pooling – can I decouple resources from physical hardware?----》 virtualization
+Rapid Elasticity – can I add and reduce capacity through software?
+Measured Service – who is using what and how much?

@@ -15,3 +15,9 @@ Assuming the DNS request is successful, the client machine now has an IP address
 This HTTP request is sent off to the web server host as some number of packets, each of which is routed in the same was as the earlier DNS query. (The packets have sequence numbers that allow them to be reassembled in order even if they take different paths.) Once the request arrives at the webserver, it generates a response (this may be a static page, served as-is, or a more dynamic response, generated in any number of ways.) The web server software sends the generated page back to the client.
 
 Assuming the response HTML and not an image or data file, then the browser parses the HTML to render the page. Part of this parsing and rendering process may be the discovery that the web page includes images or other embedded content that is not part of the HTML document. The browser will then send off further requests (either to the original web server or different ones, as appropriate) to fetch the embedded content, which will then be rendered into the document as well.
+
+
+What happens when you type an address into a browser and press enter  
+
+The Browser (Firefox, Chrome, Safari, Internet Explorer) checks the cache to see if it already exists, if not it asks the OS for the servers IP address, Then the OS does a DNS lookup after which it replies the IP address to the browser, The browser then opens a TCP connection and sends the HTTP request, the browser receives the HTTP response and may close the TCP connection depending if it decides to use it for another request. If its cacheable, response is stored and the browser decodes the response and renders HTTP response
+

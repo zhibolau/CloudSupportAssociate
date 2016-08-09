@@ -44,3 +44,12 @@ Step 7: Receive the answer
 Armed with the answer, recursive server returns the A record back to your computer. Your computer stores the record in its cache, reads the IP address from the record, then passes this information to your browser. The browser then opens a connection to the webserver and receives the website.
 
 This entire process, from start to finish, takes only milliseconds to complete.
+
+
+
+
+What happens when you type an address into a browser and press enter  
+
+The Browser (Firefox, Chrome, Safari, Internet Explorer) checks the cache to see if it already exists, if not it asks the OS for the servers IP address, Then the OS does a DNS lookup after which it replies the IP address to the browser, The browser then opens a TCP connection and sends the HTTP request, the browser receives the HTTP response and may close the TCP connection depending if it decides to use it for another request. If its cacheable, response is stored and the browser decodes the response and renders HTTP response
+
+
