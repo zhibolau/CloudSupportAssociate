@@ -1,0 +1,85 @@
+BGP Messages Overview.txt
+
+
+1
+
+OPEN message
+
+Used to open BGP sessions
+
+2
+
+UPDATE message
+
+Carries route updates for established BGP sessions
+
+3
+
+NOTIFICATION message
+
+Notifies a peer router of an error condition
+
+4
+
+KEEPALIVE message
+
+Sent between BGP peering routers to verify BGP session
+
+5
+
+ROUTE-REFRESH message
+
+An optional message (negotiated during capability advertisement) that is sent to request dynamic BGP route updates from the Adj-RIB-Out table of a remote BGP speaker
+
+
+
+
+All BGP messages have the same fixed-size header, which contains a marker field that is used for both synchronization and authentication, a length field that indicates the length of the packet, and a type field that indicates the message type (for example, open, update, notification, keepalive, and so on).
+
+This section discusses the following topics:
+
+Open Messages
+Update Messages
+Keepalive Messages
+Notification Messages
+Route-Refresh Messages
+Open Messages
+
+After a TCP connection is established between two BGP systems, they exchange BGP open messages to create a BGP connection between them. Once the connection is established, the two systems can exchange BGP messages and data traffic.
+
+Open messages consist of the BGP header plus the following fields:
+
+Version—The current BGP version number is 4.
+Local AS number—You configure this by including the autonomous-system statement at the [edit routing-options] or [edit logical-systems logical-system-name routing-options] hierarchy level.
+Hold time—Proposed hold-time value. You configure the local hold time with the BGP hold-time statement.
+BGP identifier—IP address of the BGP system. This address is determined when the system starts and is the same for every local interface and every BGP peer. You can configure the BGP identifier by including the router-id statement at the [edit routing-options] or [edit logical-systems logical-system-name routing-options] hierarchy level. By default, BGP uses the IP address of the first interface it finds in the router.
+Parameter field length and the parameter itself—These are optional fields.
+Update Messages
+
+BGP systems send update messages to exchange network reachability information. BGP systems use this information to construct a graph that describes the relationships among all known ASs.
+
+Update messages consist of the BGP header plus the following optional fields:
+
+Unfeasible routes length—Length of the withdrawn routes field
+Withdrawn routes—IP address prefixes for the routes being withdrawn from service because they are no longer deemed reachable
+Total path attribute length—Length of the path attributes field; it lists the path attributes for a feasible route to a destination
+Path attributes—Properties of the routes, including the path origin, the multiple exit discriminator (MED), the originating system’s preference for the route, and information about aggregation, communities, confederations, and route reflection
+Network layer reachability information (NLRI)—IP address prefixes of feasible routes being advertised in the update message
+Keepalive Messages
+
+BGP systems exchange keepalive messages to determine whether a link or host has failed or is no longer available. Keepalive messages are exchanged often enough so that the hold timer does not expire. These messages consist only of the BGP header.
+
+Notification Messages
+
+BGP systems send notification messages when an error condition is detected. After the message is sent, the BGP session and the TCP connection between the BGP systems are closed. Notification messages consist of the BGP header plus the error code and subcode, and data that describes the error.
+
+Route-Refresh Messages
+
+BGP systems send route-refresh messages to a peer only if they have received the route refresh capability advertisement from the peer. A BGP system must advertise the route refresh capability to its peers using BGP capabilities advertisement if it wants to receive route-refresh messages. This optional message is sent to request dynamic, inbound, BGP route updates from BGP peers or to send outbound route updates to a BGP peer.
+
+Route-refresh messages consist of the following fields:
+
+AFI—Address Family Identifier (16-bit).
+Res—Reserved (8-bit) field, which must be set to 0 by the sender and ignored by the receiver.
+SAFI—Subsequent Address Family Identifier (8-bit).
+If a peer without the route-refresh capability receives a route-refresh request message from a remote peer, the receiver ignores the message.

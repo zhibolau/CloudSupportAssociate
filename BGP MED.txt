@@ -1,0 +1,10 @@
+BGP MED.txt
+
+multi-exit discriminator (MED)
+
+MED is an optional nontransitive attribute. MED is a hint to external neighbors about the preferred path into an autonomous system (AS) that has multiple entry points. The MED is also known as the external metric of a route. A lower MED value is preferred over a higher value.
+
+The MED provides a dynamic way to influence another AS in the way to reach a certain route when there are multiple entry points for that AS. BGP follows a systematic procedure for choosing the best path. There are other important attributes such as weight, local preference, originate route, and AS path that are taken in to account before considering the MED attribute. So, if any of these criteria matches, the MED attribute will not be considered.
+
+Another important attribute is Multi_Exit_Disc (Multi-exit discriminator, or MED). This makes it possible to tell a remote AS that if there are multiple exit points on to your network, a specific exit point is preferred.
+

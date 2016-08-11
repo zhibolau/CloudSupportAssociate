@@ -8,3 +8,13 @@ Border Gateway Protocol (BGP) is a standardized exterior gateway protocol design
 The Border Gateway Protocol makes routing decisions based on paths, network policies, or rule-sets configured by a network administrator and is involved in making core routing decisions.
 
 BGP may be used for routing within an autonomous system. In this application it is referred to as Interior Border Gateway Protocol, Internal BGP, or iBGP. In contrast, the Internet application of the protocol may be referred to as Exterior Border Gateway Protocol, External BGP, or EBGP.
+
+
+BGP basics
+
+The current version of BGP is BGP version 4, based on RFC4271.
+BGP is the path-vector protocol that provides routing information for autonomous systems on the Internet via its AS-Path attribute.
+BGP is a Layer 4 protocol that sits on top of TCP. It is much simpler than OSPF, because it doesn’t have to worry about the things TCP will handle.
+Peers that have been manually configured to exchange routing information will form a TCP connection and begin speaking BGP. There is no discovery in BGP.
+Medium-sized businesses usually get into BGP for the purpose of true multi-homing for their entire network.
+An important aspect of BGP is that the AS-Path itself is an anti-loop mechanism. Routers will not import any routes that contain themselves in the AS-Path.
