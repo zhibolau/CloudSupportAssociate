@@ -1,0 +1,7 @@
+stp.txt
+
+The Spanning Tree Protocol (STP) is a network protocol that ensures a loop-free topology for any bridged Ethernet local area network
+
+The main purpose of STP is to ensure that you do not create loops when you have redundant paths in your network. Loops are deadly to a network.
+
+

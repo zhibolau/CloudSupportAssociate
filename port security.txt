@@ -1,0 +1,17 @@
+port security
+
+Port security features help protect the access ports on your device against the loss of information and productivity that such attacks can cause. attacks such as address spoofing (forging) and Layer 2 denial of service (DoS) 
+
+Port security is a layer two traffic control feature on Cisco Catalyst switches. It enables an administrator configure individual switch ports to allow only a specified number of source MAC addresses ingressing the port
+
+Violation Mode
+Port security can be configured to take one of three actions upon detecting a violation:
+shutdown (default) ; The interface is placed into the error-disabled state, blocking all traffic. 
+protect ; Frames from MAC addresses other than the allowed addresses are dropped; traffic from allowed addresses is permitted to pass normally. 
+restrict ; Like protect mode, but generates a syslog message and increases the violation counter.
+By changing the violation mode to restrict, we are still alerted when a violation occurs, but legitimate traffic remains unaffected
+
+Maximum MAC Addresses
+By default, port security limits the ingress MAC address count to one. This can be modified
+
+
