@@ -9,6 +9,7 @@ You can track latency to local and internet sites using a tool like SmokePing. (
 
 Your switches should track broadcast packets vs unicast packets. Graph that ratio.
 Look for a large number of TCP retransmissions and \or TCP resets. also look for a high percentage of broadcast traffic
+A RST packet is sent either in the middle of the 3-way handshake when the server rejects the connection or is unavailable OR in the middle of data transfer when either the server or client becomes unavailble or rejects further communication without the formal 4-way TCP connection termination process.
 
 I also like to monitor traceroutes (checking domain names of ISP hops between myself 'important' sites).
 

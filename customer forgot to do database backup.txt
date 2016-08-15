@@ -1,0 +1,14 @@
+customer forgot to do database backup.txt
+
+data maintainnence
+if customer does not backup, we will do it for customers. ???
+
+data recovery ???
+
+auto back, replicaiton
+
+there should be 2 or 3 at lease backup for a client database.
+
+database back may have 3 machines.
+they should be in diff physical locations just in case sth bad happens.
+file, database
