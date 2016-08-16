@@ -547,7 +547,7 @@ On-site, I met with a couple engineers, and several managers. These were a mix o
 Interview Questions
 If you were interviewing you, what are the three questions you would be asking?  
 
-41.
+41.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 because of non disclosure agreement, I won't be able to say the question but just make sure you focus on neworking (as they will go deep om this), DNS, TCP/IP, FiREWALL, LOAD BALANCER etc. And most importantly please, please and please read and understand amazon leadership principle. If you really wanna work at amazon, you will need not only to understand the principles but been able to relate to it and come up with a scenario when you applied the principle.
 
 42.
@@ -571,7 +571,7 @@ Troubleshooting windows and Internet, cloud computing, AWS troubleshooting and s
 VPN, virtualization
 Difference between ospf and BGP
 
-45.
+45.！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 
 Tell me about a time when a client was not happy, what happened, and how did you handle that?
 

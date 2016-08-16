@@ -1,0 +1,16 @@
+GPO IN AD.txt
+Group Policy Objects (GPO) 
+
+In an Active Directory environment, Group Policy is an easy way to configure computer and user settings on computers that are part of the domain.  An Active Directory environment means that you must have at least one server with the Active Directory Domain Services installed.  Group Policy allows you to centralize the management of computers on your network without having to physically go to and configure each computer individually.  If you need to manage computers in a large company, it is almost impossible without using Group Policy.  In order to use Group Policy editor in a domain environment, you must use an administrator account.  A standard domain user account is not in the local Administrators group and will not have the proper permissions to configure Group Policies.
+
+Group Policy objects
+GPOs contain policy settings. You can think of GPOs as policy documents that apply their settings to the computers and users within their control. If GPOs are policy documents, then the GPMC is like Windows Explorer. You use the GPMC to create, move, and delete GPOs just as you use Windows Explorer to create, move, and delete files.
+
+Group Policy is a tool that is available to administrators that are running a Windows 2000 or later Active Directory Domain. It allows for centralized management of settings on client computers and servers joined to the domain as well as providing a rudimentary way to distribute software.
+
+Settings are grouped into objects called Group Policy Objects (GPOs). GPOs are linked to an Active Directory organizational unit (OU) and can be applied to users and computers. GPOs cannot be applied to groups directly, though you can use security filtering or item-level targeting to filter policy application based on group membership.
+That's cool, what can it do?
+
+Anything.
+
+Seriously, you can do anything that you want to users or computers in your domain. There are hundreds of pre-defined settings for things like folder redirection, password complexity, power settings, drive mappings, drive encryption, Windows Update, and so on. 

@@ -1,0 +1,112 @@
+basic firewall questions.txt
+
+Q. What is a firewall?
+
+A: A firewall is used to provide security to the private networks connected to the internet. They can be implemented as hardware or software, or a combination of both. All incoming and outgoing network traffic are examined and accepted/rejected by the firewall as per defined rules.
+
+Q. What is the difference between network gateway and a firewall?
+
+A: A network gateway joins two networks together and a network firewall protects a computer network against unauthorized incoming or outgoing access. Network firewalls may be hardware devices or software programs.
+
+Q. What is the difference between IPS and a firewall?
+
+A: The primary function of a firewall is to prevent/control traffic flow from an untrusted network (outside). A firewall is not able to detect an attack in which the data is deviating from its regular pattern, whereas an IPS can detect and reset that connection as it has inbuilt anomaly detection.
+
+Q. What is a transparent firewall?
+
+A: A transparent firewall is considered as Layer 2. Deploying a new firewall into a network can be a complicated process due to various issues (e.g. IP address reconfiguration, network topology changes, current firewall etc.) because the firewall is not a routed hop and you can easily introduce a transparent firewall into an existing network.
+
+Q. What is packet filtering?
+
+A: Packet filtering is the process of permitting or blocking ip packets based on source and destination addresses, ports, or protocols. The packet filter examines the header of each packet based on a specific set of rules, and on that basis, decides to prevent it from passing or allow. Packet filtering is also part of a firewall program for protecting a local network from unwanted access.
+
+Q. Define stateful inspection?
+
+A: Stateful inspection is known as dynamic packet filtering and is a firewall technology that monitors the state of active connections and uses this information to determine which network packets are allowed through the firewall. Stateful inspection analyses packets down to the application layer.
+
+Q. What is the Public Key Encryption?
+
+A: Public key encryption uses public and private key for encryption and decryption. In this mechanism, public key is used to encrypt messages and only the corresponding private key can be used to decrypt them. To encrypt a message, a sender has to know the recipient’s public key.
+
+Q. Define Digital Signatures
+
+A: Digital signature is an attachment to an electronic message used for security purposes. It is used to verify the authenticity of the sender.
+
+Q. What is Authorization?
+
+A: Authorization is a security mechanism used to determine user/client privileges or access levels related to network resources, including firewalls, routers, switches and application features. Authorization is normally preceded by authentication and during authorization. It’s system that verifies an authenticated user’s access rules and either grants or refuses resource access.
+
+Q. What is stateful failover?
+
+A: Every time a session is created for a flow of traffic on the primary node, it is synced to the secondary node. When the primary node fails, sessions continue to pass traffic through the secondary node without having to re-establish.
+
+Q. What is VPN and describe IPsec VPN
+
+A: Virtual Private Network (VPN) creates a secure network connection over a public network such as the internet.
+
+IPsec VPN means VPN over IP Security allows two or more users to communicate in a secure manner by authenticating and encrypting each IP packet of a communication session.
+
+Q. What is Site to Site and remote access VPN?
+
+A: A site-to-site VPN allows offices in multiple locations to establish secure connections with each other over a public network such as the Internet. Site-to-site VPN is different from remote-access VPN as it eliminates the need for each computer to run VPN client software as if it were on a remote-access VPN.
+
+Q. How do you check the status of the tunnel’s phase 1 & 2 ?
+
+A: Use following commands to check the status of tunnel phases:
+
+Phase 1 : show crypto isakmp and State : MM_ACTIVE
+
+Phase 2 : show crypto ipsec sa
+
+Note: if you have lot of tunnels and the output is confusing use a ‘show crypto ipsec sa peer 12.12.12.12’ command instead.
+
+Q. What is SSL VPN? How it is different from IPsec VPN?
+
+A: SSL VPN provides remote access connectivity from almost any internet enabled location without any special client software at a remote site. You only need a standard web browser and its native SSL encryption.
+
+IPsec is a dedicated point-to-point fixed VPN connection where SSL VPNs provides anywhere connectivity without any configuration or special software at remote site.
+
+Q. What is GRE and why is it required?
+
+A: Generic Routing Encapsulation (GRE) is a protocol that encapsulates packets in order to route other protocols over IP networks.
+
+GRE enables a wrapper to be placed around a packet during transmission of the data. A receiving GRE removes the wrapper, enabling the original packet to be processed by the receiving stack.
+
+Advantages of GRE tunnels include the following:
+
+GRE tunnels connect discontinuous sub-networks.
+GRE tunnels allow VPNs across wide area networks (WANs).
+GRE tunnels encase multiple protocols over a single-protocol backbone.
+GRE tunnels provide workarounds for networks with limited hops.
+Q. Firewalls work at what layer? Define firewall generations and their roles.
+
+A: Firewalls work at layer 3, 4 & 7. First generation firewalls provide packet filtering and they generally operate at layer 3 (Network Layer). Second generation firewalls operate up to the Transport layer (layer 4) and records all connections passing through it and determines whether a packet is the start of a new connection, a part of an existing connection, or not part of any connection. Second generation firewall is mainly used for Stateful Inspection.
+
+Third generation firewalls operate at layer 7. The key benefit of application layer filtering is that it can “understand” certain applications and protocols (such as File Transfer Protocol (FTP), Domain Name System (DNS), or Hypertext Transfer Protocol (HTTP)).
+
+Q. What is DoS attack? How can it be prevented?
+
+A: DoS (Denial of Service) attack can be generated by sending a flood of data or requests to a target system resulting in a consume/crash of the target system’s resources. The attacker often uses ip spoofing to conceal his identity when launching a DoS attack.
+
+Q. What is IP Spoofing?
+
+A: An IP spoofing attack enables an attacker to replace its identity as trusted for attacking host. For example, if an attacker convinces a host that he is a trusted client, he might gain privileged access to a host.
+
+Q. What are the security-levels in cisco ASA?
+
+A: ASA uses security levels to determine the parameters of trust given to a network attached to the respective interface. The security level can be configured between 0 to 100 where higher number are more trusted than lower. By default, the ASA allows packets from a higher (trusted) security interface to a lower (untrusted) security interface without the need for an ACL explicitly allowing the packets.
+
+Q. What is AAA?
+
+A: AAA stands for authentication, authorization and accounting, used to control user’s rights to access network resources and to keep track of the activity of users over a network. The current standard by which devices or applications communicate with an AAA server is the Remote Authentication Dial-In User Service (RADIUS).
+
+Q. What is IPS? How does it work?
+
+A: An Intrusion Prevention System (IPS) is a network security/threat prevention technology that examines network traffic flows to detect and prevent vulnerability exploits. An Intrusion Prevention System can play a good role to protect against various network security attacks such as brute force attacks, Denial of Service (DoS) attacks, and vulnerability detection. Moreover, an IPS also ensures prevention against protocol exploits.
+
+Intrusion Prevention System uses four types of approaches to secure the network from intrusions which include:
+
+Signature-Based
+Anomaly-Based
+Policy-Based
+Protocol-Analysis-Based

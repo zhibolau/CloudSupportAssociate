@@ -1,0 +1,70 @@
+FSMO roles in Active Directory.txt
+
+Flexible Single Master Operation 
+
+There are five FSMO roles:
+
+Domain-wide operations master roles:
+Primary domain controller PDC emulator (one per domain): This role allows Windows Server 2003 to act as a Windows NT primary domain controller (PDC), and it provides replication support for Windows NT-based backup domain controllers (BDCs). In addition, this role assists with time and group policy synchronization.
+
+Infrastructure master (one per domain): This role is responsible for updating the group-to-user references whenever the members of groups change or receive new names.
+
+Relative ID (RID) master (one per domain): This role ensures that every object created has a unique identification number.It is the task of RID master to allot sequences of relative IDs to each of the (numerous) domain controllers in its domain.When a domain controller creates a user, group, or computer object, a unique security ID (SID) is assigned to the object
+
+Forest-wide operations master roles:
+Schema master (one per forest): This role is responsible for maintaining and modifying the Active Directory schema.
+
+Domain naming master (one per forest): This role is responsible for the addition and deletion of domains in a forest.
+
+PDC Emulator
+
+The holder of the PDC Emulator role is responsible for the following tasks within a domain where it is authorative for:
+1Provide time service. An accurate time syncronisation is necessary for Kerberos authentication. Per default, all Windows clients in a domain retrieve their time from the DC owning the PDC Emulator role in their domain. In a multi-domain environment, each PDC Emulator in a domain syncronizes its time with the PDC Emulator at the root of the AD forest. The root PDC Emulator is configured to gather the time from an external source. Windows DCs automatically follow this hierarchy, while Samba DCs ntpd must be configured accordingly.
+2Password changes performed by other DCs in a domain are replicated preferentially to the PDC Emulator.
+3All functionality provided by an NT4-style PDC, is handled by the PDC Emulator. Nevertheless, an AD DC owning this role, is something completely different than an NT4-style PDC! Windows 2000 or later clients don't use that functions.
+4Account lockouts are processed by the PDC Emulator.
+5Authentication failures on any DC in a domain caused of a wrong password are forwarded to the PDC emulator, before the password failure message is reported to the user.
+6The Group Policy Management Console contact the DC owning this rule per default.
+In large environments, the DC owning the PDC Emulator role, can have high CPU utilization because of pass-thru authentication, password changes and time sycronisation.
+There is one PDC Emulator per domain.
+This DC should, if possible, be available all the time, because an accurate time on all machines in a domain is required for Kerberos. If your clients are configured to use a different time source and you don't have pre-Windows 2000 clients, then the temporary absence may be less critical.
+
+RID Master
+
+The RID Master role owner is responsible for answering RID pool requests from all DC within a domain. It is also responsible for moving objects into another domain and removing them from a domain.
+All security objects like e. g. user/machine accounts and groups are identified by an SID. The objects SID containts the domain SID, which is equal for all objects within a domain, and an RID, that is unique in a domain.
+To allow security objects to be created on all DCs, each contain a so-called RID pool. This is a range of, per default, 500 domain-wide unique RIDs, assigned from the RID Master to each DC. If a security object is created on a DC, then the RID is taken from this pool, to ensure, that it's unique in the domain. If the threshold falls below 50%, then the DC send a RID pool request to the RID Master. This assignes unallocated RIDs and responds them to the requesting DC.
+There is one RID Master per domain.
+This DC must be online when a new DC is promoted in a domain, to assign a RID pool. Also it must be available, when existing DCs update their standby RID pool.
+On the other side, if the RID Master is offline, then it's only possible to create new security objects on each DC, until it's local RID pool is empty. If the RID pools on all DC gets empty, then no further objects can be created. Also it's not possible to join additional DCs while the RID Master of a domain is offline.
+
+Schema Master
+
+The DC holding the role Schema Master is the only one in an Active Directory forest, that is allowed to update the directory schema. Once the update is completed, the changes are replicated to all other DCs in the forest.
+The schema partition, which is existing on all DCs, is named „schema naming context“ and located in CN=schema,CN=configuration,DC=<domain>. Updates are done only on the Schema Master.
+There is one Schema Master per forest.
+This DC must be online when schema updates are performed.
+
+Domain Naming Master
+
+The holder of this role is the only DC, that is responsible for changes in the forest-wide domain name space. This means that this DC is the only one which can add or remove a domain, trusts to external directories and application partitions to/from the forest.
+The domain naming information are stored in the partition „Configuration Naming Context“ in CN=Partitions,CN=Configuration,DC=<domain>. This partition exists on all DCs, but is only updated on the Domain Naming Master.
+There is one Domain Naming Master per forest.
+This DC must be online when trusts are established with external directories and domains and application partitions are added/removed to/from the forest.
+
+Infrastructure Master
+
+The DC owning the Infrastructure Master role is responsible for updating objects SID and Distinguished Names in a cross-domain object reference. This is used for example, if a user from one domain is added to a security group of a different domain.
+There is one Infrastructure Master per domain.
+Even if a Infrastructe Master is irrelevant in a forest with just one domain, the role exists. If this DC is temporary offline, then cross-domain changes aren't possible.
+
+Domain DNS Zone Master
+
+The DC owning the Domain DNS Zone Master role is responsible for coordinating the adding or deleting of any AD-integrated DNS zones on the DCs with DNS servers that host the domain.
+There is one Domain DNS Zone Master per domain.
+
+Forest DNS Zone Master
+
+The DC owning the Forest DNS Zone Master role is responsible for coordinating the adding or deleting of the forest-wide records on the DNS servers that host the top-level DNS zone. These records contain the names of the Global Catalog (GC) servers.
+There is one Forest DNS Zone Master per forest.
+

@@ -1,0 +1,20 @@
+OSPF VS BGPP.txt
+
+BGP vs OSPF
+
+There are various ways that data packets can be moved through a network. Routing is the general term that refers to the way in which those packets are moved through a network. Normally, ways which define the formats of packet transfer in a network are known as routing protocols.
+
+There are two types of routing, namely, static and dynamic. Static routing is where packets move through a network with the same identical path, all the way to their destination. Static routing is best suited for small networks, while dynamic routing is better suited on larger networks, for instance, the internet.
+
+For dynamic routing, packets can be channeled to another path (route) on the fly by routers, given the path is deemed a better one suited to reach the intended destination. For instance, if a destination can be reached through several routes, routers will normally self-configure to route the packets on the shortest path available, although, a shorter path here refers to one with less hops, as opposed to shorter in distance. Routers reprogram their routing tables by ‘communicating’ with each other using routing protocols. Among the most known protocols are the Routing Information Protocol (RIP), Open Shortest Path First (OSPF), and the Border Gateway Protocol (BGP).
+
+The OSPF will always search for the fastest route, and not the shortest, in spite of its name. Routers using the OSPF protocol will verify the status of the other routers to which they have access, frequently sending a message. From this, they can ascertain a router’s status, and whether it is online. In regards to OSPF, routers will know all the available paths possible, not only the shortest, and they will also permit load balancing, where a router may split the datagram evenly between the available paths to a destination. OSPF is mainly used on smaller scale networks that are centrally administered.
+
+The BGP protocol is mainly used on very large-scale networks, like the internet. As such, routers on the internet use BGP protocol, and it is classified as an external gateway protocol, while OSPF is an internal gateway protocol. BGP can either be Internal or External. Internal BGP is where the protocol is used by a collection of routers and client machines under the same administration unit, which is known as an autonomous system. The external BGP is where the protocol is running under two autonomous systems that are different.
+
+BGP is more complicated than OSPF, as it employs various attributes in determining the best path for a datagram.
+
+Summary:
+BGP is the Border Gateway Protocol, while OSPF is the Open Shortest Path First.
+BGP is used on larger scale networks, like the internet, while OSPF is used on networks which under the same administration.
+BGP is much more complicated than OSPF.

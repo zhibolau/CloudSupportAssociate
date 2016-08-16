@@ -1,0 +1,23 @@
+what are the aspects of setting up a VPN connection between two sites.txt
+
+A Virtual Private Network (VPN) is a connection between two endpoints - a VPN router, for instance – in different networks that allows private data to be sent securely over a shared or public network, such as the Internet. This establishes a private network that can send data securely between these two locations or networks through a "tunnel." A VPN tunnel connects the two PCs or networks and allows data to be transmitted over the Internet as if it were still within those networks. It is a connection secured by encrypting the data sent between the two networks.
+
+To setup a VPN Tunnel on a Linksys router you need to perform four steps:
+
+Connecting Devices Together
+Verifying the VPN Settings Needed on the Two Routers
+Configuring VPN Tunnel settings on Router A
+Configuring VPN Tunnel settings on Router B
+
+Pick your protocol
+When choosing a networking protocol for your VPN, you need worry only about the four most popular ones. Here's a quick rundown, including the strengths and weaknesses of each.
+
+Point-to-Point Tunneling Protocol (PPTP) is the least secure VPN method, but it’s a great starting point for your first VPN because almost every operating system supports it, including Windows, Mac OS, and even mobile OSs.
+
+Layer 2 Tunneling Protocol (L2TP) and Internet Protocol Security (IPsec) are more secure than PPTP and are almost as widely supported, but they are also more complicated to set up and are susceptible to the same connection issues as PPTP is.
+
+Secure Sockets Layer (SSL) VPN systems provide the same level of security that you trust when you log on to banking sites and other sensitive domains. Most SSL VPNs are referred to as "clientless," since you don't need to be running a dedicated VPN client to connect to one of them. They're my favorite kind of VPN because the connection happens via a Web browser and thus is easier and more reliable to use than PPTP, L2TP, or IPsec.
+
+OpenVPN is exactly what it sounds like: an open-source VPN system that's based on SSL code. It's free and secure, and it doesn't suffer from connection issues, but using OpenVPN does require you to install a client since Windows, Mac OS X, and mobile devices don't natively support it.
+
+In short: When in doubt, try to use SSL or OpenVPN. Keep in mind that some of the services highlighted in the next section don’t use these protocols. Instead, they use their own proprietary VPN technology.
