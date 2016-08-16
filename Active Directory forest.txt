@@ -1,0 +1,14 @@
+Active Directory forest.txt
+
+An Active Directory forest is the highest level of organization within Active Directory. Each forest shares a single database, a single global address list and a security boundary. By default, a user or administrator in one forest cannot access another forest.
+
+Forests, trees, and domains
+The Active Directory framework that holds the objects can be viewed at a number of levels. The forest, tree, and domain are the logical divisions in an Active Directory network.
+
+Within a deployment, objects are grouped into domains. The objects for a single domain are stored in a single database (which can be replicated). Domains are identified by their DNS name structure, the namespace.
+
+A domain is defined as a logical group of network objects (computers, users, devices) that share the same Active Directory database.
+
+A tree is a collection of one or more domains and domain trees in a contiguous namespace, linked in a transitive trust hierarchy.
+
+At the top of the structure is the forest. A forest is a collection of trees that share a common global catalog, directory schema, logical structure, and directory configuration. The forest represents the security boundary within which users, computers, groups, and other objects are accessible.

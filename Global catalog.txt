@@ -1,0 +1,14 @@
+Global catalog.txt
+
+The global catalog is the set of all objects in an Active Directory Domain Services (AD DS) forest. A global catalog server is a domain controller that stores a full copy of all objects in the directory for its host domain and a partial, read-only copy of all objects for all other domains in the forest.Global catalog servers respond to global catalog queries.
+
+A global catalog server:
+Finds objects.
+Supplies user principal name authentication.
+Validates object references within a forest.
+Supplies universal group membership information in a multiple-domain environment.
+
+
+Every domain controller in a forest stores three full writable directory partitions: a domain directory partition, a schema directory partition, and a configuration directory partition. A Global Catalog is a domain controller that stores these writable directory partitions, as well as a partial, read-only copy of all other domain directory partitions in the forest. The additional directory partitions are "partial" because, although they collectively contain every object in the directory, only a limited set of specific attributes are included for each object. The Global Catalog is built automatically by the Active Directory replication system.
+All of the directory partitions on a Global Catalog server, whether full or partial partitions, are stored in a single directory database (Ntds.dit) on that server. There is no separate storage area for Global Catalog attributes; they are treated as additional information in the domain controller directory database.
+When a new domain is added to the forest, the information about the new domain is stored in the configuration directory partition, which reaches the Global Catalog server (and all domain controllers) through replication of forest-wide information. When a new Global Catalog server is designated, this information is also stored in the configuration directory partition and replicated to all domain controllers in the forest.

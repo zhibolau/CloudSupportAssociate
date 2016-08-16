@@ -1,0 +1,23 @@
+User not authorized to rdp error.txt
+
+How To Fix Connection Was Denied RDP Errors
+When a user tries to RDP into a server or workstation they may get the error “The connection was denied because the user account is not authorized for remote login”. The cause of this error is really common but easy to fix.
+
+
+The most common cause of the connection was denied error is either the user is not part of the Remote Desktop User Group or the local security policy is not configured to allow remote access.
+
+If the user is already in the Remote Desktop User Group but the error “The connection was denied because the user account is not authorized for remote login” persists then have a look at local security policy of the server or workstation you are trying to RDP into.
+
+Click Start > Run and type: secpol.msc
+
+Expand Local Policies and click on User Right Assignment. This should now bring up more options in the right window of the Local Security Policy, as shown below.
+
+Find Allow log on through Remote Desktop Services, right click on it and select Properties. You will now have the option to Add User or Group.
+
+If this is a new server/workstation deployment you probably won’t have the Remote Desktop User Group listed. If the RDP group is already listed here, try and add the individual user that is getting the error.
+
+Once you add the Remote Desktop Group or User then RDP should work but to be on the safe side, ensure the Remote Desktop service Logon account is the Network System and not as a local service.
+
+
+in the allow list, add the user name
+

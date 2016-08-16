@@ -1,0 +1,33 @@
+Best security practices for windows servers.txt
+
+Best Practices for Security Fundamentals
+ 
+□
+Physically secure your computers
+□
+Apply the most recent security updates to all computers
+□
+Protect against unauthorized administrators 
+□
+Enforce role separation to limit administrative exposure
+□
+Design for defense in depth
+□
+Create and maintain secure baselines for all systems
+□
+Use strong passwords or pass phrases 
+□
+Control access to exported files
+□
+Secure package source files
+
+1: Reduce the attack surface whenever possible
+2: Use only reputable applications
+3: Use a normal user account when you can
+4: Create multiple Administrator accounts
+5: Don't go overboard with audit logging
+6: Make use of local security policies
+7: Review your firewall configuration
+8: Practice isolation of services
+9: Apply security patches in a timely manner
+10: Make use of the Security Configuration Wizard
