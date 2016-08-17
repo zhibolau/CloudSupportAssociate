@@ -1,0 +1,19 @@
+What shared folder exists on domain controllers and is used to store login scripts.txt
+
+What shared folder exists on all domain controllers and is used to store Group Policy objects, login scripts, and other files that are replicated domain-wide?
+A. SYSVOL 
+
+
+"set" command can get all path settings
+
+
+SYSVOL
+
+SYSVOL is a shared folder which contains files which is common for the domain. This share will be created automatically when set up the DC. The default file location is C:\Windows\SYSVOL but it can be change during the DC setup.
+
+C:\WINDOWS\sysvol\sysvol\*yourdomain*\scripts
+
+the scripts folder is shared with the name NETLOGON
+
+this is by default installation
+yourdomain is the name of your domain

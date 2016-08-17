@@ -1,0 +1,45 @@
+Impact on server system resources.txt
+
+Most software uses these four system resources:
+Processor (CPU)
+
+Memory (RAM and paging file)
+
+Network
+
+Disk !!!!!!!!!!!
+
+The resources are finite, and usage of them must be balanced to prevent degradation in performance. When a resource is overloaded, it becomes a source of slowdowns in the functioning of the system; this is known as a bottleneck.
+
+Disk performance factors
+The hard disk is the most flexible of the system resources. Disks are relatively inexpensive compared to upgrades to the other subsystems and can be configured in ways that improve the responsiveness of the dependent applications.
+
+Network performance factors !!!!!!!!!!!!!!!!!!!!!!!
+The network resource is highly dependent on your organization's network topology. Some variables that can affect network performance include:
+Network speed (for example, 100 megabits per second (Mbps) or gigabit Ethernet).
+
+Number of network adapters in the Client Security servers.
+
+Performance capabilities of the network adapters.
+
+Current bandwidth utilization (prior to Client Security).
+
+Speed, saturation, and latency of existing slow links.
+
+Memory performance factors
+The Client Security use of RAM and paging file resources is based on the following actions:
+Receipt of Client Security agent data into the MOM queue
+
+Transmission of heartbeat requests from MOM
+
+Database transactions that store Client Security agent data
+
+SQL Server DTS transactions to move data from the collection database to the reporting database
+
+Database grooming
+
+Report generation
+
+Processor performance factors
+The processors on a server should average no more than 50–60 percent usage, so that processor resources are available for peak usage times. 
+

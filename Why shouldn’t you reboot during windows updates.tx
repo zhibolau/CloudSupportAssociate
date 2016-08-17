@@ -1,0 +1,10 @@
+Why shouldn’t you reboot during windows updates.txt
+
+It all depends on what the update is doing, and at what particular time you shut it down during that process... Possible outcomes include:
+
+Nothing at all happening, and Windows resuming the installation process next time you shutdown.
+A non-vital program file becomes corrupted and causes some feature of the OS to become unusable and crash.
+Which could possibly be fixed by using Windows Restore to "restore Windows to an earlier state."
+A non-bootable system that has to fixed using one of two methods:
+Using a Windows Recovery CD to check and repair errors.
+A complete re-install of Windows.

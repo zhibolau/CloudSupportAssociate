@@ -1,0 +1,8 @@
+list network routes in windows.txt
+
+route print
+
+or
+
+netstat -rn
+

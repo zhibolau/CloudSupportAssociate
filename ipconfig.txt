@@ -1,0 +1,32 @@
+ipconfig.txt
+
+Ipconfig. Displays all current TCP/IP network configuration values and refreshes Dynamic Host Configuration Protocol (DHCP) and Domain Name System (DNS) settings. Used without parameters, ipconfig displays the IP address, subnet mask, and default gateway for all adapters.
+
+
+Windows IP 配置
+
+
+无线局域网适配器 本地连接* 2:
+
+   媒体状态  . . . . . . . . . . . . : 媒体已断开连接
+   连接特定的 DNS 后缀 . . . . . . . :
+
+无线局域网适配器 WLAN:
+
+   连接特定的 DNS 后缀 . . . . . . . :
+   本地链接 IPv6 地址. . . . . . . . : fe80::85d5:8ec9:bacd:db26%7
+   IPv4 地址 . . . . . . . . . . . . : 192.168.31.249
+   子网掩码  . . . . . . . . . . . . : 255.255.255.0
+   默认网关. . . . . . . . . . . . . : 192.168.31.1
+
+隧道适配器 isatap.{E55B2C77-793C-43FF-9F6A-971C93B99356}:
+
+   媒体状态  . . . . . . . . . . . . : 媒体已断开连接
+   连接特定的 DNS 后缀 . . . . . . . :
+
+隧道适配器 Teredo Tunneling Pseudo-Interface:
+
+   连接特定的 DNS 后缀 . . . . . . . :
+   IPv6 地址 . . . . . . . . . . . . : 2001:0:9d38:6abd:96:1bc9:cddc:b443
+   本地链接 IPv6 地址. . . . . . . . : fe80::96:1bc9:cddc:b443%5
+   默认网关. . . . . . . . . . . . . : ::

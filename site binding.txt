@@ -1,0 +1,32 @@
+site binding.txt
+
+You can assign multiple bindings to a site when you have site content that serves different purposes or for which you must use a different protocol. For example, a commerce site might have an application that requires that users log on to an account to purchase merchandise. The company hosts the site over HTTP, but users must log on to their account on an HTTPS page. In this example, the site would have two bindings: one for the HTTP portion and one for the HTTPS portion.
+Out of the box, you cannot add bindings for protocols other than HTTP and HTTPS by using IIS Manager. If you want to add a binding for a different protocol, such as a protocol supported by Windows Communication Foundation (WCF), you must use one of the other administration tools to do this. However, if you download and install the new IIS 7 File Transfer Protocol (FTP) server, you can add FTP bindings by using IIS Manager. There might also be other modules or third-party functionality available for download that extend the UI.
+
+You can configure binding information when you create a Web site, or you can edit the binding information after you create the site. Binding information includes the protocol that clients use to communicate with the site, the site's IP address, the port number, and a host header.
+
+The <binding> element contains two attributes to configure the binding information: bindingInformation and protocol. The bindingInformation attribute contains the IP address, the port number and, optionally, the host header for the site. The protocol attribute defines the protocol to use to communicate with the site.
+
+the easiest way to do this is to change the port binding on each website. This takes minimal configuration and you can place a website on any port you want (I recommend ports over 1024...to a maximum of 65000)
+
+For example, your default site will automatically be on port 80. Place site 2 on Port 2000. Then you can access your default site like you have above, and you can access site 2 with a similar url like http://192.168.2.1:2000/mySubSite/index.html. Notice the port is specified in the url using the :[port] at the end.
+
+you COULD rig up multiple sites on one port using host-headers but you'd have to do more configurations for that to work because you now have to also manage the host names being linked to your IP address. If you just want everything locally then you'd have to add entries to the host file on your local computer to direct the domain name to your localhost and then configure IIS to use that domain name as the host-header for each website. It's really not too difficult but it's pretty common just to use different ports if you're running things locally. 
+
+
+Yes, you can have multiple sites on the same IP address and port. It is called binding by domain name.
+
+Open ISS and go to your first default site (one that is functional) and then go to edit bindings. You will see by default it states "http: Port 80 IP Address *"
+
+Notice the hostname is blank? This is where you can tie a domain name to that exact port. Fill out domain name on both your site bindings. This means when someone comes in from that exact domain name, it knows where to forward traffic too. If port 80 inbound doesn't match either of those two domain names, it will default to w/e site has no bindings such as the "default site".
+
+
+This dialog allows you to configure an HTTP/HTTPS binding for your Web Site.
+
+Host Name
+
+Type a host name if you want to assign one or more host names, also known as domain names, to one computer that uses a single IP address.
+
+If you specify a host name, clients must use the host name instead of the IP address to access the site. If this site is available on the Internet, type the domain name of the site as users will type it in a browser, for example, www.caphyon.com. If your site has more than one domain name, such as www.caphyon.com and caphyon.com, you must create a separate binding for each host name.
+
+If your site is available on an Intranet, you do not have to specify a host name if users will type the server name in a browser, for example, http://server_name. However, if the DNS server in your environment is configured to store other names for this Web server, you can create a separate binding for each host name so that users can use the other names stored by the DNS server.

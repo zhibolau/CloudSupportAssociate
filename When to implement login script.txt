@@ -1,0 +1,25 @@
+When to implement login script.txt
+
+
+What is a login script?
+
+A login script is a series of instructions that a workstation follows every time a user logs on. These instructions are held on the server in a 'script' file, which is a batch file that workstations can access and run. A login script allows you to create a single text file containing a set of instructions which are distributed to all the computers that need it.
+
+Why would you use a login script?
+
+There are a number of uses for a login script with Sophos products, for example:
+
+to upgrade Windows 95/98/Me computers to the latest version of Sophos Anti-Virus, or install Sophos Anti-Virus in a NetWare environment
+when using Resolve tools to clean infected computers.
+Mapping network drives
+Installing and setting a user’s default printer
+Collecting computer system information
+Updating virus signatures
+Updating software
+
+Basically, there are two ways to assign Logon scripts. The first is done on the Profile tab of the user properties dialog in the Active Directory Users and Computers (ADUC). The second is done via Group Policy Objects (GPO). 
+
+
+
+
+
