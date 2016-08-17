@@ -1,0 +1,27 @@
+Event Logs
+
+Windows Vista includes two categories of event logs: Windows Logs and Applications and Services Logs logs. You can use either the Event Viewer or the wevtutil command-line tool to manage event logs. When you use wevtutil to manage event logs, messages that you receive from wevtutil might refer to event logs as channels. In most cases, event logs and channels are equivalent. For more information about event logs and channels, see the Event Logs and Channels in Windows Event Log topic in the Windows Event Log Software Development Kit (SDK) online.
+Windows Logs
+The Windows Logs category includes the logs that were available on previous versions of Windows: the Application, Security, and System logs. It also includes two new logs: the Setup log and the ForwardedEvents log. Windows logs are intended to store events from legacy applications and events that apply to the entire system.
+Application log
+The Application log contains events logged by applications or programs. For example, a database program might record a file error in the application log. Program developers decide which events to log.
+Security log
+The Security log contains events such as valid and invalid logon attempts, as well as events related to resource use, such as creating, opening, or deleting files or other objects. Administrators can specify what events are recorded in the security log. For example, if you have enabled logon auditing, attempts to log on to the system are recorded in the security log.
+Setup log
+The Setup log contains events related to application setup.
+System log
+The System log contains events logged by Windows system components. For example, the failure of a driver or other system component to load during startup is recorded in the system log. The event types logged by system components are predetermined by Windows.
+ForwardedEvents log
+The ForwardedEvents log is used to store events collected from remote computers. To collect events from remote computers, you must create an event subscription. To learn about event subscriptions, see Event Subscriptions.
+Applications and Services Logs
+Applications and Services logs are a new category of event logs. These logs store events from a single application or component rather than events that might have systemwide impact.
+This category of logs includes four subtypes: Admin, Operational, Analytic, and Debug logs. Events in Admin logs are of particular interest to IT Professionals using the Event Viewer to troubleshoot problems. Events in the Admin log should provide you with guidance about how to respond to them. Events in the Operational log are also useful for IT Professionals, but they are likely to require more interpretation.
+Admin and Debug logs are not as user friendly. Analytic logs store events that trace an issue and, often, a high volume of events are logged. Debug logs are used by developers when debugging applications. Both Analytic and Debug logs are hidden and disabled by default. To make these logs visible, follow the steps in Show or Hide Analytic and Debug Logs. To enable these logs, follow the steps in Enable Analytic and Debug Logs.
+Admin
+These events are primarily targeted at end users, administrators, and support personnel. The events that are found in the Admin channels indicate a problem and a well-defined solution that an administrator can act on. An example of an admin event is an event that occurs when an application fails to connect to a printer. These events are either well documented or have a message associated with them that gives the reader direct instructions of what must be done to rectify the problem.
+Operational
+Operational events are used for analyzing and diagnosing a problem or occurrence. They can be used to trigger tools or tasks based on the problem or occurrence. An example of an operational event is an event that occurs when a printer is added or removed from a system.
+Analytic
+Analytic events are published in high volume. They describe program operation and indicate problems that cannot be handled by user intervention.
+Debug
+Debug events are used by developers troubleshooting issues with their programs.

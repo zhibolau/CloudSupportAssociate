@@ -598,10 +598,11 @@ What do you do when your website has been hacked
 
 
 47.
-
+！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 What happens when I type Google into browser,
 How does http get request know which domain to go to if a web server is hosting multiple sites,
 Can 192.168.1.33/24 talk to 10.0.2.34/24 on the same switch,
+!!!!!!!!!!!!!!!!!!!!!!!
 What is fstab,
 What to do if I couldn't open open a file because it only had rw permissions,
 What would be the easiest way to automate a process,
@@ -610,11 +611,11 @@ How to know if a service is running on your computer
 Customer service related questions
 On rhel how to install packages  
 
-48.
+48.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 technical round- Encryption. hashing, compromised system, Linux commands, event viewer logs.
 
 49.
-
+!!!!!!!!!!!!!!!!!!!!!!!!
 TCP/IP window size and packet header. Must know Linux scripting, Active directory, LDAP, 'grep' command.  
 
 networking: DNS, BGP, IP, HTTP and other. Questions were not tricky, and if you have general good knowledge of the protocols, 

@@ -1,0 +1,7 @@
+file permission linux change method.txt
+
+
+chmod 75 /opt/lampp/htdocs
+
+You can use -R with chmod for recursive traversal of all files and subfolders.
+sudo chmod 755 -R /opt/lampp/htdocs

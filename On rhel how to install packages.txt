@@ -1,0 +1,13 @@
+On rhel how to install packages.txt
+
+rhel = Red Hat Enterprise Linux (RHEL) is a Linux distribution developed by Red Hat and targeted toward the commercial market. Red Hat Enterprise Linux is released in server versions for x86, x86-64, Itanium, PowerPC and IBM System z, and desktop versions for x86 and x86-64.
+
+
+For Red Hat/Fedora:
+
+$ yum install foo
+For Ubuntu ( run this as root ) :
+
+# apt-get install foo
+
+

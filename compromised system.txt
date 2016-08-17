@@ -1,0 +1,22 @@
+compromised system.txt
+
+
+Compromised Systems
+If your system has been compromised, somebody is probably using your machine--possibly to scan and find other machines to compromise. There is no automated method for cleaning up a compromised machine. Our recommendation:
+
+Back up important personal files
+Reformat the hard drive
+Reinstall the operating system and software
+
+signs indicating ur system is compromised:
+Fake antivirus messages
+Unwanted browser toolbars
+Redirected Internet searches
+Frequent random popups
+Your friends receive fake emails from your email account
+Your online passwords suddenly change
+Unexpected software installs
+Your mouse moves between programs and makes correct selections
+Your antimalware software, Task Manager, or Registry Editor is disabled and can't be restarted
+Your bank account is missing money
+You get calls from stores about nonpayment of shipped goods

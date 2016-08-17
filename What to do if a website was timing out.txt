@@ -1,0 +1,14 @@
+What to do if a website was timing out.txt
+
+Timeout error? Let’s not panic…yet
+There are several causes for a timeout error, and it doesn’t necessarily mean you’ve been hit by website downtime. Plus, many of them are easily fixable. Try these basic tips before calling your web host in a panic:
+
+Try another site. Can you type in google.com or apple.com or any other site? If you can’t access any sites, the problem is likely your own internet connection, and not something specific to your site. If other sites work and yours doesn’t, keep reading.
+See if it really is just you. DownForEveryoneOrJustMe.com lets you type in any URL and see if it’s “just you” or if the site is “really down.” This has saved me from several panic attacks, because if it’s just me, I know that others can still see my site. If it’s really down, it’s time to check with your web host. If not, try a few more tricks:
+Toss your cookies. I’m not speaking metaphorically of panic-induced fit of vomiting, but rather of removing the little bits of code that various sites leave in your browser. They are often helpful, but sometimes pesky. Here’s a complete list of how to clear cookies in any browser.
+Clear your cache. Your browser stores copies of recently accessed pages so they will load quicker. Again, usually a helpful thing, but occasionally causes problems. Here’s how to clear your cache in any browser.
+Restart your browser. Sometimes (depending on your settings) this will auto-clear your cache, history, and cookies.
+Have a backup browser. It would sure be nice if all browsers were equal…but they aren’t. Sometimes one displays things weirdly or gets buggy.
+Try a different device. If there’s another computer (or a smartphone or an iPad or whatever) handy, see if you can connect using it. You could call a friend and ask if they can connect, but that’s essentially just a one-data-point version of #2.
+Reboot and try again. Sometimes the simple things really do work. You might also restart your router (if you’re on a home network, say) and see if that has any effect.
+Check with your robot spy corps. Pingdom is a website downtime monitoring service based in Sweden. You can sign up for a free account that includes one “check” (that means testing one website in one specific way, like via HTTP). You’ll automatically get an email when your site is down longer than a time you specify (you can get SMS messages, too, but I don’t use this option — the free account only comes with 20 SMS notifications per month, but unlimited email notifications). I have Pingdom check my site every minute (yes, no kidding, and it’s still free). It doesn’t *fix* website downtime or timeout errors, but knowing what’s going on helps enormously (plus I can accurately report facts to DreamHost if I need to). I just ignore the gentle pressure to upgrade to a paid account.

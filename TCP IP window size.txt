@@ -1,0 +1,4 @@
+TCP/IP window size.txt
+
+The Transmission Control Protocol (TCP) receive window size is the maximum amount of received data, in bytes, that can be buffered at one time on the receiving side of a connection. The sending host can send only that amount of data before waiting for an acknowledgment and window update from the receiving host."
+

@@ -1,0 +1,20 @@
+What would be the easiest way to automate a process.txt
+
+write a script or bat?
+
+
+Write a script to support your automation need
+First, write down the steps your technician takes to fix the problem.  Then, I recommend writing a batch, VBScript, or some combination to replicate the steps.  I also recommend using PowerShell whenever you can.  For sample batch, VBScript, and PowerShell scripts check out the Microsoft Technet Script Library. (https://gallery.technet.microsoft.com/scriptcenter).
+
+Once your script is tested and working, write a procedure in your remote management (RMM) or helpdesk solution to run the script whenever defined criteria are met.  Don’t forget to put in a recursive script that will verify the fix (via log output); perhaps resubmit the script procedure; and then escalate to a technician if the problem is still not resolved.
+
+Don’t forget reporting and record keeping
+Automation without logs and record keeping is a just a horrible migraine waiting to happen.
+
+However you implement your automation, make sure all activities are recorded and included in log reports.  If you are automating processes via your RMM or helpdesk solution, make sure this is part of the standard methodology.
+
+If you are creating your own macros, don’t forget to have these steps be part of your scripting.
+
+This is especially critical if you are supporting clients in heavily regulated industries, such banking, healthcare, and retail.
+
+

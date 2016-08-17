@@ -1,0 +1,12 @@
+How to know if a service is running on your computer.txt
+
+Press Control-Alt-Del then click Task Manager and go to Processes, click Show processes from all users (if you are not an Admin of your computer this may not be possible)
+
+
+
+Display a list of Started Services from the Command Line (Windows)
+To interact with the services panel from the command line, Windows provides the Net utility. From the command prompt, you can use this utility to start, stop, pause and continue services. What most people don’t realize is that you can also use this to display a list of services that are running on your computer.
+
+Syntax:
+
+net start

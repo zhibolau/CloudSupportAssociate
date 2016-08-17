@@ -1,0 +1,24 @@
+Can 192.168.1.33/24 talk to 10.0.2.34/24 on the same switch.txt
+
+
+192.168.0.0 Refers to the IP adress /24 refers to the subnet. /24 subnet is 255.255.255.0. 192.168.0.0/24 is common for home networks. 
+
+
+In order for two different networks / subnetworks / broadcast domains / VLANs to talk to each other, a Layer three device (like a router or so-called L3 switch) is necessary. 
+
+If the two different networks / subnets existed on the same logical "wire," they would not be able to talk directly to each other, they would still have to use a layer three device to move the traffic from address block A to address block B (and vice-versa).
+
+
+
+A: 1.1.1.1/24 (255.255.255.0)
+
+B: 1.1.1.2/22 (255.255.252.0)
+
+C: 1.1.1.3/21 (255.255.248.0)
+
+
+
+两个不同IP段的电脑能否通过通同个交换机访问呢？
+有两个方法：
+方法1 将三台机器的掩码都改为 255.255.0.0 ，这样三台机器都在同一网段了。
+方法2 将三台机器的网关都设为自己。
