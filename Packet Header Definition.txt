@@ -1,0 +1,11 @@
+Packet Header Definition
+
+
+
+A packet header is the portion of an IP (Internet protocol) packet that precedes its body and contains addressing and other data that is required for it to reach its intended destination.
+
+Packets are the fundamental unit of information transport in all modern computer networks, and increasingly in other communications networks as well. They can be a fixed size or variable sizes, depending on the system. Regardless of their size, each packet consists of three main parts: a header, the body, also called the payload, and a trailer.
+
+The header's format is specified in the Internet protocol. It normally contains 20 bytes of data, although an option exists within it that allows the addition of more bytes.
+
+Among the contents of the header are the version of IP (which is always set to 4, because IPv4 is being used), the sender's IP address, the intended receiver's IP address, the number of packets the message has been broken into, the identification number of the particular packet, the protocol (e.g. 1 for ICMP, 2 for IGMP, 6 for TCP and 17 for UDP) used, the packet length (on networks that have variable length packets), the time to live (i.e., the number of links or hops that the packet can be routed before being allowed to expire) and synchronization data (several bits that help the packet match up to the network).
