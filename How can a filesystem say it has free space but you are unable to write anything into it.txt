@@ -1,0 +1,17 @@
+How can a filesystem say it has free space but you are unable to write anything into it.txt
+
+
+out of inodes
+
+In a Unix-style file system, the inode is a data structure used to represent a filesystem object, which can be one of various things including a file or a directory. Each inode stores the attributes and disk block location(s) of the filesystem object's data.
+
+WHAT ARE INODES?
+
+An index node (or inode) contains metadata information (file size, file type, etc.) for a file system object (like a file or a directory). There is one inode per file system object.
+
+An inode doesn't store the file contents or the name: it simply points to a specific file or directory.
+
+
+
+The total number of inodes and the space reserved for these inodes is set when the filesystem is first created. The inode limit can't be changed dynamically and every file system object must have an inode.
+

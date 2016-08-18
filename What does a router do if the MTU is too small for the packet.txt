@@ -1,0 +1,9 @@
+What does a router do if the MTU is too small for the packet.txt
+
+packet fragmentation, but you can talk about MSS and PMTUD
+
+IP fragmentation is an Internet Protocol (IP) process that breaks datagrams into smaller pieces (fragments), so that packets may be formed that can pass through a link with a smaller maximum transmission unit (MTU) than the original datagram size. The fragments are reassembled by the receiving host.
+
+Path MTU Discovery (PMTUD) is a standardized |Internet |Engineering Task Force| (IETF) technique for determining an acceptable |Maximum Transmission Unit (MTU) between two IP network connections. |The goal of this technique is to discover the largest size datagram |that does not require fragmentation anywhere along the path between |the source and destination. This discovered datagram size is known |as the Path Maximum Transmission Unit (PMTU).
+
+ usually with the goal of avoiding IP fragmentation

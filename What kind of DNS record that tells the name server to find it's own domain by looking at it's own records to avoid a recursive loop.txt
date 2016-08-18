@@ -1,0 +1,14 @@
+What kind of DNS record that tells the name server to find it's own domain by looking at it's own records to avoid a recursive loop.txt
+
+
+A DNS glue record
+
+Glue records (definition) A glue record is simply the association of a hostname (nameserver, or DNS ) with an IP address at the registry. In order for a nameserver to “work,” it needs to be able to be found first. This is done by creating a glue record.
+
+A glue record is a term for a record that's served by a DNS server that's not authoritative for the zone, to avoid a condition of impossible dependencies for a DNS zone.
+
+Say I own a DNS zone for example.com. I want to have DNS servers that're hosting the authoritative zone for this domain so that I can actually use it - adding records for the root of the domain, www, mail, etc. So, I put the name servers in the registration to delegate to them - those are always names, so we'll put in ns1.example.com and ns2.example.com.
+
+There's the trick. The TLD's servers will delegate to the DNS servers in the whois record - but they're within example.com. They try to find ns1.example.com, ask the .com servers, and get referred back to... ns1.example.com.
+
+What glue records do is to allow the TLD's servers to send extra information in their response to the query for the example.com zone - to send the IP address that's configured for the name servers, too. It's not authoritative, but it's a pointer to the authoritative servers, allowing for the loop to be resolved.

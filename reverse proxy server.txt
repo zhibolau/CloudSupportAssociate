@@ -1,0 +1,24 @@
+reverse proxy server.txt
+
+
+A reverse proxy server is a type of proxy server that typically sits behind the firewall in a private network and directs client requests to the appropriate back-end server. A reverse proxy provides an additional level of abstraction and control to ensure the smooth flow of network traffic between clients and servers.
+
+Common uses for a reverse proxy server include:
+
+Load balancing – A reverse proxy server can act as a “traffic cop,” sitting in front of your backend servers and distributing client requests across a group of servers in a manner that maximizes speed and capacity utilization while ensuring no one server is overloaded, which can degrade performance. If a server goes down, the load balancer redirects traffic to the remaining online servers.
+Web acceleration – Reverse proxies can compress inbound and outbound data, as well as cache commonly requested content, both of which speed up the flow of traffic between clients and servers. They can also perform additional tasks such as SSL encryption to take load off of your web servers, thereby boosting their performance.
+Security and anonymity – By intercepting requests headed for your backend servers, a reverse proxy server protects their identities and acts as an additional defense against security attacks. It also ensures that multiple servers can be accessed from a single record locator or URL regardless of the structure of your local area network.
+
+
+Reverse proxies can hide the existence and characteristics of an origin server or servers.
+Application firewall features can protect against common web-based attacks, such as DoS or DDoS. Without a reverse proxy, removing malware or initiating takedowns, for example, can become difficult.
+In the case of secure websites, a web server may not perform SSL encryption itself, but instead offloads the task to a reverse proxy that may be equipped with SSL acceleration hardware. (See SSL termination proxy.)
+A reverse proxy can distribute the load from incoming requests to several servers, with each server serving its own application area. In the case of reverse proxying in the neighborhood of web servers, the reverse proxy may have to rewrite the URL in each incoming request in order to match the relevant internal location of the requested resource.
+A reverse proxy can reduce load on its origin servers by caching static content, as well as dynamic content - also known as web acceleration. Proxy caches of this sort can often satisfy a considerable number of website requests, greatly reducing the load on the origin server(s).
+A reverse proxy can optimize content by compressing it in order to speed up loading times.
+In a technique known as "spoon-feed"[2] a dynamically generated page can be produced all at once and served to the reverse-proxy, which can then return it to the client a little bit at a time. The program that generates the page need not remain open, thus releasing server resources during the possibly extended time the client requires to complete the transfer.
+Reverse proxies can operate wherever multiple web-servers must be accessible via a single public IP address. The web servers listen on different ports in the same machine, with the same local IP address or, possibly, on different machines and different local IP addresses altogether. The reverse proxy analyzes each incoming request and delivers it to the right server within the local area network.
+Reverse proxies can perform A/B testing and multivariate testing without placing JavaScript tags or code into pages.
+Commercial or enterprise level out-of-box solutions exist and can have an agent installed on user systems to ensure a constant connection to a cloud proxy / reverse proxy server also a SaaS solution. An example of this is McAfee Web Protection Gateway - SaaS solution.[3]
+A reverse proxy can add basic HTTP access authentication to a web server that does not have any authentication.[4]
+

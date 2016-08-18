@@ -1,0 +1,31 @@
+TCP congestion control and how it works.txt
+
+
+Flow control is controlled by the receiving side. It ensures that the sender only sends what the receiver can handle. Think of a situation where someone with a fast fiber connection might be sending to someone on dialup or something similar. The sender would have the ability to send packets very quickly, but that would be useless to the receiver on dialup, so they would need a way to throttle what the sending side can send. Flow control deals with the mechanisms available to ensure that this communication goes smoothly.
+
+Congestion control is a method of ensuring that everyone across a network has a "fair" amount of access to network resources, at any given time. In a mixed-network environment, everyone needs to be able to assume the same general level of performance. A common scenario to help understand this is an office LAN. You have a number of LAN segments in an office all doing their thing within the LAN, but then they may all need to go out over a WAN link that is slower than the constituent LAN segments. Picture having 100mb connections within the LAN that ultimately go out through a 5mb WAN link. Some kind of congestion control would need to be in place there to ensure there are no issues across the greater network.
+
+
+
+TCP uses a round-trip delay estimate for its adaptive windowing scheme to transmit data reliably over an unreliable network with time varying bandwidth
+
+TCP uses a congestion window in the sender side to do congestion avoidance. The congestion window indicates the maximum amount of data that can be sent out on a connection without being acknowledged. TCP detects congestion when it fails to receive an acknowledgement for a packet within the estimated timeout. In such a situation, it decreases the congestion window to one maximum segment size (MSS), and under other cases it increases the congestion window by one MSS. There also exists a congestion window threshold, which is set to half the congestion window size at the time when a re-transmit was required.
+
+The inherent assumption in this mechanism is that lack of an acknowledgement is due to network congestion. If a packet, however, is lost by the network for reasons other than network congestion, then waiting for the timer to run out is wasteful. This is a situation that may happen quite frequently in wireless networks, and so to improve TCP performance, it is needed to pre-empt re-transmissions before waiting for the timer to run out.
+
+
+Understanding RTT Impact on TCP Retransmissions
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+First, we start with Round Trip Time, or RTT. For Ping and Traceroute, this measures the round trip time between sending the Ping packet and getting the ICMP packet back. For TCP connections it is quite similar; it measures the time sending a packet to getting the acknowledgment packet from the target host.
+Let’s say you have host A and host B. The TCP Three-Way Handshake is as follows:
+
+Computer A sends a TCP SYN packet to computer B (This is where RTT timer begins)
+Computer B sends a TCP SYN-ACK packet to computer A (This is where RTT timer ends)
+Computer A then sends a TCP ACK packet to computer B (The TCP connection is now established!)
+
+Easy to understand, right? But what happens when a packet is lost? TCP protocol has built-in logic for ensuring that packets are received. Thus, to ensure the packet is received, the sender will retransmit the packet to the other party.
+
+The majority of us are well aware of the primary retransmission logic. On the initial packet sequence, there is a timer called Retransmission Timeout (RTO) that has an initial value of three seconds. After each retransmission the value of the RTO is doubled and the computer will retry up to three times. This means that if the sender does not receive the acknowledgement after three seconds (or RTT > 3 seconds), it will resend the packet. At this point the sender will wait for six seconds to get the acknowledgement. If the sender still does not get the acknowledgement, it will retransmit the packet for a third time and wait for 12 seconds, at which point it will give up.
+While this is the most well-known fact of RTO, it is not the only logic in TCP. The TCP protocol was designed to take in consideration that the connection between two computers is not the same – hence the retransmission logic should be quicker for cases where the two computers are close. This where RTT starts impacting RTO.
+
+The Smoothed RTT retransmission logic exists to ensure that the Retransmission Timeout is based on the connectivity between the two machines in communication, and to ensure that users do not experience long latency when there is congestion in a low latency connection. So for example, connections from New York Fiber and London 3G to a server in Los Angeles are going to vary significantly based on distance, peering, and type of connection – thus deserving separate RTO calculations.

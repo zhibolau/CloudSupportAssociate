@@ -1,0 +1,4 @@
+http error 400.txt
+
+The 400 Bad Request error is an HTTP status code that means that the request you sent to the website server, often something simple like a request to load a webpage, was somehow incorrect or corrupted and so the server couldn't understand it.
+

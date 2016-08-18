@@ -1,0 +1,29 @@
+WAN links.txt
+
+The WAN or wide area network is what connects us to remote locations within a organization. If we have an office in New York and another office in Wyoming  we need these offices to be connected to each other so that they seem to be on the same network even though they are miles away these types of WAN connections and protocols  would do it.
+
+INternet belongs to wan links.
+
+A wide area network (WAN) is a telecommunications network or computer network that extends over a large geographical distance. Wide area networks are often established with leased telecommunication circuits.
+
+
+
+
+How WAN Link Works
+
+Many types of WAN links are possible between networks, depending on the networking protocols and telecommunications carrier services used, but WAN links can be grouped into three broad categories:
+
+Circuit-switched services:
+Dial-up connections that establish a temporary switched circuit through the carrier’s telecommunications system for the duration of the communication session. When the connection is terminated, the carrier’s switches are freed up for other uses. One problem with this type of service is that the quality of communication varies between sessions with the quality of the switches and connecting trunk lines used. For this reason, circuit-switched lines are often used as a temporary backup link in case the primary leased line goes down. Because circuit-switched lines cost much less than leased lines, they are also used in low-traffic WAN networking environments. These lines are typically point-to-point connections, but they allow users to dial any connection they choose instead of being confined to a single connection, as is the case with leased lines. Examples of circuit-switched WAN links are modems and dial-up Integrated Services Digital Network (ISDN) links.
+ 
+
+Leased lines:
+Dedicated connections that establish a permanent switched circuit through the carrier’s system. They are always “on” and ready to carry network traffic. Leased lines are typically much more expensive than circuit-switched lines because the carrier’s switches are dedicated to the customer even when they are not in use. Leased lines are typically point-to-point connections. A typical example of a leased line is a T1 line or fractional T1 line.
+ 
+
+Packet-switching:
+Can be either dedicated or dial-up connections to a public packet-switching network such as X.25, a public frame relay network, or even a virtual private network (VPN) that uses tunneling over the Internet. The switches for a communication session are not configured when the session is established; instead, switches send packets of data along the best route possible by using the logical address of the destination node, which is contained in the header of each packet. Packet-switching links can be either point-to-point or point-to-multipoint connections, depending on how they are configured.
+ 
+
+TIP
+Leased lines are best for dedicated high-traffic WAN links, but packet-switching connections are often more cost-effective when the traffic is intermittent. It’s a good idea to use circuit-switched connections as a backup link for leased lines.
