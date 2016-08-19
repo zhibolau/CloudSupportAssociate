@@ -65,3 +65,8 @@ Whether an application uses TCP or UDP is up to its developer. This really depen
 
 
 ICMP, or Internet Control Message Protocol, is another common protocol used on the Internet. It’s generally used for query and error messages between routers and other network devices. Applications you’ll use generally don’t use ICMP, although ping and traceroute use ICMP for their diagnostics.
+
+
+
+TCP examples: www, mail, ftp and ssh.
+UDP examples: DNS, VoiP

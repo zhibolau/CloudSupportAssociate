@@ -2,6 +2,25 @@ FSMO roles in Active Directory.txt
 
 Flexible Single Master Operation 
 
+
+FSMO Roles
+In a forest, there are at least five FSMO roles that are assigned to one or more domain controllers. The five FSMO roles are:
+
+    Schema Master: The schema master domain controller controls all updates and modifications to the schema. To update the schema of a forest, you must have access to the schema master. There can be only one schema master in the whole forest.
+    Domain naming master: The domain naming master domain controller controls the addition or removal of domains in the forest. There can be only one domain naming master in the whole forest.
+    Infrastructure Master: The infrastructure is responsible for updating references from objects in its domain to objects in other domains. At any one time, there can be only one domain controller acting as the infrastructure master in each domain.
+    Relative ID (RID) Master: The RID master is responsible for processing RID pool requests from all domain controllers in a particular domain. At any one time, there can be only one domain controller acting as the RID master in the domain.
+    PDC Emulator: The PDC emulator is a domain controller that advertises itself as the primary domain controller (PDC) to workstations, member servers, and domain controllers that are running earlier versions of Windows. For example, if the domain contains computers that are not running Microsoft Windows XP Professional or Microsoft Windows 2000 client software, or if it contains Microsoft Windows NT backup domain controllers, the PDC emulator master acts as a Windows NT PDC. It is also the Domain Master Browser, and it handles password discrepancies. At any one time, there can be only one domain controller acting as the PDC emulator master in each domain in the forest.
+
+You can transfer FSMO roles by using the Ntdsutil.exe command-line utility or by using an MMC snap-in tool. Depending on the FSMO role that you want to transfer, you can use one of the following three MMC snap-in tools:
+Active Directory Schema snap-in
+Active Directory Domains and Trusts snap-in
+Active Directory Users and Computers snap-in 
+
+
+
+
+
 There are five FSMO roles:
 
 Domain-wide operations master roles:
@@ -15,6 +34,8 @@ Forest-wide operations master roles:
 Schema master (one per forest): This role is responsible for maintaining and modifying the Active Directory schema.
 
 Domain naming master (one per forest): This role is responsible for the addition and deletion of domains in a forest.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 
 PDC Emulator
 

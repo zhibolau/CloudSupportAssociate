@@ -696,7 +696,7 @@ TCP send packages on the sent order, UDP doesn't have any order.
 TCP examples: www, mail, ftp and ssh.
 UDP examples: DNS, VoiP
 
-61.
+61.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 Basic Windows questions like DNS, Active Directory, Group Policy, workgroups, Kerberos, NTLM and so on. Then we switched to network, IP address structure, NAT, TCP headers 3-way handshake and the like,expect very basic things in very deep detail.  
 

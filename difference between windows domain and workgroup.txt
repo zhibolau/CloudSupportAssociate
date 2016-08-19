@@ -1,0 +1,34 @@
+What is the difference between windows domain and workgroup.txt
+
+
+An actual answer to this question is:
+
+Domains, workgroups, and homegroups represent different methods for organizing computers in networks. The main difference among them is how the computers and other resources on the networks are managed.
+
+Computers running Windows on a network must be part of a workgroup or a domain. Computers running Windows on home networks can also be part of a homegroup, but it's not required.
+
+Computers on home networks are usually part of a workgroup and possibly a homegroup, and computers on workplace networks are usually part of a domain.
+
+In a workgroup:
+
+    All computers are peers; no computer has control over another computer.
+
+    Each computer has a set of user accounts. To log on to any computer in the workgroup, you must have an account on that computer.
+
+    There are typically no more than twenty computers.
+
+    A workgroup is not protected by a password.
+
+    All computers must be on the same local network or subnet.
+
+In a Domain:
+
+    One or more computers are servers. Network administrators use servers to control the security and permissions for all computers on the domain. This makes it easy to make changes because the changes are automatically made to all computers. Domain users must provide a password or other credentials each time they access the domain.
+
+    If you have a user account on the domain, you can log on to any computer on the domain without needing an account on that computer.
+
+    You probably can make only limited changes to a computer's settings because network administrators often want to ensure consistency among computers.
+
+    There can be thousands of computers in a domain.
+
+    The computers can be on different local networks.

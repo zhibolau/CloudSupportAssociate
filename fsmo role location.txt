@@ -1,0 +1,54 @@
+fsmo role location.txt
+
+
+Ways to find out, which DC holds what FSMO Roles?
+1 	IGo to command prompt -> type NetDOM /query FSMO -> enter
+
+
+netdom query fsmo
+
+NetDOM /query FSMO
+
+
+
+This tip explains several ways to check FSMO Roles availability in an Active Directory Forest environment.
+
+FSMO (Flexible Single Master Operations) Roles are very critical for Active Directory to run smoothly. As part of the daily Active Directory health tasks, you need to run several command lines tools or customized scripts to check the status of various Active Directory components which includes checking availability of the FSMO Roles.
+
+To check the availability of FSMO Roles in an Active Directory environment, you can run following command line tools (available by default with Operating System installation):
+
+To get the list of FSMO Roles using NetDom command line tool, run the following command:
+
+    Netdom Query FSMO
+
+And using DSQuery tools
+
+    DSQuery server –hasfsmo –pdc
+    DSQuery server –hasfsmo –infr
+    DSQuery server –hasfsmo –rid
+    DSQuery server –hasfsmo –name
+    DSQuery server –hasfsmo –schema
+
+Advantage using NetDom command is that it returns the list with FSMO name and the server holding that FSMO role as shown in the below output. The server name is returned in the FQDN format.
+
+    Schema master                                     WIN-LDGR7G88TMO.devlab.com
+    Domain naming master              WIN-LDGR7G88TMO.devlab.com
+    PDC                                         WIN-LDGR7G88TMO.devlab.com
+    RID pool manager                     WIN-LDGR7G88TMO.devlab.com
+    Infrastructure master                              WIN-LDGR7G88TMO.devlab.com
+
+DSQuery command returns the FSMO holder name but in the DN format. The DN format looks like below:
+
+    "CN=WIN-LDGR7G88TMO,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=devlab,DC=com"
+
+
+
+
+The partition for each FSMO role is in the following list:
+
+FSMO role   Partition
+Schema  CN=Schema,CN=configuration,DC=<forest root domain>
+Domain Naming Master    CN=configuration,DC=<forest root domain>
+PDC DC=<domain>
+RID DC=<domain>
+Infrastructure  DC=<domain>

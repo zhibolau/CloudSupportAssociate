@@ -1,0 +1,24 @@
+tool used to edit fsmo roles.txt
+
+You can transfer FSMO roles by using the Ntdsutil.exe command-line utility or by using an MMC snap-in tool. Depending on the FSMO role that you want to transfer, you can use one of the following three MMC snap-in tools:
+Active Directory Schema snap-in
+Active Directory Domains and Trusts snap-in
+Active Directory Users and Computers snap-in ----> http://www.it165.net/os/html/201306/5423.html
+
+Active Directory Users and Computers snap-in:
+ RID角色转移
+ PDC角色转移
+ 结构主机转移
+
+
+ Active Directory Domains and Trusts snap-in:
+ 域命名主机转移
+
+
+先注册架构域控：regsvr32 C:\WINDOWS\system32\schmmgmt.dll
+ 架构主机转移
+
+ 然后在MMC控制台上添加其管理单元，进行角色转换
+
+
+
