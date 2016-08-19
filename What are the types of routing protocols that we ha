@@ -1,0 +1,50 @@
+What are the types of routing protocols that we have.txt
+
+Static Routing
+
+A static route is a manually designed route on your router. Static routes are usually employed in minor networks. For networks that have thousands of routes, static routes are not applicable, since you would have to configure each route independently.
+A static routing in the sense when we manually add all possible routes in each router’s routing table.
+There are advantages and disadvantages to static routing
+
+Advantages Static routing
+
+No overload on the router CPU.
+There is no bandwidth usage between routers.
+More secure since administrator can permit routing access to certain networks only.
+Disadvantages Static routing
+
+The administrator should aware about each internetwork and how each router interconnected.
+While adding new network, administrator has to add manually the new route in all routers.
+Impossible in huge networks since maintaining it would be a full-time job in itself.
+In my next article we will cover Static routing in detail.
+
+Dynamic Routing
+
+This is an intelligent way of routing. In this method administrator configure router with a routing protocol such a way that the protocol discovers about other routers and its routes (Routers exchange routes). Even a new network added or removed router update their routing table each other.
+
+Advantages of Dynamic Routing
+
+Automated process, routers update routing table each other hence less manual effort.
+Reroute traffic while current route is down or congested.
+Better uptime and Performance: Because of intelligence, routing protocol can react faster.
+Less administration task: As the network grows, the administrator doesn’t have to worry about configuring all the other routers on the network. Since the routers exchange the routes even if you added or removed a network.
+Dynamic Routing is achieved via Dynamic Routing Protocols. There are different types of dynamic routing protocols in Cisco.
+
+RIP (Routing Information Protocol):
+
+RIP is an open source protocol, means it is compatible with routers other than Cisco. RIP is the simplest and easiest routing protocol to configure. RIP utilizes ‘hop count‘ as metric to decide the best path among two locations. Two variations of RIP are RIP Version 1 and RIP Version 2. Applicable to small networks having less than 15 hops.
+
+
+IGRP (Interior Gateway Routing Protocol):
+
+IGRP is a classful routing protocol; it assumes all the elements in a given network belong to same subnet. It is a distance vector protocol developed by Cisco. IGRP was designed to overcome the limitations of RIP (maximum hop count of only 15, IGRP supports a maximum hop count of up to 255). Best route is calculated by bandwidth, reliability, load and delay.
+
+EIGRP (Enhanced Interior Gateway Routing Protocol):
+
+This also a distance vector protocol designed exclusively for Cisco devices. Like OSPF, EIGRP is a full-featured routing protocol. Here the best route calculated by a formula that contains bandwidth, reliability, load and delay of the link. IGRP replaced by EIGRP. EIGRP is a classless routing protocol.
+
+
+OSPF (Open Shortest Path First):
+
+It is also an Open source protocol. OSPF is the most popular dynamic routing protocol which is used today. It detects best route based on ‘Cost’ as it’s metric. OSPF is a full-featured routing protocol and applicable to any size of network.
+

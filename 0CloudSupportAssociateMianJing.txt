@@ -652,7 +652,7 @@ I can't give specific questions, but I can say to make sure you study Amazon's l
 3) What happens when you connect your PC to the network?
 4) What is DNS loadbalancing and how does it work?  
 
-56.
+56.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 What is file descriptor?
 Command to check used memory by all running tasks
 Command to check all processes running.

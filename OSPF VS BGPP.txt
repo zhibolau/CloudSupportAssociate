@@ -1,4 +1,6 @@
-OSPF VS BGPP.txt
+OSPF VS BGP.txt
+
+OSPF is link-state used internally in sites, BGP is path vector - and connects sites via AS numbers to the public internet
 
 BGP vs OSPF
 

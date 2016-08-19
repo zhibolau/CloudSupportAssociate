@@ -1,0 +1,37 @@
+What happens when you connect your PC to the network.txt
+
+A Hierarchy of Networks
+Every computer that is connected to the Internet is part of a network, even the one in your home. For example, you may use a modem and dial a local number to connect to an Internet Service Provider (ISP). At work, you may be part of a local area network (LAN), but you most likely still connect to the Internet using an ISP that your company has contracted with. When you connect to your ISP, you become part of their network. The ISP may then connect to a larger network and become part of their network. The Internet is simply a network of networks.
+
+Most large communications companies have their own dedicated backbones connecting various regions. In each region, the company has a Point of Presence (POP). The POP is a place for local users to access the company's network, often through a local phone number or dedicated line. The amazing thing here is that there is no overall controlling network. Instead, there are several high-level networks connecting to each other through Network Access Points or NAPs.
+
+
+Where to Begin? Internet Addresses
+
+Because the Internet is a global network of computers each computer connected to the Internet must have a unique address. Internet addresses are in the form nnn.nnn.nnn.nnn where nnn must be a number from 0 - 255. This address is known as an IP address. (IP stands for Internet Protocol; more on this later.)
+
+Protocol Stacks and Packets
+
+So your computer is connected to the Internet and has a unique address. How does it 'talk' to other computers connected to the Internet? An example should serve here: Let's say your IP address is 1.2.3.4 and you want to send a message to the computer 5.6.7.8. The message you want to send is "Hello computer 5.6.7.8!". Obviously, the message must be transmitted over whatever kind of wire connects your computer to the Internet. Let's say you've dialed into your ISP from home and the message must be transmitted over the phone line. Therefore the message must be translated from alphabetic text into electronic signals, transmitted over the Internet, then translated back into alphabetic text. How is this accomplished? Through the use of a protocol stack. Every computer needs one to communicate on the Internet and it is usually built into the computer's operating system (i.e. Windows, Unix, etc.). The protocol stack used on the Internet is refered to as the TCP/IP protocol stack because of the two major communication protocols used. The TCP/IP stack looks like this: 
+
+
+Protocol Layer	Comments
+Application Protocols Layer	Protocols specific to applications such as WWW, e-mail, FTP, etc.
+Transmission Control Protocol Layer	TCP directs packets to a specific application on a computer using a port number.
+Internet Protocol Layer	IP directs packets to a specific computer using an IP address.
+Hardware Layer	Converts binary packet data to network signals and back.
+(E.g. ethernet network card, modem for phone lines, etc.)
+
+The message would start at the top of the protocol stack on your computer and work it's way downward.
+If the message to be sent is long, each stack layer that the message passes through may break the message up into smaller chunks of data. This is because data sent over the Internet (and most computer networks) are sent in manageable chunks. On the Internet, these chunks of data are known as packets.
+The packets would go through the Application Layer and continue to the TCP layer. Each packet is assigned a port number. Ports will be explained later, but suffice to say that many programs may be using the TCP/IP stack and sending messages. We need to know which program on the destination computer needs to receive the message because it will be listening on a specific port.
+After going through the TCP layer, the packets proceed to the IP layer. This is where each packet receives it's destination address, 5.6.7.8.
+Now that our message packets have a port number and an IP address, they are ready to be sent over the Internet. The hardware layer takes care of turning our packets containing the alphabetic text of our message into electronic signals and transmitting them over the phone line.
+On the other end of the phone line your ISP has a direct connection to the Internet. The ISPs router examines the destination address in each packet and determines where to send it. Often, the packet's next stop is another router. More on routers and Internet infrastructure later.
+Eventually, the packets reach computer 5.6.7.8. Here, the packets start at the bottom of the destination computer's TCP/IP stack and work upwards.
+As the packets go upwards through the stack, all routing data that the sending computer's stack added (such as IP address and port number) is stripped from the packets.
+When the data reaches the top of the stack, the packets have been re-assembled into their original form, "Hello computer 5.6.7.8!"
+
+When requesting information from a web page, such as Computer Hope you enter a URL that is easy to understand and remember. For your computer to access the computer containing the pages that URL must be converted into an IP address, this is done with DNS. Once DNS has converted the URL into an IP address the routers on the Internet will know how to route your TCP/IP packet. Below is a graphic illustration of everything explained above to help better illustrate the process of your computer communicating with another computer on the Internet.
+
+

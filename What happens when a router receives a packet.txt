@@ -1,0 +1,45 @@
+What happens when a router receives a packet.txt
+
+https://supportforums.cisco.com/blog/153276/what-happens-when-router-receives-packet
+
+
+
+describe routing, forwarding, and encapsulation processes
+
+Upon receiving the Packet, router has to follow three generic steps before its routes the packets:
+
+-> Routing
+
+-> Forwarding (Switching)
+
+-> Encapsulation
+
+Let’s discuss each one of them in detail
+
+Routing Process: Routing process is nothing but routers control plane. Router records a routing table listing what route should be used to forward a data packet, and through which physical interface connection. Router learns your network routes information either by static configuration or by using dynamically configure routing protocol like IGP (OSPF, EIGRP, RIP, IS-IS) or though Exterior routing protocol like BGP.
+
+When router receives any packet it has to remove Layer 2 header information present on packet(Example:In Ethernet, source and destination Mac address present on L2 header). Once router remove L2 information it looks for Layer 3 information available on packet that is source and destination IP address.
+
+For moving L3 packet between interfaces, router checks destination address and finds longest-prefix match in IP routing table to find outgoing interface. In IPv4 router uses longest mask to identify best routing entry for forwarding packet.
+
+
+->If there are multiple routes with same subnet mask learned via same protocol by router then router chooses lowest metric between them.
+
+->If there is multiple routes with same subnet mask learn via different protocol on router then router chooses lowest administrative distance (AD).
+
+->Last and important point is recursive lookup: which states that whenever there is route lookup more than once it will be termed as recursive lookup. It has to be done by router till destination address point towards any physical or logical interface.
+
+Forwarding process: It is also known as switching process. Once router finds outgoing interface, packet move between interfaces by switching process. This is done by process switching, fast switching or cef switching. Forwarding can be done by using adjacency tables reside on the route processor or on interface cards that support switching.
+
+-> Process switching requires the device CPU to be involved for every forwarding decision.
+
+-> Fast switching still uses the CPU for initially packets and to fill cache table in router. Once initial packet has been forwarded, the information about how to reach the destination is stored in a fast-switching cache’s .when another packet going to the same destination, the next hop information can be re-used from the cache and so the router processor doesn’t have to look into it, but if the information is not cached the CPU will have to process entire packets.
+
+-> When CEF mode is enabled it build the CEF FIB and adjacency tables reside on the route processor, and the route processor performs the express forwarding.
+
+In switching process device do actual packet link load balancing depending on the methodology we use.
+
+Encapsulation process: 
+L3 header will remain intact unchanged except for nating, vpn etc. 
+layer 2 headers keep changing on hop by hop basis, depending on transmission media. 
+For transmitting L3 packet on wire router need to find out l2 information for packets and it’s depending on the type of media we are using for transmission.
