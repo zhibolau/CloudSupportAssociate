@@ -1,0 +1,35 @@
+Command to check used memory by all running tasks.txt
+
+
+1. free command
+The m option displays all data in MBs. 
+
+2. /proc/meminfo
+
+The next way to check memory usage is to read the /proc/meminfo file. Know that the /proc file system does not contain real files. They are rather virtual files that contain dynamic information about the kernel and the system.
+
+Check the values of MemTotal, MemFree, Buffers, Cached, SwapTotal, SwapFree.
+They indicate same values of memory usage as the free command.
+
+3. vmstat
+
+The vmstat command with the s option, lays out the memory usage statistics much like the proc command. Here is an example
+
+4. top command
+
+The top command is generally used to check memory and cpu usage per process. However it also reports total memory usage and can be used to monitor the total RAM usage. The header on output has the required information. Here is a sample output
+
+Check the KiB Mem and KiB Swap lines on the header. They indicate total, used and free amounts of the memory. The buffer and cache information is present here too, like the free command.
+
+5. htop
+
+Similar to the top command, the htop command also shows memory usage along with various other details.
+
+
+
+RAM Information
+
+To find out hardware information about the installed RAM, use the demidecode command. It reports lots of information about the installed RAM memory.
+
+$ sudo dmidecode -t 17
+

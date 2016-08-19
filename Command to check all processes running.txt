@@ -1,0 +1,19 @@
+Command to check all processes running.txt
+
+Working with cmd.exe:
+
+tasklist
+
+
+Linux:
+
+ ps aux can be piped (transferred) to the less command, which lets it be viewed one screen full at a time. The output can be advanced one screen forward by pressing the SPACE bar and one screen backward by pressing the b key.
+
+The a option tells ps to list the processes of all users on the system rather than just those of the current user, with the exception of group leaders and processes not associated with a terminal. A group leader is the first member of a group of related processes.
+
+The u option tells ps to provide detailed information about each process. The x option adds to the list processes that have no controlling terminal, such as daemons, which are programs that are launched during boot and run unobtrusively in the background until they are activated by a particular event or condition.
+
+1. ps aux | less
+2.Htop :It shows a frequently updated list of the processes running on a computer, normally ordered by the amount of CPU usage and sort based on other criterias
+3. pstree : it can be used to show all of the processes on the system along with their PIDs
+
