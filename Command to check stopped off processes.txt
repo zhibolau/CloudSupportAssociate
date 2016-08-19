@@ -15,3 +15,13 @@ bg %[number] - Push the job [number] into the background
 kill %[number] - Kill the job numbered [number]
 kill -[signal] %[number] - Send the signal [signal] to job number [number]
 disown %[number] - disown the process(no more terminal will be owner), so command will be alive even after closing the terminal.
+
+
+jobs:
+
+-l  lists process IDs in addition to the normal information.
+-n  list only processes that have changed status since the last notification.
+-p  lists process IDs only.
+-r  restrict output to running jobs.
+-s  restrict output to stopped jobs.
+

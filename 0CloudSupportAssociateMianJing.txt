@@ -675,7 +675,7 @@ Questions were about DNS on Windows OS and in general, Windows' registry, differ
 58.
 Design a scalable and highly available website. They would ask you to add more complexity layers as your design goes on.  
 
-59.
+59.1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 What is the difference between windows domain and workgroup ?  
 
 What is active directory ?  

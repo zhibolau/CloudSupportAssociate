@@ -1,0 +1,19 @@
+data locality.txt  
+
+mapreduce
+
+
+The beauty of Hadoop is that it works on local data as far as possible which means that when we invoke any map reduce job, the logic( map and reduce code) is sent to each data node in the cluster. So suppose if you have a text file of size 1 GB and you have written a map reduce code to convert all text in that file to upper case then first the file will be broken into chunks and the logic to cover the text to Upper case would be available to each data node. Now the tasktracker on each node would only run the map reduce code the data block/s present on that local node. This is known as data locality.
+
+
+It simply means that Hadoop Map-Reduce will do their best to schedule the map tasks and the reduce tasks such that most tasks read their input data from the local computer (not from a remote one) - this is called local access. Apache Spark does a similar optimization. However this is an optimization with constraints: you do want to schedule the tasks in the cluster generally, even when they cannot be all locally fed: map/reduce tasks will be allocated with preference to the machines holding local replicas of the needed input blocks, however if those machines are full of other tasks, the tasks will still be scheduled in the cluster, and the blocks read remotely for processing.
+
+caches work on the assumption that data that is accessed once will usually be accessed soon again. This kind of behaviour is known as data locality. There are two kinds of locality that are sometimes distinguished:
+
+Temporal locality means that the program reuses the same data that it recently used, and that therefore is likely to be in the cache.
+
+Spatial locality means that the program uses data close to recently accessed locations. Since the processor loads a chunk of memory around an accessed location into the cache, locations close to recently accessed locations are also likely to be in the cache.
+
+It is of course possible for a program exhibit both types of locality at the same time.
+
+Good data locality is essential for good application performance. Applications with poor data locality reduce the effectiveness of the cache, causing long stall times waiting for memory accesses.
