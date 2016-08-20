@@ -1,0 +1,7 @@
+How would you configure you DHCP to have one subnet load balanced.txt
+
+Each DHCP server on receiving the client request calculates hash of the MAC address in the client request as per hashing algorithm specified in RFC 3074.  Each server hashes any MAC address to a value between 1 and 256. If the load distribution ratio between the 2 servers is left at the default of 50:50; and if the hash of the MAC address falls between 1 and 128 then the first server will respond to the client request else if the hash is any value between 129 and 256, the other server responds to the client. This ensures that only one server responds for a specific client. If the load distribution ratio has been changed by the admin to a different value, the distribution of hash buckets would be in that proportion. The admin does not need to configure the MAC addresses on any server configuration a-priori.
+
+
+
+http://www.itingredients.com/load-balance-dhcp-server-windows-server-2012-r2/

@@ -1,0 +1,23 @@
+What happens if RID Master is down.txt
+
+though we are able to create new objects still there would be an issue with duplication of objects since we do not have RID master in place to verify.
+
+Always I wanted to know what error I will get if my RID master goes down. We all aware of that if RID master goes down we cannot create a new object, is that true? No. Even after RID master fails we can create a new object till RID pool gets over which already provided by RID master before it fails, yes RID master provide RID pool to each domain controller exist in the same domain. This RID pool capable of creating 500 new objects including users, groups, organizational units, computers and etc..,
+
+Where we can see RID:
+
+We know each object contains SID (security identifier) which is combination of domain identifier and relative identifier.
+
+SID    =    DID    +    RID
+
+Here is the example of two users Sid:
+
+Test User 1: S-1-5-21-3539837238-3086397278-3477366256–1163
+
+Test User 2: S-1-5-21-3539837238-3086397278-3477366256–1164
+
+Since above two users created one by one we could see RID (colored green) is in series. And also you can see domain identifiers are identical for both the users because they were created in same domain.
+
+Note: SID will be created for each object which you are creating in the domain except for a contact.
+
+We were able to create only 437 objects successfully, rest of 63 pools should have been already provided to my existing objects which I created earlier. If we would like to create a new object either we have to bring domain controller online which holding the RID master or seize the role from it.

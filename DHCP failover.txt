@@ -1,2 +1,8 @@
 DHCP failover.txt
-DHCP failover is a new feature available in Windows Server® 2012 ensuring continuous availability of DHCP service to clients. With DHCP failover, two DHCP servers share DHCP scope and lease information, enabling one server to provide DHCP leases to DHCP clients if the other server is unavailable.
+
+With DHCP failover, two DHCP servers share DHCP scope and lease information, enabling one server to provide DHCP leases to DHCP clients if the other server is unavailable.
+It enables two DHCP servers to share their scopes, lease and reservation information to each other. Configuring DHCP failover provides high availability of DHCP services to the clients in a network.
+Provide DHCP service availability at all times on the enterprise network.
+If a DHCP server is no longer reachable, the DHCP client is able to extend the lease on its current IP address by contacting another DHCP server on the enterprise network.
+
+
