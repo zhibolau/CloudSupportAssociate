@@ -3,3 +3,10 @@ NAT.TXT
 Network Address Translation (NAT) is a way to map an entire network (or networks) to a single IP address. NAT is necessary when the number of IP addresses assigned to you by your Internet Service Provider is less than the total number of computers that you wish to provide internet access for.
 
 好像整个公司就一个电话号码 有人打进来找谁 可以转接extension
+
+NAT runs on the device that's connected to the Internet and hides the rest of your network from the public, thus making your whole network appear as one device (or computer, if you like) to the rest of the world.
+
+
+only the device (router, firewall or pc) that connects directly to the Internet performs NAT
+
+all requests the workstations generate are sent to the Internet via the router. The router will then perform NAT on these packets and send them to their destination. As each packet arrives into the router's private interface, the router will strip the source IP Address from the 3rd layer (network layer) e.g 192.168.0.10 and place its own public IP address (203.31.220.134) before sending it to the Internet.

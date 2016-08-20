@@ -1,0 +1,38 @@
+windows boot process.txt
+
+a) POST - POST stands for Power On Self Test. POST checks all the hardware devices connected to a computer like RAM, hard disk etc
+and make sure that the system can run smoothly with those hardware devices. If the POST is a failure the system halts with a beep sound.
+b) Now BIOS checks the boot priority. We can set the boot priority as CD drive, hard disk or floppy drive.
+c) MBR - The next duty of BIOS is to read the MBR. MBR stands for Master Boot Record and its the first sector on a hard disk. MBR
+contains the partition table and boot loader.
+Functions of Boot loader
+Now BIOS has passed the control to boot loader and boot loader is a small program which loads kernel to computers memory. Actually
+there are two stages of boot loaders, stage 1 boot loader and stage 2 boot loader. MBR contains the stage 1 boot loader and stage 1 boot loader is a link to the stage 2 boot loader. The stage 2 boot loader resides in the boot partition and it loads the kernel to memory. 
+
+Boot files and functions 
+Several steps like POST, boot files loading, MBR reading, Kernel initialization etc are
+happening during the booting procedure of a Windows machine.
+There are three boot files in a Windows operating system and they are NTLDR, NTDETECT.COM and Boot.ini. The boot files are found in
+the active partition of hard disk and its normally C drive in a Windows machine.
+
+NTLDR - NTLDR stands for NT Loader and its the second stage bootloader. The path of NTLDR is C:\Windows\i386\NTLDR.
+Boot.ini - Boot.ini contains the configuration files of NTLDR. When the operating system is loaded we cannot pass any arguments to
+kernal, so those arguments are passed through boot.ini. You can edit boot.ini by opening through notepad. The path of Boot.ini is
+C:\boot.ini.
+NTDETECT.COM - This file detect hardware's and passes information to NTLDR. Using the collected information the NTLDR creates a
+hardware key and this key is used to detect hardware's. A new hardware key is generated after each reboot of the operating system and that's why system asks to reboot after installation of a new hardware. The hardware keys created by NTLDR can be found in Windows registry at
+HKEY_LOCAL_MACHINE -> HARDWARES.
+
+Kernel and its functions
+After executing the functions of boot files the control is passed to Kernel. ntoskrnal.exe is the kernel file in a Windows machine and its path
+is C:\Windows\system 32\ntoskrnal.exe. Kernel acts as a layer between software and hardware. The library file hal.dll
+(C;\Windows\system32\hal.dll) helps Kernel to interact with hardware's. HAL stands for Hardware Abstraction Layer and this hal.dll file is machine specific. Now the drivers for hardware's are loaded from the file C:\Windows\system32\config\system and the Kernel is loaded to primary memory.
+
+Services and log in procedure
+When kernel is loaded in the primary memory services for each process is started and the registry entry for those services can be found at HKEY_LOCAL_MACHINE - System - Current control set - Services. 
+Winlogon.exe (C:\Windows\system32\winlogon.exe) is the last
+service started during this process. Winlogon.exe starts the log in procedures of windows machine. It first calls the library file msgina.dll
+(C:\Windows\system32\msgina.dll). MSGINA stands for Microsoft Graphics Identification and Authentication and it provides the log in
+window. Now msginal.dll passes the control to LSA (Local Security Authority), it verifies the username and password from the SAM file.
+SAM (Security Accounts Manager) contains the information about all users created in a Windows operating system.
+Now the booting procedure is over and we have reached the desktop of Windows operating system.

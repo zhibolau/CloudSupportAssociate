@@ -1,0 +1,34 @@
+difference between WinSrv2003 and WinSrv2008.txt
+
+Difference between Windows 2003 and Windows 2008
+1Full and Core Installation-Windows 2008 gives you two installation types, Full installation and Server Core installation which helps to reduce the cost of the hardware for instance if have a requirement to install only DNS or DHCP server to particular location or site. then you can choose core installation and install DNS or DHCP, it can be installed on low hardware resources machine as it would not install unnecessary Drivers and roles that requires for enhanced GUI. However, It wasn’t available in windows 2003.
+
+2Operating System Installation is faster- Windows server 2008 Installation is faster because it’s 32 bit where as 2003 it is 16 bit. It deploys the image of operating system rather than coping the files in 2003.
+
+3Changes in RIS– Windows deployment services (WDS) instead of RIS in 2003 server   //Remote Installation Service
+
+4Service is renamed to Role -Services are known as role in windows server 2008, like Active Directory has been renamed to Active Directory DomainServices (AD DS)
+
+5Changes in Boot sequence– Windows server 2008 Boot sequence is changed
+
+6Virtualization- Hyper-V is the main difference between windows 2003 and windows 2008
+2008 has more inbuilt components and updated third party drivers Microsoft introduces new feature with 2k8 that is Hyper-V
+
+7PowerShell- PowerShell been fully supported, you can manage easily using PowerShell script and PowerShell commands
+
+8Active Directory- There are many changes in Active Directory like Active Directory is a service now that can be restarted. RODC is a new type of DC introduce in windows 2008. Group policy preference mode is introduced.  New number of AD templates have been introduced in 2008. DFS is being used for replication instead of FRS in 2003.
+
+9Security- Windows basic security has been Improved, features like Bitlocker
+
+10Windows Cluster – There are many new feature been introduced in windows 2008 cluster like new quorum types and GPT disk support  click here to know more
+
+11DNS – There are some new features been introduced in DNS 2008 click here to know more 
+
+12Disk Management – Disk Management has more features like Extend and Shrink feature that Administrator can used to increase or decrease the Existing volumes Disk space more accurately and easily.
+
+13Print Server – In Windows 2008 Print Server will give enhanced admin management experience like you can install Drivers remotely 
+from any other windows machine through Print Management snap-in. Print administrator delegation is also a new feature of windows 2008 R2
+
+14Power Saving Feature – New power-saving features been introduced in windows server 2008. It includes updated support for Advanced Configuration and Power Interface (ACPI) processor power management (PPM) features, including support for processor performance states (P-states) and processor idle sleep states on multiprocessor systems. These features can be managed through Group Policies.
+
+15Hardware Compatibility – Windows Server 2008 can support more Hardware than 2003.

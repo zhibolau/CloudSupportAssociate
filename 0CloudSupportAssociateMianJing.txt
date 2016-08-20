@@ -698,14 +698,17 @@ UDP examples: DNS, VoiP
 
 61.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-Basic Windows questions like DNS, Active Directory, Group Policy, workgroups, Kerberos, NTLM and so on. Then we switched to network, IP address structure, NAT, TCP headers 3-way handshake and the like,expect very basic things in very deep detail.  
+Basic Windows questions like DNS, Active Directory, Group Policy, workgroups, Kerberos, NTLM and so on. Then we switched to network, IP address structure, 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+NAT, TCP headers 3-way handshake and the like,expect very basic things in very deep detail.  
 
-62.
+62.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Windows interview was nasty for me, was a bit strange and caught me unprepared. Some very hard questions (FSMO scenarios, client troubleshooting) and some of the general IT questions, apparently easy (what's the difference between WinSrv2003 and WinSrv2008, describe the process of windows boot). Even if you have a huge experience, you might get in trouble.
    Network interview was a lot more easier than I expected. Some decent, basic questions, scaling with the rate of correct answers given (I said stop when I reached OSPF configuration :)).
 
 Describe the process of booting Windows.
 What is the difference between WinSrv2003 and WinSrv2008 ?
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 How would you configure you DHCP to have one subnet load balanced ?
 What happens if RID Master is down ?
 How can you troubleshoot a slow working/defective client ?

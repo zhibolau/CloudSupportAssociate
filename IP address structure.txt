@@ -1,0 +1,20 @@
+IP address structure.txt
+
+Internet IP Address Structure
+As we just saw, each version 4 IP address is 32 bits long. When we refer to the IP address we use a dotted-decimal notation, while the computer converts this into binary. However, even though these sets of 32 bits are considered a single “entity”, they have an internal structure containing two components:
+
+Network Identifier (Network ID): A certain number of bits, starting from the left-most bit, is used to identify the network where the host or other network interface is located. This is also sometimes called the network prefix or even just the prefix. 
+
+Host Identifier (Host ID): The remainder of the bits are used to identify the host on the network.
+
+
+
+Those two sections comprise the basic structure of IP addresses: the network ID and the host ID. All computers on the same network share the same network ID. Each computer (sometimes called a "network interface") has its own unique host ID.
+The four IP address parts do NOT have to be divided equally—it's not always the case that two parts make up the network ID and two address parts make up the host ID. The network ID may be one, two or three of the parts, leaving the last part for the host ID.
+
+
+if an IP address's network ID is defined by the first part of the IP address, the computer is connected to a Class A network. Class A networks are very large and could have approximately 17 million hosts/computers connected to it!
+If the network ID is comprised of the first two parts of the address, the computer is connected to a Class B network. Class B networks are smaller than Class A ones and can have about 65,000 hosts.
+If the network ID is comprised of parts 1, 2 and 3 of the IP address, the computer is connected to Class C network. A Class C network can accommodate only about 254 computers...but there can be more than two million Class C networks.
+
+
