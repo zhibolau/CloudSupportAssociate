@@ -1,0 +1,12 @@
+process responsible for windows log on.txt
+
+
+Before the login screen comes up, the computer goes through the usual process of POST, launch bootloader, load kernel, configure hardware, etc. For an in-depth explanation of this process, Wikipedia has an excellent (though rather technical) article: Windows NT startup process
+
+Once all the kernel-level tasks are taken care of, the NT kernel launches the Session Manager Subsystem process (smss.exe), which is responsible for setting up some environment variables and loading win32k.sys, the kernel half of the Win32 runtime that nearly all Windows software runs on. It also launches the Client/Server Runtime Server Subsystem (csrss.exe), which forms the other half of the Win32 whole and allows us to run graphical, user-mode Win32 software.
+
+In particular, this allows us to launch the Windows Logon Manager (winlogon.exe). This program is tasked with bringing up a graphical login screen and performing all functions thereof, including locking the screen, managing information shown on the lock screen, handling graphical logins, and authorizing said logins using the Local Security Authority Subsystem Service (lsass.exe), which Winlogon starts alongside itself with the help of the Services Manager (services.exe). It then performs all necessary functions at login (assuming the login was properly authorized) before starting the user's chosen shell, by default Windows Explorer (explorer.exe).
+
+tl;dr; smss.exe, csrss.exe, winlogon.exe, lsass.exe, and services.exe are all involved, stop any of these and you're forcibly rebooting.
+
+

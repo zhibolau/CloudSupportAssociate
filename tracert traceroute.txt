@@ -1,0 +1,196 @@
+tracert traceroute.txt
+
+These objectives fulfilled by tracroute gives an insight to your network problem.
+ 
+The entire path that a packet travels through
+Names and identity of routers and devices in your path
+Network Latency or more specifically the time taken to send and receive data to each devices on the path
+
+Its a tool that can be used to verify the path that your data will take to reach its destination, without actually sending your data.
+
+
+Basics First
+ 
+Each IP packet that you send on the internet has got a field called as TTL. TTL stands for Time To Live. Although its called as Time To Live, its not actually the time in seconds, but its something else.
+ 
+TTL is not measured by the no of seconds but the no of hops. Its the maximum number of hops that a packet can travel through across the internet, before its discarded.
+ 
+Hops are nothing but the computers, routers, or any devices that comes in between the source and the destination.
+ 
+What if there was no TTL at all?. If there was no TTL in an IP packet, the packet will flow endlessly from one router to another and on and on forever searching for the destination.  TTL value is set by the sender inside his IP packet ( the person using the system, or sending the packet, is unaware of these things going on under the hood, but is automatically handled by the operating system ).
+ 
+If the destination is not found after traveling through too many routers in between ( hops ) and TTL value becomes 0 (which means no further travel) the receiving router will drop the packet and informs the original sender.
+ 
+Original sender is informed that the TTl value exceeded and it cannot forward the packet further.
+ 
+Let's say i need to reach 10.1.136.23 Ip address, and my default TTL value is 30 hops. Which means i can travel a maximum of 30 hops to reach my destination, before which the packet is dropped.
+ 
+But how will the routers in between determine the TTL value limit has reached. Each router that comes in between the source and destination will go on reducing the TTL value before sending to the next router. Which means if i have a default TTL value of 30, then my first router will reduce it to 29 and then send that to the next router across the path.
+ 
+The receiving router will make it 28 and send to the next and so on. If a router receives a packet with TTl of 1 (which means no more further traveling, and no forwarding ), the packet is discarded. But the router which discards the packet will inform the original sender that the TTL value has exceeded.!
+ 
+The information send by the router receiving a packet with TTL of 1 back to the original sender is called as "ICMP TTL exceeded messages". Of course in internet when you send something to a receiver, the receiver will come to know the address of the sender.
+ 
+Hence when an ICMP TTL exceeded message is sent by a router, the original sender will come to know the address of the router.
+ 
+Traceroute makes use of this TTL exceeded messages to find out routers that come across your path to destination(Because these exceeded messages send by the router will contain its address).
+ 
+ 
+But how does Traceroute uses TTL exceeded message to find out routers/hops in between?
+ 
+You might be thinking, TTL exceeded messages are only send by the router that receives a packet with TTL of 1. That's correct, every router in between you and your receiver will not send TTL exceeded message. Then how will you find the address of all the routers/hops in between you and your destination. Because the main purpose of Traceroute is to identify the hops between you and your destination.
+ 
+But you can exploit this behavior of sending TTL exceeded messages by routers/hops in between by purposely sending an IP packet with a TTL value of 1.
+ 
+ 
+See an example diagram of the whole process in the below diagram, where a sender does a traceroute towards one of the servers a remote location.
+ 
+Traceroute Working Explained
+ 
+ 
+So let's say i want to do a traceroute to google's publicly available DNS server(8.8.8.8). My traceroute command and its result will look something like the below.
+ 
+ 
+root@workstation:~# traceroute -n 8.8.8.8
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  192.168.0.1  6.768 ms  6.462 ms  6.223 ms
+ 2  183.83.192.1  5.842 ms  5.543 ms  5.288 ms
+ 3  183.82.14.5  5.078 ms  6.755 ms  6.468 ms
+ 4  183.82.14.57  20.789 ms  27.609 ms  27.931 ms
+ 5  72.14.194.18  17.821 ms  17.652 ms  17.465 ms
+ 6  66.249.94.170  19.378 ms  15.975 ms  23.017 ms
+ 7  209.85.241.21  16.633 ms  16.607 ms  17.428 ms
+ 8  8.8.8.8  17.144 ms  17.662 ms  17.228 ms
+ 
+ 
+Let's see what's happening under the hood. When i fire that command of traceroute -n 8.8.8.8, what my computer does is to make a UDP packet (Yeah its UDP. Don't worry we will be discussing this in detail ). This UDP packet will contain the following things.
+ 
+My Source Address (Which is my IP address)
+Destination address (Which is 8.8.8.8)
+And A destination UDP port number which is invalid. Means the traceroute utility will send packet to a UDP port in the range of 33434 to 33534, Which is normally unused.
+ 
+So Let's see how this thing works.
+ 
+Step 1: My Source address will make a packet with destination ip address of 8.8.8.8 and a destination port number between 33434 to 33534. And the important thing it does it to make the TTL Value 1
+ 
+Step 2: Of course my packet will reach my gateway server. On seeing receiving the packet my gateway server will reduce the TTL by 1 (All routers/hops in between does this job of reducing the TTL value by 1). Once the TTL is reduced by the value of 1 (1-1= 0), the TTL value becomes zero. Hence my gateway server will send me back a TTL Time exceeded message. Please remember that when my gateway server sends a TTL exceeded message back to me, it will send the first 28 byte header of the initial packet i send.
+ 
+Step 3:  On receiving this TTL Time exceeded message, my traceroute program will come to know the source address and other details about the first hop (Which is my gateway server.).
+ 
+Step 4: Now the traceroute program will again send the same UDP packet with the destination of 8.8.8.8, and a random UDP destination port between 33434 to 33534. But this time i will make the initial TTL 2.  This is because my gateway router will reduce it by 1 and then forwards that same packet which send to the next hop/router (the packet send by my gateway to its next hop will have a TTL value of 1).
+ 
+Step 5: On receiving UDP packet, the next hop to my gateway server will once again reduce it to 1 which means now the TTL has once again become 0. Hence it will send me back a ICMP Time exceeded message with its source address, and also the first 28 byte header of the packet which i send.
+ 
+Step 6: On receiving that message of TTL Time Exceeded, my traceroute program will come to know about that hop/routers IP address and it will show that on my screen.
+ 
+Step 7: Now again my traceroute program will make a similar UDP packet with again a random udp port with the destination address of 8.8.8.8. But this time the ttl value is made to 3, so that the ttl will automatically become 0, when it reaches the third hop/router(Please remember that my gateway and the next hop to it, will reduce it by 1 ). So that it will reply me with a TTL Time exceeded message, and my traceroute program will come to know about that hop/routers IP  address.
+Step 8: On receiving that reply, the traceroute program will once again make a UDP packet with TTL value of 4 this time. If i gets a TTL Time exceeded for that also, then my traceroute program will send a UDP packet with TTL of 5 and so on.
+ 
+But how will my traceroute program come to know that the final destination of 8.8.8.8 has reached. The traceroute program will come to know about that because, when the original receiver of the packet 8.8.8.8 (remember that all UDP packet had a destination address of 8.8.8.8) gets the request it will send me a message that will be completely different from all the messages of "TTL Time exceeded".
+ 
+When the original receiver (8.8.8.8) gets my UDP packet, it will send me a "ICMP Destination/PORT Unreachable" message. This is bound to happen because we are always sending a random UDP port between 33434 to 33534. Hence my Traceroute program will come to know that we have reached the final destination and will stop sending any further packets.
+ 
+Now anything described in words is called a theory. We need to confirm this, by doing a tcpdump while doing a traceroute. Let's see the tcpdump output. Please note that i will not show you the entire output of tcpdump because it too long.
+ 
+Run traceroute on one terminal of your linux machine. And on another terminal run the below tcpdump command to see what happens.
+ 
+
+root@workstation:~# tcpdump -n '(icmp or udp)' -vvv
+12:13:06.585187 IP (tos 0x0, ttl 1, id 37285, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.43143 > 8.8.8.8.33434: [bad udp cksum 0xd157 -> 0x0e59!] UDP, length 32
+12:13:06.585218 IP (tos 0x0, ttl 1, id 37286, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.38682 > 8.8.8.8.33435: [bad udp cksum 0xd157 -> 0x1fc5!] UDP, length 32
+12:13:06.585228 IP (tos 0x0, ttl 1, id 37287, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.48381 > 8.8.8.8.33436: [bad udp cksum 0xd157 -> 0xf9e0!] UDP, length 32
+12:13:06.585237 IP (tos 0x0, ttl 2, id 37288, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.57602 > 8.8.8.8.33437: [bad udp cksum 0xd157 -> 0xd5da!] UDP, length 32
+12:13:06.585247 IP (tos 0x0, ttl 2, id 37289, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.39195 > 8.8.8.8.33438: [bad udp cksum 0xd157 -> 0x1dc1!] UDP, length 32
+12:13:06.585256 IP (tos 0x0, ttl 2, id 37290, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.47823 > 8.8.8.8.33439: [bad udp cksum 0xd157 -> 0xfc0b!] UDP, length 32
+12:13:06.585264 IP (tos 0x0, ttl 3, id 37291, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.52815 > 8.8.8.8.33440: [bad udp cksum 0xd157 -> 0xe88a!] UDP, length 32
+12:13:06.585273 IP (tos 0x0, ttl 3, id 37292, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.51780 > 8.8.8.8.33441: [bad udp cksum 0xd157 -> 0xec94!] UDP, length 32
+12:13:06.585281 IP (tos 0x0, ttl 3, id 37293, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.34782 > 8.8.8.8.33442: [bad udp cksum 0xd157 -> 0x2efa!] UDP, length 32
+12:13:06.585290 IP (tos 0x0, ttl 4, id 37294, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.53015 > 8.8.8.8.33443: [bad udp cksum 0xd157 -> 0xe7bf!] UDP, length 32
+12:13:06.585299 IP (tos 0x0, ttl 4, id 37295, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.58417 > 8.8.8.8.33444: [bad udp cksum 0xd157 -> 0xd2a4!] UDP, length 32
+12:13:06.585308 IP (tos 0x0, ttl 4, id 37296, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.55943 > 8.8.8.8.33445: [bad udp cksum 0xd157 -> 0xdc4d!] UDP, length 32
+12:13:06.585318 IP (tos 0x0, ttl 5, id 37297, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.33265 > 8.8.8.8.33446: [bad udp cksum 0xd157 -> 0x34e3!] UDP, length 32
+12:13:06.585327 IP (tos 0x0, ttl 5, id 37298, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.53485 > 8.8.8.8.33447: [bad udp cksum 0xd157 -> 0xe5e5!] UDP, length 32
+12:13:06.585335 IP (tos 0x0, ttl 5, id 37299, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.40992 > 8.8.8.8.33448: [bad udp cksum 0xd157 -> 0x16b2!] UDP, length 32
+12:13:06.585344 IP (tos 0x0, ttl 6, id 37300, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.102.41538 > 8.8.8.8.33449: [bad udp cksum 0xd157 -> 0x148f!] UDP, length 32
+ 
+The above output only shows the UDP packets my machine send.. I will show the reply messages seperate to make this more clear.
+Notice the TTL value on each line. It starts from TTL of 1 and then 2, and then 3 till TTL 6. But you might be wondering why my server is sending 3 UDP messages with TTL value of 1 and then 2 and then 3.?
+ 
+The reason behind this is to calculate an average Round Trip Time. Traceroute program sends three UDP packets to each hop to measure the exact average round trip time. Round trip time is nothing but the time it took to send and then receive the reply in milliseconds. I purposely didn't mention about this in the beginning to avoid confusion.
+ 
+So the bottom line is my traceroute program sends three UDP packets to each hop to simply calculate the round trip average. because the traceroute output shows you those three values in its output. Please see the traceroute output more closely. It shows three millisecond values for each hop. To get a clear idea about the round trip time.
+ 
+ 
+Now let's see the reply we got from all the hops through TCPDUMP. Please note that the reply messages am showing below are part of the same tcpdump i did above, but showing you seperately to make this more clear.
+ 
+One more interesting thing to note is that each time my traceroute program is sending a different random UDP port number. This is to identify the reply belonged to which packet. As told before the reply messages send by the hops and destination contains the header of original packet we send, hence traceroute program can accurately calculate the round trip time (For each three UDP packets send to each hop), as it can easily identify the reply and correlate. The random port numbers are sort of identifiers to identify the reply.
+ 
+The reply messages looks like the below.
+
+192.168.0.1 > 192.168.0.102: ICMP time exceeded in-transit, length 68
+        IP (tos 0x0, ttl 1, id 37285, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.1 > 192.168.0.102: ICMP time exceeded in-transit, length 68
+        IP (tos 0x0, ttl 1, id 37286, offset 0, flags [none], proto UDP (17), length 60)
+    183.83.192.1 > 192.168.0.102: ICMP time exceeded in-transit, length 60
+        IP (tos 0x0, id 37288, offset 0, flags [none], proto UDP (17), length 60)
+    192.168.0.1 > 192.168.0.102: ICMP time exceeded in-transit, length 68
+        IP (tos 0x0, ttl 1, id 37287, offset 0, flags [none], proto UDP (17), length 60)
+ 
+ 
+Please note the ICMP time exceeded messages in the reply shown above (I have not shown all reply messages).
+ 
+Now let me show the final message which is different than the ICMP time exceeded message. This messages is a destination port unreachable, as told before. And my traceroute program will come to know that our destination has reached.
+ 
+
+8.8.8.8 > 192.168.0.102: ICMP 8.8.8.8 udp port 33458 unreachable, length 68
+        IP (tos 0x80, ttl 2, id 37309, offset 0, flags [none], proto UDP (17), l                                                                                        ength 60)
+    8.8.8.8 > 192.168.0.102: ICMP 8.8.8.8 udp port 33457 unreachable, length 68
+        IP (tos 0x80, ttl 1, id 37308, offset 0, flags [none], proto UDP (17), l                                                                                        ength 60)
+    8.8.8.8 > 192.168.0.102: ICMP 8.8.8.8 udp port 33459 unreachable, length 68
+        IP (tos 0x80, ttl 2, id 37310, offset 0, flags [none], proto UDP (17), l                                                                                        ength 60)
+ 
+ 
+Note that there are three replies from 8.8.8.8 to my traceroute program. As told before traceroute sends three similar UDP packets with different ports to simply calculate the round trip time. The final destination is nothing different.
+ 
+Different types of Traceroute program
+ 
+There are different types of traceroute programs. Each of them works slightly differently. But the overall concept behind each of them is the same. All of them uses the TTL value.
+ 
+Why different implementations? That because you can use the one which is applicable to your environment. If suppose A firewall block the UDP traffic then you can use another traceroute for this purpose.  The different types are mentioned below.
+ 
+UDP Traceroute
+ICMP traceroute
+TCP Traceroute
+ 
+The one we used previously is UDP traceroute. Its the default protocol used by linux traceroute program. However you can ask our traceroute utility in linux to use ICMP instead of UDP by the below command.
+ 
+
+root@workstation:~# traceroute -I -n 8.8.8.8
+ 
+ICMP for traceroute works the same way as UDP traceroute. Traceroute program will send ICMP Echo Request messages and the hops in between will reply with a ICMP Time exceeded messages. But the final destination will reply with ICMP Echo reply.
+ 
+Tracert command available in windows operating system by default uses ICMP traceroute method.
+ 
+Now the last is the most interesting one. Its called TCP traceroute. Its used because almost all firewall and routers in between allows you to send TCP traffic. And if the packet is toward port 80, which is the web traffic then most of the routers allow that packet. TCPTRACEROUTE by default sends TCP SYN requests to port 80.
+ 
+Read: How a TCP connection is established
+ 
+All routers in between the source and destination will send a TTL time exceeded message and the destination will send either a RST packet if port 80 is closed or will send a SYN/ACK packet(But tcptraceroute does not make a tcp connection, on receiving the SYN/ACK packet, traceroute program will send a RST packet to close the connection). Hence the traceroute program comes to know that the destination has reached.
+ 
+Please note the fact that the -n option i have used in the previously shown traceroute command will not do a DNS name resolution. Otherwise traceroute will send dns queries for all the hops it finds on the way.

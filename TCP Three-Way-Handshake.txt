@@ -1,0 +1,35 @@
+Three-Way-Handshake.txt
+
+A three-way-handshake is a method used in a TCP/IP network to create a connection between a local host/client and server. It is a three-step method that requires both the client and server to exchange SYN and ACK (acknowledgment) packets before actual data communication begins.
+
+A three-way-handshake is also known as a TCP handshake.
+
+A three-way-handshake is primarily used to create a TCP socket connection. It works when: 
+A client node sends a SYN data packet over an IP network to a server on the same or an external network. The objective of this packet is to ask/infer if the server is open for new connection.
+The target server must have open ports that can accept and initiate new connections. When the server receives the SYN packet from the client node, it responds and returns a confirmation receipt - the ACK packet or SYN/ACK packet.
+The client node receives the SYN/ACK from the server and responds with an ACK packet.
+
+Upon completion of this process, the connection is created and the host and server can communicate.
+
+
+Host A sends a TCP SYNchronize packet to Host B
+
+Host B receives A's SYN
+
+Host B sends a SYNchronize-ACKnowledgement
+
+Host A receives B's SYN-ACK
+
+Host A sends ACKnowledge
+
+Host B receives ACK. 
+TCP socket connection is ESTABLISHED.
+
+
+SYNchronize and ACKnowledge messages are indicated by a either the SYN bit, or the ACK bit inside the TCP header, and the SYN-ACK message has both the SYN and the ACK bits turned on (set to 1) in the TCP header.
+
+TCP knows whether the network TCP socket connection is opening, synchronizing, established by using the SYNchronize and ACKnowledge messages when establishing a network TCP socket connection.
+
+When the communication between two computers ends, another 3-way communication is performed to tear down the TCP socket connection. This setup and teardown of a TCP socket connection is part of what qualifies TCP a reliable protocol. TCP also acknowledges that data is successfully received and guarantees the data is reassenbled in the correct order.
+
+Note that UDP is connectionless. That means UDP doesn't establish connections as TCP does, so UDP does not perform this 3-way handshake and for this reason, it is referred to as an unreliable protocol. That doesn't mean UDP can't transfer data, it just doesn't negotiate how the conneciton will work, UDP just transmits and hopes for the best.

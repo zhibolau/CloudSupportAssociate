@@ -1,0 +1,20 @@
+move gc to another dc.txt
+
+gc: global catalog
+
+dc: domain controller
+
+There are several reasons to move the role of the global catalog from one domain controller to another domain controller:
+If you want to remove the only global catalog from a forest or site, you must first move the global catalog role to another domain controller.
+If your global catalog receives too many authentication or logon requests, you may want to move the global catalog functionality to a more productive domain controller in your domain.
+Exchange Server 5.5 is not supported if it is installed on a global catalog that is in the same Active Directory forest as another Exchange server because Exchange Server 5.5 can conflict with the Name Service Provider Interface (NSPI) port on which Active Directory listens. 
+
+To move the global catalog functions from one domain controller to another:
+Click Start, point to Programs, point to Administrative Tools, and then click Active Directory Sites and Services.
+Double-click Sites to expand it, expand Servers, and then click the domain controller that you want to have the new global catalog role.
+Double-click the domain controller to expand the server contents.
+Right-click the NTDS Settings object that is listed below the server, and then click Properties.
+On the General tab, click to select the Global Catalog check box to add the global catalog function to the domain controller, and then click OK to apply the changes.
+Click Active Directory Sites and Services, and then click the outdated global catalog or domain controller that is going to have the global catalog function removed.
+Open the properties of the domain controller, click to clear the Global Catalog check box, and then click OK to apply the changes. For any change to take effect, you must wait for the change to replicate throughout Active Directory on all of your domain controllers.
+Restart any domain controllers whose Global Catalog check boxes have been modified.

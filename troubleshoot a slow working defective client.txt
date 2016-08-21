@@ -35,5 +35,25 @@ Routing tables can get screwed up from duplicate entries, and if address space i
 If you do not have a network protocol configured, you will not be able to communicate over a network
 if your client computer cannot speak with the DHCP server which provides it with its IP information, it will not function at all and be disconnected from the network. If this happens, APIPA (Automatic Private IP Addressing) kicks in giving the client a different address number (likely un-routable or un-routed within your network) causing confusion if you are unsure as to what this is. Clients are trying to communicate. If physical connectivity (such as cables and power sources) are disconnected, then you will not communicate. If you cannot log into your system or resources available on the network, you cannot communicate. If your system is configured with the wrong protocols, or no protocol at all – no communication. If your system protocols are not configured correctly, you are not able to communicate! Sometimes however, you may have limited communication that will affect your performance.
 
+DHCP can cause performance issues if clients cannot locate a server in which to get an address lease from. What is DHCP is handing out a DNS server address to clients that has been decommissioned and the client has to search a list of servers to find one that is responsive. This adds performance problems to the mix. 
+
+First, it Is a fact that some ISP’s have problems with their DNS from time to time, so, the way around this is to configure a different DNS server to troubleshoot your ISPs problems. For example, you can open a Command Prompt (cmd) and use nslookup to find your current DNS settings. If you are connected to the Internet, your ISP will supply this info from a DHCP server. If the ISP then changes their DNS server (the primary as an example), your client may not reflect that information until your lease expires, or you manually try to apply for a new lease. You can try to release or renew the lease to test this theory. Or, you can use nslookup to change your primary DNS to use and test with a different one to see if the DNS server is the issue.
+
+Change the server address using the nslookup command or add them in the network properties dialog box. Slow, unresponsive or problematic DNS problems can be tested quickly. For example. Use the following sites for help in selecting and entering a new DNS server:
+
+DNS Servers:
+
+Opendns.com
+Opennicproject.org
+If your speed increases dramatically, you now know what the source of your issues was.
+
+Dynamic DNS is also an issue if you configure it manually and configure it incorrectly. WINS – well, if you are still using WINS (especially at home), then you are officially a dinosaur, but if you are – this can also cause slow performance if you do not try to resolve it with a cleanup of your records, or trying a different server. Remember as we mentioned earlier, if the server has a problem with its CPU (underpowered), you will feel it at your client!
+
+
+# 1: General Security Concerns
+
+The #1 networking issue when dealing with Windows clients is the poor application of basic security services and feature
+
+
 
 
