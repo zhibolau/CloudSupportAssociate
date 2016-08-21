@@ -1,0 +1,39 @@
+troubleshoot a slow working defective client.txt
+
+#5Initial Configuration:
+
+When setting up your systems, the biggest things that cause disruption are loss of your main power source, incorrect cabling (or wireless configurations), lack of/or misconfigured protocols (such as IP) and problems with Windows systems such as misconfigured network services. Another issue to consider is the configuration of how your client computers access shared resources, such as a network printer. Many times, a ‘server’ is used to provide centralized access which would mean you would need to configure properties on the print server, or if the print server function is located and controlled on a server, the configuration of the workgroup, or client/server relationship. This is a huge stumbling block for those working with networked Windows systems… the relationship of a client to the server it uses to work with shared resources. After the initial configuration and testing of your network, the next steps should be to document it correctly so that if problems do pop up, you have the phone number for your ISP handy, or the manuals (or Web links) to the systems you are working with.
+
+If you decide to use wireless connections over wired ones, initial design and configuration must not be overlooked. The OSI Model is a great help in getting these issues resolved. Firstly, wires (or cables) are associated with problems at the physical level. The cable is either damaged or being affected by distance or electrical problems, is connected incorrectly (wrong type or grade), or possibly the fact that the cable is simply not fully connected. Signal Interference issues are common, especially when cables are laid over a light or power source, for example. Wireless connections are way more complicated, as they need multiple hardware as well as software components (such as drivers and applications software) to be configured, made to work and keep up and running. Many times, you need to configure an Access Point (AP), generally found on most home-based routers sold on the market today.
+
+# 4: Credential, Permission and Rights Problems
+
+The first problem that comes to mind with Windows systems is credentials, permissions and rights. Most times, you may try to access a host and not be able to because… yep, you guessed it – because they can not log in, or they do not have permissions to access resources once they are logged in.
+
+# 3: Network Performance
+
+Speed and Latency issues can be the result of slow connections, or from a network that is saturated with data. For example, if you use gigabit Ethernet between your hosts, cabled connections will give you up to 1000 Mbps of speed. Unbeknownst to some, switching to a wireless connection will drastically impact your network communication because today home-based wireless systems (even when teamed) will not produce more than about 54-100 Mbps of transfer. Add in interference and you will definitely feel the pinch. 
+
+using a hub instead of a network switch (that keeps a switching table in memory) can cause major issues with speed and latency. Using non-hierarchical designs where the core of your network is operating at the fastest speed and the access layer into the core operating at a slower speed can and absolutely will create bottlenecks.
+Mismatched speeds and duplex settings on NIC cards such as half-duplex to full duplex (and auto-sense) are also common issues that create a performance hit on your network. Lastly, using a switch and creating a loop will likely shut your network down completely if one exists.
+
+Sometimes, you may have an issue with a provider’s service. Contact and engage your provider if you think that there is an issue, because if you are paying for a service, it is also likely that you have an SLA in place. The SLA, or service level agreement, states that you should get a certain amount of bandwidth and uptime from them as well as a support network where you can contact experienced techs that ‘should’ be able to resolve your issues with you, or for you
+
+
+Other issues that relate to performance are security problems (such as Malware, covered later in this article) that tie up your systems resource, or purposely cause your services to fail. 
+
+Internet browsers can also cause an issue (especially if they are infected with a virus) so make sure that this is not the case, or that your systems browser settings are restricting sites… 
+
+# 2 TCP/IP and other Protocol Problems
+
+ISP-based protocol issues, DHCP, APIPA, DNS, IP addressing and/or using a different protocol suite other than TCP/IP within your network
+
+tracert, netstat, ping and pathping
+
+Routing tables can get screwed up from duplicate entries, and if address space is not summarize correctly, could cause large route tables, both causing performance issues for any end-user just trying to download a spreadsheet from the corporate office location.
+
+If you do not have a network protocol configured, you will not be able to communicate over a network
+if your client computer cannot speak with the DHCP server which provides it with its IP information, it will not function at all and be disconnected from the network. If this happens, APIPA (Automatic Private IP Addressing) kicks in giving the client a different address number (likely un-routable or un-routed within your network) causing confusion if you are unsure as to what this is. Clients are trying to communicate. If physical connectivity (such as cables and power sources) are disconnected, then you will not communicate. If you cannot log into your system or resources available on the network, you cannot communicate. If your system is configured with the wrong protocols, or no protocol at all – no communication. If your system protocols are not configured correctly, you are not able to communicate! Sometimes however, you may have limited communication that will affect your performance.
+
+
+
