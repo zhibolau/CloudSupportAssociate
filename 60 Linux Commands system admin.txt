@@ -1,4 +1,4 @@
-60 Linux Commands system admin.txt
+﻿60 Linux Commands system admin.txt
 
 The “lsblk” stands for (List Block Devices), print block devices by their assigned name (but not RAM) on the standard output in a tree-like fashion
 
