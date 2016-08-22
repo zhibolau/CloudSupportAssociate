@@ -730,10 +730,23 @@ What is DHCP, BGP, ARP, VPN, IPSEC and DNS. Describe what happen in browser when
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 sysvol
 64.
-First Interview: What happens in the browser when you type Amazon.com?, How do you scale a PHP application?, Tell me about a time when you did more than was needed by a client?, How do you host two websites using the same IP?, How do you check the states of slow running queries in databases and ho do you optimize them ?, How would you migrate an application from Google Cloud Datastore to Amazon S3?(I would say this was specific to me because I had earlier stated that I had experience with the Google Cloud Platform), What is the difference between absolute and relative URLs and what are the advantages/disadvantages of each?, What is the deafault MySQL port?  
+First Interview: What happens in the browser when you type Amazon.com?, How do you scale a PHP application?, Tell me about a time when you did more than was needed by a client?, How do you host two websites using the same IP?, 
+How do you check the states of slow running queries in databases and ho do you optimize them ?, 
+How would you migrate an application from Google Cloud Datastore to Amazon S3?(I would say this was specific to me because I had earlier stated that I had experience with the Google Cloud Platform), 
+What is the difference between absolute and relative URLs and what are the advantages/disadvantages of each?, 
+What is the deafault MySQL port?  
 
-
-Second Interview (was OS focused): Can you explain the Linux boot process?, How do you install a package in Ubuntu? What does apt-get update do? What does apt-get upgrade do? What ports are used for SSH, SSL and what is the default MySQL port?(repetition from first interview), How do you make a user the owner of a file in Linux? How do you change permissions? What is the meaning of the various codes used in assigning permissions in chmod and what does each position signify?, How do you connect a new disk partition and mount it in Linux?, What is iptables? What is an inode?  
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Second Interview (was OS focused): Can you explain the Linux boot process?, How do you install a package in Ubuntu? 
+What does apt-get update do? 
+What does apt-get upgrade do? 
+What ports are used for SSH, SSL and what is the default MySQL port?(repetition from first interview), 
+How do you make a user the owner of a file in Linux? 
+How do you change permissions? 
+What is the meaning of the various codes used in assigning permissions in chmod and what does each position signify?, 
+How do you connect a new disk partition and mount it in Linux?, 
+What is iptables? 
+What is an inode?  
 
 
 

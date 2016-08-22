@@ -1,0 +1,4 @@
+deafault MySQL port.txt
+
+The port number to use for the connection, for connections made using TCP/IP. The default port number is 3306.
+

@@ -1,0 +1,8 @@
+sysvol.txt
+
+the System Volume (Sysvol) is a shared directory that stores the server copy of the domain's public files that must be shared for common access and replication throughout a domain. The term SYSVOL refers to a set of files and folders that reside on the local hard disk of each domain controller in a domain and that are replicated by the File Replication service (FRS). Network clients access the contents of the SYSVOL tree by using the NETLOGON and SYSVOL shared folders. Sysvol uses junction points-a physical location on a hard disk that points to data that is located elsewhere on your disk or other storage device-to manage a single instance store.
+
+
+
+You can use NETLOGON and SYSVOL to distinguish between DC and member server. If both the NETLOGON and SYSVOL shares exist on a W2K server, it is a DC. When dcpromo demotes a DC to a member server, the NETLOGON share is removed. Thus the presence of only SYSVOL signals a member server.
+

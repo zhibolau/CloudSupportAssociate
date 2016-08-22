@@ -1,0 +1,37 @@
+optimize slow queries.txt
+
+So what is the easy way to see if query is worth optimizing ?
+– see how many rows query sends after group by, distinct and aggregate functions are removed (A)
+– look at number of rows examined divided by number of tables in join (B)
+– if B is less or equals to A your query is “perfect”
+– if B/A is 10x or more this query is a very serious candidate for optimization.
+
+The query in this case has sent zero rows (as there are no matches) but it had to examine 10Mil rows to produce result. What would be good scenario ? – query examining same amount of rows as they end up sending. In this case if I index the table I get the following record in the slow query log
+
+Rows_examined=0 same as Rows_sent meaning this query is optimized quite well. Note you may be thinking in this case there is no database access happening at all – you would be wrong. The index lookup is being perform but as only actual rows which are found and returned up to the top level MySQL part for processing are counted the Rows_examined remains zero.
+
+Examining query execution plans (EXPLAIN)
+
+Before trying to optimize a slow query, we need to understand what makes it slow. For this purpose MySQL has a query examination tool called EXPLAIN. Add the reserved word 'EXPLAIN' at the beginning of your query to get the execution plan for the query. The execution plan literally 'explains' to us what the database is doing to optimize the query. The MySQL manual has a full reference guide to the different values that appear in the plan, and you can see a full walkthrough of using EXPLAIN to optimize a query in this slideshow on slideshare 
+
+With the help of EXPLAIN, you can see where you should add indexes to tables so that the statement executes faster by using indexes to find rows. You can also use EXPLAIN to check whether the optimizer joins the tables in an optimal order.
+
+There are 4 basic ways to optimize query performance:
+
+Rewrite the queries
+Change indexing strategy
+Change schema
+Use an external cache
+
+1. Looping queries
+
+The most basic performance issues often will not be the fault of the database itself. One of the most common mistakes is to query in a loop without need. Most likely looped SELECT queries can be rewritten as a JOIN -
+
+2.Picking only the needed columns is a good general practice to use, and avoids scanning all.
+
+3. Filtering rows correctly and using indexes
+Filtering conditions include the WHERE, ON (for joins) and HAVING clauses. As much as possible, we want those clauses to hit indexes - unless we are selecting a very large amount of rows, index lookup is much faster than a full table scan. Those clauses should be used along with the LIMIT clause if relevant to filter the amount of rows / data returned by the query. The LIMIT clause itself can lend some important optimizations for queries if used correctly.
+
+4. Indexing correctly
+
+MySQL can use one index per table alias in a query, so we need to plan our indexes to maximize their effectiveness. Using more indexes than is necessary can have adverse affects - as it slows down the operation of INSERT and UPDATE queries, while taking up more memory. Some indexes can even slow down performance depending on their selectivity.

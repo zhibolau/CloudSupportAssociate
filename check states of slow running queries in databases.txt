@@ -1,0 +1,68 @@
+check states of slow running queries in databases.txt
+
+What is an index?
+
+An index is a sorted set of data that references the primary key of a table, similar to a phone book having a list of last names which make it easy to find a phone number.  An index enables a query to very quickly find specific values in a column, for fast data retrieval from a table.  In the absence of an index, a query would need to scan the entire table to check for any matches in the column.  The larger the table without a proper index, the more of a performance hit a query could experience.  Indexes are most helpful for direct comparisons, ranges, or where searching the beginning of a column’s value. Indexes are least useful when a query returns a large amount of the data in the table (as it is faster to read the whole table than perform large of disk seeks).  They also don’t help at all for full text searching using LIKE comparisons.
+
+So why not just add an index to every column?  It might allow queries that retrieve data to be faster on all columns, however any queries that add, change or delete data would then have to update all of the indexes on the affected columns, slowing them down.  Because of this it is important to be strategic about your use of indexes.  Multiple column indexes help most where there are several WHERE direct comparisons in a query, but limiting the total number of indexes when possible is preferred.
+
+What causes slow queries?
+
+When a query cannot make use of an index, the MySQL server has to use more resources and time to process that query.
+
+The first tool is most useful for identifying individual queries that are slow, and it is called mysql_slow_log_filter.  The code is publicly available at:
+
+http://www.mysqlperformanceblog.com/files/utils/mysql_slow_log_filter
+
+With this script, you can filter the log for queries taking more than X seconds with the -T flag, or X rows via the -R flag.  In this way the utility can identify those queries that are slowest or that processed the greatest amount of data.
+
+Slow network communication.
+Inadequate memory in the server computer, or not enough memory available for SQL Server.
+Lack of useful statistics
+Lack of useful indexes.
+Lack of useful indexed views.
+Lack of useful data striping.
+Lack of useful partitioning.
+
+1. Activate the logging of mysql slow queries.
+
+The first step is to make sure that the mysql server will log ‘slow’ queries and to properly configure what we are considering as a slow query.
+
+First let’s check on the mysql server if we have slow query logging enabled:
+
+1
+2
+mysqladmin var |grep log_slow_queries
+| log_slow_queries                | OFF                          |
+If log_slow_queries is ON then we already have it enabled. This setting is by default disabled – meaning that if you don’t have log_slow_queries defined in the mysql server config this will be disabled. The mysql variable long_query_time (default 1) defines what is considered as a slow query. In the default case, any query that takes more than 1 second will be considered a slow query.
+
+Ok, now for the scope of this article we will enable the mysql slow query log. In order to do to do this in your mysql server config file (/etc/my.cnf RHEL/Centos or /etc/mysql/my.cnf on Debian, etc.) in the mysqld section we will add:
+
+1
+2
+3
+[mysqld]
+long_query_time         = 1
+log-slow-queries        = /var/log/mysql/mysql-slow.log
+This configuration will log all queries that take more than 1 sec in the file /var/log/mysql/mysql-slow.log. You will probably want to define these based on your particular setup (maybe you will want the logs in a different location and/or you will consider a higher value than 1 sec to be slow query).
+
+Once you have done the proper configurations to enable mysql to log slow queries you will have to reload the mysql service in order to activate the changes.
+
+2. Investigate the mysql slow queries log.
+
+After we enabled slow query logging we can look inside the log file for each slow query that was executed by the server. Various details are logged to help us understand how was the query executed:
+
+Time: how long it took to execute the query
+Lock: how long was a lock required
+Rows: how many rows were investigated by the query (this can help see quickly queries without indexes)
+Host: the actual host that launched the query (this can be localhost, or a different one in multiple servers setup)
+The actual mysql query.
+This information allows us to see what queries need to be optimized, but on a high traffic server and with lots of slow queries this log can grow up very fast making it very difficult to find any relevant information inside it. In this case we have two choices:
+
+We increase the long_query_time and we focus on the queries that take the most time to complete, and we gradually decrease this once we solve the queries.
+We use some sort of tool to parse the slow query log file and have it show us the most used queries.
+Of course based on the particular setup we might end up using both methods.
+
+MySQL gives us a small tool that does exactly this: mysqldumpslow. This parses and summarizes the MySQL slow query log. 
+
+

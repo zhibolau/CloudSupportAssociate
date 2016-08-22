@@ -1,0 +1,75 @@
+How do you scale a PHP application.txt
+
+What is Horizontal Scaling?
+
+A cluster is simply a group of servers. A load balancer distributes the workload between the servers in a cluster. At any point, a new web server can be added to the existing cluster to handle more requests from users accessing your application; this is horizontal scaling.
+
+Here’s an example of horizontal scaling in a diagram:
+
+Horizontal Scaling
+
+The load balancer has a single responsibility: deciding which server from the cluster will receive a request that was intercepted. It basically acts like a reverse proxy, making the process seamless to the user.
+
+While horizontal scaling is usually the most reliable and efficient method of scalability, it's not as trivial as vertical scaling. In a nutshell, the main challenges of scaling web applications is keeping all the nodes in a cluster updated and synchronized. Consider the following scenario.
+
+Horizontal Scaling
+
+When user A makes a request to mydomain.com, the load balancer will forward requests to server1. User B, on the other hand, gets forwarded another node from the cluster, server2.
+
+What happens when user A makes changes to the application, like uploading files or updating content in the database? How do you maintain consistency across all nodes in the cluster? Further, PHP saves session information in disk by default. If user A logs in, how can we keep that user’s session in subsequent requests, considering that the load balancer could send them to another server in the cluster?
+
+Let's discuss what can be done to overcome these issues and prepare your existing PHP application for horizontal scaling.
+
+Decouple, Decouple, Decouple
+
+Preparing a system for scalability involves a lot of decoupling, because it's essential to have smaller servers with fewer responsibilities instead of one giant, all-inclusive server. This is really the essence of horizontal scaling. Breaking the application down into parts will also help you measure and identify the real bottlenecks you might have.
+
+Consider a PHP application where users can log in and upload photos. The app uses a basic LAMP stack, and the photos are stored in disk and referenced in the database. The challenge here is to keep consistency between multiple application servers sharing the same data (user uploaded files and user sessions).
+
+In order to make this example application scalable, there needs to be a separation between web server and database. This way, we can have multiple application nodes sharing the same database server. It's a first step, and it will give the app a small performance improvement by reducing the load of the web server. This tutorial can help you with that.
+
+For further scalability, you should also consider implementing a load balancing environment for the database. This tutorial shows how to set up a load balancer for a MySQL cluster.
+
+User Session Consistency
+
+Once the application is isolated from the database server, we can focus on issues specific to the PHP implementation. First, we need to figure out a way for handling the user sessions across the nodes. Let’s talk about a few approaches.
+
+Relational Databases and Network Filesystems
+
+Many people use the approach of saving the session data in relational databases, like MySQL, because it's fairly easy to implement. However, this is a less desirable solution because it adds a substantial overhead (reading and writing to the database for every single request), and in high-traffic incidents, the database is usually the first to go down.
+
+Similarly, using a network filesystem is another easy solution to implement as it doesn't require any changes to the codebase, but network filesystems are slow for I/O operations (again, reading and writing for each request made) and this might have a negative impact in the application performance. Sticky Sessions
+
+Sticky sessions are implemented in the load balancer and don’t require any change in the application nodes, so this is the easiest way to handle user sessions. Sticky sessions make the load balancer always redirect a user to the same server, avoiding the need for sharing session information across nodes.
+
+However, this solution creates new problems. The load balancer now has more responsibilities, which can impact its performance and turn it into a single point of failure. This approach can also create cold and hot spots within the cluster; returning users will always access the same server, even when new nodes are added to the cluster.
+
+Using a Memcached or Redis Server
+
+This solution requires setting up one or more additional servers to handle the user sessions, but it's the most reliable way for solving the sessions problem. Both Memcached and Redis are super fast key-value storage engines that provide session handling for PHP. In a nutshell, after setting up the Memcached or Redis server, you will need to configure each node to be able to connect to the server and use it as session handler. This includes installing a PHP extension and making a simple change in the php.ini settings.
+
+More information about setting up the Memcached session handler for PHP can be found in the official PHP documentation. For Redis, you can find a detailed guide in this link.
+
+User File Consistency
+
+So far, we’ve separated our application and database and dealt with the user session consistency problem. We still need to find a solution to keep consistency between the files uploaded by users, because they could be stored in any of the application nodes.
+
+There are different methods for solving this problem. In some ways it is similar to the user sessions case, but fortunately, it’s actually much simpler. The files are not written to or read from disk for each request, which makes the file sharing not as resource intensive. A solution like GlusterFS can work really well here, which creates a shared storage that will replicate any contents saved into one node to other nodes in the cluster. You can find detailed instructions on how to use GlusterFS to set up such an environment in this tutorial.
+
+Another popular solution is to use object storage to save the files. This can be implemented using different methods, from simple database blob storage to cloud storage services like AWS S3 and Google Cloud Storage. However, it might require a considerable amount of changes to the codebase, depending on how the application is implemented.
+
+Load Balancing
+
+With the application properly decoupled, it's finally possible to create replica nodes that will compose the app cluster. Our example app now has the following setup:
+
+Load Balancing
+
+Both App01 and App02 should be accessible and able to handle requests in the exact same way. The only thing left to do is set up the load balancer to act as the application entry point, redirecting users to the different nodes in the cluster.
+
+HAProxy (which stands for High Availability Proxy) is the standard open source choice for load balancing. It’s used by high-profile environments like Twitter, Instagram, and Imgur. For a better understanding on how HAProxy works and different ways to configure it, check out this introductory tutorial.
+
+Another great tutorial from our community explains how to setup HAProxy as load balancer for WordPress servers. It's a good starting point to understand the practical steps necessary to horizontally scale PHP applications. Final Considerations
+
+Preparing an application for horizontal scaling may look intimidating at first, but once you understand how the load balancer works, it gets easier to figure out what steps should be taken in order to get your environment ready for scale.
+
+Naturally, it's much easier to plan for scalability when you are building an application from scratch, but we don't always have this luxury. It also worth mentioning that scalability walks side by side with performance, but they are not the same thing, and not all applications need to be scalable. Speed, on the other hand, is something all apps can benefit from.

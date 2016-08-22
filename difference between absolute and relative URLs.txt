@@ -1,0 +1,12 @@
+difference between absolute and relative URLs.txt
+
+An absolute URL contains more information than a relative URL does. Relative URLs are more convenient because they are shorter and often more portable.
+
+The main difference between an absolute URL and a relative URL is that, an absolute URL is a complete address that points to a file or a resource, while a relative URL points to a file relative to the current directory or file. Absolute URL contains more information than a relative URL, but using relative URLs are much easier since they are shorter and more portable. But relative URLs can only be used to refer to links that reside on the same server as the page that refers them.
+
+绝对路径指所有以网站根目录为指向起点的文件路径。
+优点自然是保证该链接不会因该链接文件位置的移动而发生连接失效，缺点则是包含了从根目录到目标文件的所有路径，在目标文件层次较深的情况下，连接字符串会很长。
+
+先假设网页1是当前页、网页2是引用页则
+当使用相对URL时，网页1和网页2移动到其它盘时网页1任然能链接到网页2，但是只移动其中一个网页的时候链接就会失效
+当使用绝对URL时，网页1可以放在任何地方，但是网页2不能改变，否则链接失效。

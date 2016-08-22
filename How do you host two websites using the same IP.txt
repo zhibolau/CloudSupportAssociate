@@ -1,0 +1,39 @@
+How do you host two websites using the same IP.txt
+
+Host multiple Web sites on one server
+
+Host headers enable you to assign multiple sites to one IP address on a Web server, without assigning a unique IP address to each Web site or designating non-standard TCP port numbers. Using host headers is the most common way to host multiple Web sites.
+Notes
+The following list outlines the steps to complete, in IIS, to add a host header name or multiple host header names to an IP address. After you complete the following steps, you must then register the host header name or names with the appropriate name resolution system. If your computer is on an intranet, register the host header name or names with the intranet's name resolution system. If your computer is on the Internet, register the host header name or names with the Domain Name System (DNS), which is administered by InterNic.
+ 
+	
+Add a Web site to the Web server.
+
+Edit the Web site binding and add a host header name, or create a new binding with a host header name.
+
+Add additional bindings with the same IP address and port number, but different host headers if you want to have additional sites assigned to one IP address.
+
+
+t's part of the HTTP 1.1 protocol.
+
+Specifically, the HTTP 1.1 protocol includes a header called "host:" which specifies which web site on a particular server the client is attempting to access.
+
+So, if snoopy.net and woodstock.org both share 192.0.32.10 and your browser is trying to get content from http://snoopy.net/doghouse the specific http request would look like:
+
+GET /doghouse HTTP/1.1
+Host: snoopy.net
+If the desired url is http://woodstock.org/seeds the request would look like
+
+GET /seeds HTTP/1.1
+Host: woodstock.org
+In both cases, there would be a tcp socket between your computer and port 80 of the server. The server would know to get content from /var/www/snoopy.net or /var/www/woodstock.org/ based on the Host header.
+
+There would be other headers for cookies and other stuff like browser type and allowed content, but the "Host" header specifically is what allows the web server to know which virtual web site is desired.
+
+There's more in the RFC2616.
+
+This is also why https sites must** have their own IP address -- the ssl key exchange and certificate verification take place prior to the http transaction, so the http server won't know to give out the certificate for "woodstock.org" or "snoopy.net" when it receives an https connection on port 443 of 192.0.32.10.
+
+edit
+
+** in the comments Grawity points out that there are extensions to SSL in the TLS spec that allow the server to know which web site the user as attempting to access, and that most modern web browsers have these extensions, so must is a bit too strong.
