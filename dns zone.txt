@@ -1,0 +1,22 @@
+dns zone.txt
+
+What Are DNS Zones
+
+A DNS Zone is a portion of the DNS namespace that has been delegated to other servers/administrators.
+
+Think of a zone as a database or part of it. So all these domains are stored in one zone on one server.
+
+ServerA still hosts the zone for DNS-Zones.com, this server is in the USA.
+Now we create a new zone called uk.DNS-Zones.com but we create this on the UK DNS server of UkserverA.uk.DNS-Zones.com.
+ServerA.DNS-Zones.com is configured to push all queries for the uk.DNS-Zones.com domain to UkserverA.uk.DNS-Zones.com.
+
+The key differences here is that:
+
+ServerA DOES NOT contain any records at all for the uk.DNS-Zones.com domain name or city subdomains. It only contains a pointer to ukserverA to redirect uk.DNS-Zones.com queries there. This means the entire DNS namespace can be split throughout an organisation.
+By splitting the entire namespace like this it removes unnecessary bandwidth and queries. If the whole namespace existed in the US then the UK would have to query the US servers for UK queries. Moving the UK subdomain into a zone on a UK server keeps the queries local.
+Once a zone is created you can set permissions on it and delegate control of it out to different staff. If we wanted 3 domains to be administered by 3 different teams they would need to be in different zones.
+
+A DNS zone can contain multiple domains or just one domain, the important thing to remember is that it is used for delegating control of portions of the namespace. Different zones can also be on the same server so again some examples will help.
+
+
+A lot of people get confused thinking that zones are used to “physically” move the data of domains to different servers (to distribute the load on servers and bandwidth). Although this is true it is not what zones where designed for and it is VERY IMPORTANT to remember this distinction. DNS Zones are used to delegate administrative rights to different parts of the namespace, it is a security feature…which is different to simply moving or storing portions of the name space somewhere else; they are security boundaries.

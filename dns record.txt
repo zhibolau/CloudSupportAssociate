@@ -1,0 +1,38 @@
+dns record.txt
+
+A Record
+
+An A record gives you the IP address of a domain. That way, users that try to go to www.example.com will get to the right IP address. An A record or "Address Record" maps a hostname to a 32-bit IPv4 address. An "A" Record takes this format (example):
+
+Name             TTL     TYPE    DATA
+ftp.domain.com   43200   A       IP Address
+Media Temple DNS Zone files are written with a "wildcard" entry, that looks like this:
+
+*.domain.com   IN   A   xxx.xxx.xxx.xxx
+The x's represnt your particular IP address. The star takes "anything" .domain.com and points it to your server's IP address. This way, if someone mistakenly types too many or too few w's, they'll still see your website. This is also useful for setting up subdomains on your server, relieving you of the duty of adding an additional "A" record for the subdomain.
+
+MX Record
+
+Mail Exchange Record: Maps a domain name to a list of mail exchange servers for that domain. A zone can have one or more Mail Exchange (MX) records. These records point to hosts that accept mail messages on behalf of the host. A host can be an 'MX' for itself. MX records need not point to a host in the same zone. An 'MX' record takes this format:
+
+host.domain.name       IN     MX      10 otherhost.domain.name.
+IN     MX      20 otherhost2.domain.name.
+The 'MX' preference numbers nn (value 0 to 65535) signify the order in which mailers select 'MX' records when they attempt mail delivery to the host. The lower the 'MX' number, the higher the host is in priority.
+
+PTR Record / Pointer Record
+
+Maps an IPv4 address to the canonical name for that host. Setting up a PTR record for a hostname in the in-addr.arpa. domain that corresponds to an IP address implements reverse DNS lookup for that address. For example, at the time of writing, www.icann.net has the IP address 192.0.34.164, but a PTR record maps 164.34.0.192.in-addr.arpa to its canonical name.
+
+NS Record or "Name Server Record"
+
+Maps a domain name to a list of DNS servers authoritative for that domain. In this case, for (mt) Media Temple purposes would be:
+
+ns1.mediatemple.net
+ns2.mediatemple.net
+SOA Record or "Start of Authority Record"
+
+Specifies the DNS server providing authoritative information about an Internet domain, the email of the domain administrator, the domain serial number, and several timers relating to refreshing the zone.
+
+TXT Record
+
+The TXT Record allows an administrator to insert arbitrary text into a DNS record. For example, this record is used to implement the Sender Policy Framework and DomainKeys specifications.
