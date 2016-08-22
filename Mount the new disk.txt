@@ -1,0 +1,37 @@
+Mount the new disk
+
+Create a directory where you'll mount the new disk, for example /new-disk, and mount it there:
+mkdir /new-disk
+mount -t ext2 /dev/hdb1 /new-disk
+
+If the new disk will have more than one Linux partition, mount them all under /new-disk with the same organization they'll have later.
+
+Example. The new disk will have four Linux partitions, as follows:
+/dev/hdb1:    /
+/dev/hdb2:    /home
+/dev/hdb3:    /var
+/dev/hdb4:    /var/spool
+
+Mount the four partitions under /new-disk as follows:
+/dev/hdb1:    /new-disk
+/dev/hdb2:    /new-disk/home
+/dev/hdb3:    /new-disk/var
+/dev/hdb4:    /new-disk/var/spool
+
+You must create the mount points for each level before you mount the partitions at that level.
+
+Example.
+mkdir /new-disk                                 [1st level]
+mount -t ext2 /dev/hdb1 /new-disk
+
+mkdir /new-disk/home                            [2nd level]
+mount -t ext2 /dev/hdb2 /new-disk/home
+
+mkdir /new-disk/var                             [2nd level also]
+mount -t ext2 /dev/hdb3 /new-disk/var
+
+mkdir /new-disk/var/spool                       [3rd level]
+mount -t ext2 /dev/hdb4 /new-disk/var/spool
+
+If you've created a mount point at /new-disk/tmp, you'll need to correct the directory's permissions to let all users access it:
+chmod 1777 /new-disk/tmp

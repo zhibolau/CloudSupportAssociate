@@ -1,0 +1,12 @@
+change file permissions.txt
+
+
+chmod -R <permissionsettings> <dirname>
+
+chmod - modify file access rights
+su - temporarily become the superuser
+chown - change file ownership
+chgrp - change a file's group ownership
+
+reading, writing and execution permission for the owner, group, and everybody else
+

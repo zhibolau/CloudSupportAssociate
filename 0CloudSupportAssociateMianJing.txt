@@ -748,14 +748,7 @@ How do you connect a new disk partition and mount it in Linux?,
 What is iptables? 
 What is an inode?  
 
-
-
-65.
-
-Asked me about Networking, Windows Servers, SQL query and Linux. Basic commands and scenario based question.  
-
-Networking, Windows Server, Linux commands, Scripting and Internet protocols
-
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 66.
 Question on VLAN and how to build secure windows server clearly more infrastructure related questions than application which i find it bit out of the way than my role.  
@@ -765,18 +758,9 @@ Question on VLAN and how to build secure windows server clearly more infrastruct
 Tcp/ip, Osi, AD, DNS, basic troubleshoot on Network and Windows. Lots of detail on each item like FSMO and TCP vs UDP and what happen when you type UrL on your browser.  
 
 
-68.
-What is Cloud computing? what is RAID and types? what is DHCP? What is TCP and UDP? 
-
 69.
 TCP/UDP, basic l2 l3, some web server, ssl authentication, windows trouble shooting test, dns server, dhcp server
 
-70.
-	
-
-Describe what happens when you enter amazon.com in the   browser, everything 
-
-Started from ARP, and DNS. In the process, there were other questions asked when describing TCP/IP part.
 
 71.
 What is sysprep and how is it used?  

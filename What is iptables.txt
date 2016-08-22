@@ -1,0 +1,2 @@
+What is iptables.txt
+We can call, it’s the basics of Firewall for Linux. Iptables is a rule based firewall system and it is normally pre-installed on a Unix operating system which is controlling the incoming and outgoing packets. By-default the iptables is running without any rules, we can create, add, edit rules into it.

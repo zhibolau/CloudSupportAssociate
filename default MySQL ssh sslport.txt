@@ -1,0 +1,24 @@
+SSH	22
+SSH Shared/Reseller Servers	2222
+
+
+MySQL	3306
+
+HTTP	80
+ 	SSL	443
+ 	FTP	21
+
+
+
+email:
+
+	POP3	110
+ 	POP3 - SSL	995
+ 	IMAP	143
+ 	IMAP - SSL	993
+ 	SMTP	25
+ 	SMTP Alternate	26
+ 	SMTP Alternate	587
+ 	SMTP - SSL	465
+
+ 	

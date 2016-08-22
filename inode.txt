@@ -1,0 +1,24 @@
+inode.txt
+
+WHAT ARE INODES?
+
+An index node (or inode) contains metadata information (file size, file type, etc.) for a file system object (like a file or a directory). There is one inode per file system object.
+
+An inode doesn't store the file contents or the name: it simply points to a specific file or directory.
+
+
+
+What is in an inode?
+
+Before I said the data blocks contain the contents of the file. The inode contains the following pieces of information
+
+Mode/permission (protection)
+Owner ID
+Group ID
+Size of file
+Number of hard links to the file
+Time last accessed
+Time last modified
+Time inode last modified
+
+
