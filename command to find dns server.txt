@@ -1,0 +1,19 @@
+command to find dns server.txt
+
+nslookup – Simple Example
+
+nslookup followed by the domain name will display the “A Record” ( IP Address ) of the domain.
+
+$ nslookup redhat.com
+
+Server:		192.168.19.2
+Address:	192.168.19.2#53
+
+Non-authoritative answer:
+Name:	redhat.com
+Address: 209.132.183.181
+In the above output, server refers to the IP address of the DNS server. Then the below section provides the “A Record” ( IP Address ) of the domain “redhat.com”.
+
+The default output of nslookup command is less cluttered than the default output of dig command. Some of you might be comfortable using dig command for DNS lookups.
+
+
